@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    body {
+      margin: 0px;
+    }
     div.a {
       background-color: red;
       min-width: 600px;
@@ -16,11 +19,13 @@
       margin-right: auto;
       width:600px;
     }
+
+
     div.b {
+      box-sizing: border-box;
       border: 2px solid ;
-      margin-left:auto ;
-      margin-right:auto;
-      width:600px;
+      margin:auto ;
+      max-width:600px;
       height:250px;
       margin-bottom: 50px;
     }
@@ -32,8 +37,7 @@
     .b :nth-child(2) {
       height:50px;
       background-color: violet;
-      margin-left: 15px;
-      margin-right: 15px;
+      margin: 15px;
     }
     .b :nth-child(2):hover {
       margin: 0px;
@@ -43,13 +47,13 @@
       margin:15px;
       overflow: auto;
     }
+
+
     .c {
-      margin-left:auto;
-      margin-right:auto;
+      margin:auto;
       width: 0;
       border:50px solid rgba(0, 0, 0, 0);
       border-bottom:50px solid orange;
-      padding: 0;
     }
   </style>
 </head>
