@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main {
+      border:1px solid blue;
+      width: 100%;
+      min-width: 500px;
+      height:100vh;
+    }
+    div {
+      border:1px solid black;
+      width:98px;
+      height:100vh;
+    }
+    div.twobox {
+      width:calc(100% - 302px);
+    }
+    div:nth-child(2) {
+      margin-left: 100px;
+    }
+    div:nth-child(3) {
+      margin-left: calc(100% - 200px);
+    }
+    div:nth-child(4) {
+      margin-left: calc(100% - 100px);
+    }
+    div:nth-child(n+2) {
+      margin-top: calc(-100vh - 2px);
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="onebox">
+    <h6>OSLD Se7en</h6>
+  </div>
+  <div class="twobox">
+    <h6>fantasy</h6>
+  </div>
+  <div class="threebox">
+    <h6>Vocabulary</h6>
+  </div>
+  <div class="fourbox">
+    <h6>History</h6>
+  </div>
+</main>
+</body>
+</html>

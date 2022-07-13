@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div.a {
+      background-color: black;
+      min-width: 600px;
+      margin-bottom: 20px;
+    }
+    .a section {
+      color: white;
+      margin:auto;
+      width:600px;
+    }
+
+
+    div.b {
+      background-color: white;
+      min-width: 600px;
+      margin-bottom: 20px;
+    }
+    .b section {
+      margin:auto;
+      width:600px;
+    }
+
+
+    div.c {
+      margin:auto;
+      width: 600px;
+    }
+    .c article {
+      border:3px black solid;
+      width: 174px;
+      height: 34px;
+      background-color: pink;
+      text-align: center;
+      line-height: 36px;
+      margin-bottom: 15px;
+    }
+    .c article:hover {
+      background-color: red;
+    }
+    .c article:nth-child(n+5) {
+      margin-left: 210px;
+    }
+    .c article:nth-child(n+9) {
+      margin-left: 420px;
+    }
+    .c article:nth-child(4n+5) {
+      margin-top: -220px;
+    }
+
+
+    div.d {
+      margin: auto;
+      width: 600px;
+      overflow:hidden;
+      border-bottom: 15px;
+    }
+    .d li {
+      padding-top: 1px;
+      border-bottom: 1px dotted;
+      margin-bottom: 1px;
+      margin-left:-33px;
+    }
+    .d ul {
+      margin-bottom: -2px;
+      overflow: hidden;
+    }
+
+    div.e {
+      margin-top: 15px;
+      background-color: violet;
+    }
+    .e section {
+      margin: auto;
+      width: 600px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <div class="a">
+      <section>
+        hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果
+      </section>
+    </div>
+    <div class="b">
+      <section>
+        页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+      </section>
+    </div>
+   <div class="c">
+    <article>宽180高40(包含边框)</article>
+    <article>水平间隙30px</article>
+    <article>垂直间隙15px</article>
+    <article>边框宽度3px</article>
+    <article>产品</article>
+    <article>产品</article>
+    <article>产品</article>
+    <article>产品</article>
+    <article>产品</article>
+    <article>产品</article>
+    <article>产品</article>
+    <article>产品</article>
+   </div>
+   <div class="d">
+    <ul>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+    </ul>
+   </div>
+   <div class="e">
+    <section>
+      ©版权所有
+    </section>
+    <section>
+      本页所有布局均使用块元素
+    </section>
+   </div>
+</body>
+</html>
