@@ -43,7 +43,7 @@
       height: 40px;
       background-color: pink;
       text-align: center;
-      line-height: 36px;
+      line-height: 34px;
       margin-bottom: 15px;
     }
     .c article:hover {
@@ -59,6 +59,29 @@
       margin-top: -220px;
     }
 
+    div.ca {
+      margin: auto;
+      width: 600px;
+      font-size: 0;
+    }
+    div.ca span {
+      display: inline-block;
+      box-sizing: border-box;
+      border:3px black solid;
+      width: 180px;
+      height: 40px;
+      background-color: pink;
+      text-align: center;
+      line-height: 34px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    div.ca :not(span:nth-child(3n+3)) {
+      margin-right: 30px;
+    }
+    div.ca span:hover {
+      background-color: red;
+    }
 
     div.d {
       margin: auto;
@@ -113,6 +136,20 @@
       <article>产品</article>
       <article>产品</article>
       <article>产品</article>
+    </div>
+    <div class="ca">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>6</span>
+      <span>7</span>
+      <span>8</span>
+      <span>9</span>
+      <span>10</span>
+      <span>11</span>
+      <span>12</span>
     </div>
     <div class="d">
       <ul>
