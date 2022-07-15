@@ -9,15 +9,19 @@
       body>p:first-child {
         color:red;
       }
-      [tabindex="1"]:hover {
-        color: red;
-      }
-      p[tabindex="1"]:active {
-        color: green;
-      }
+
+
       [tabindex="1"]:focus {
         color: blue;
       }
+      [tabindex="1"]:hover {
+        color: red;
+      }
+      [tabindex="1"]:active {
+        color: green;
+      }
+
+
       p>span:first-child {
         color: red;
       }
@@ -27,46 +31,50 @@
       P>span>:last-child {
         color: blue;
       }
+
+
+      a:visited {
+        color: orange;
+      }
+      a:link {
+        color: pink;
+      }
+      a[href^="mailto:" i] {
+        color: blue;
+      }
+      a[href^="tel:"] {
+        color: yellow;
+      }
+      a[href$=".pdf" i] {
+        font-size: 30px;
+      }
+
+
       [class="a"] li:nth-child(4),
       [class="a"] li:nth-child(5),
       [class="a"] li:nth-child(6),
       [class="a"] li:nth-child(7) {
         color: red;
       }
-      [href*="mi"]:visited {
-        color: orange;
-      }
-      [href*="jd"]:visited {
-        color: orange;
-      }
-      [href*="sdj"]:link {
-        color: pink;
-      }
-      [href*="a@b"] {
-        color: blue;
-      }
-      [href*="tel"] {
-        color: yellow;
-      }
-      [href*="aaa."] {
-        font-size: 30px;
-      }
-      [class="b"] li:nth-child(n+35) {
-        color: blue;
-      }
-      [class="b"] li:nth-last-child(n+51) {
-        color: blue;}
-      [class="b"] li:nth-last-child(n+66) {
-        color: black;
-      }
-      [class="b"] li:nth-last-child(n+76) {
+
+
+
+      div.b ul li:nth-child(-n+25) {
         color: red;
       }
-      [class="b"] li:nth-child(n+51) {
-        color: black;
-      }
-      [class="b"] li:nth-child(n+65) {
+      div.b ul li:nth-child(n+65) {
         color: green;
+      }
+      div.b ul li:nth-child(n+35):nth-last-child(n+51) {
+        color: blue;
+      }
+
+
+      .prime li:nth-child(2n+4),
+      .prime li:nth-child(3n+9),
+      .prime li:nth-child(5n+25),
+      .prime li:nth-child(7n+49) {
+        color: lightblue;
       }
     </style>
   </head>
