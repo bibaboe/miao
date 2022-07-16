@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
+  <!-- <style>
     html,body,section {
       height: 100%;
       margin: 0;
@@ -58,10 +58,74 @@
       padding: 20px;
       text-indent: 2em;
     }
-  </style>
+  </style> -->
+  <style>
+  html,body,div {
+    margin: 0;
+    height: 100%;
+  }
+  div {
+    width: 100%;
+    min-width: 900px;
+    position: relative;
+  }
+
+  div>span {
+    display: inline-block;
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid;
+    width:200px;
+    height:100%;
+    background-color: rgb(255,192,203);
+  }
+  span.twobox {
+    width:auto;
+    left:200px;
+    right:400px;
+    background-color: rgb(255,248,220);
+  }
+  span.threebox {
+    right:200px;
+  }
+  span.fourbox {
+    right: 0;
+  }
+
+  .onebox>input {
+    width: 140px;
+  }
+  .onebox>ul {
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    left: 30px;
+    right: 0;
+    overflow: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .twobox>* {
+    position:absolute;
+    width: 100%;
+  }
+  .twobox header {
+    box-sizing: border-box;
+    border: 1px solid;
+    height: 80px;
+    top: 0;
+  }
+  .twobox main {
+    top: 80px;
+    bottom: 0;
+    overflow: auto;
+
+  }
+</style>
 </head>
 <body>
-  <section>
+  <!-- <section>
     <aside class="onebox">
       <h3>OALD Se7en</h3>
       <input type="text">
@@ -145,6 +209,90 @@
     <aside class="fourbox">
       <h3>History</h3>
     </aside>
-  </section>
+  </section> -->
+
+  <div>
+    <span class="onebox">
+      <h3>OALD Se7en</h3>
+      <input type="text">
+      <button>按钮</button>
+      <ul>
+        <li><a href="">word1</a></li>
+        <li><a href="">word2</a></li>
+        <li><a href="">word3</a></li>
+        <li><a href="">word4</a></li>
+        <li><a href="">word5</a></li>
+        <li><a href="">word6</a></li>
+        <li><a href="">word7</a></li>
+        <li><a href="">word8</a></li>
+        <li><a href="">word9</a></li>
+        <li><a href="">word10</a></li>
+        <li><a href="">word11</a></li>
+        <li><a href="">word12</a></li>
+        <li><a href="">word13</a></li>
+        <li><a href="">word14</a></li>
+        <li><a href="">word15</a></li>
+        <li><a href="">word16</a></li>
+        <li><a href="">word17</a></li>
+        <li><a href="">word18</a></li>
+        <li><a href="">word19</a></li>
+        <li><a href="">word20</a></li>
+        <li><a href="">word21</a></li>
+        <li><a href="">word22</a></li>
+        <li><a href="">word23</a></li>
+        <li><a href="">word24</a></li>
+        <li><a href="">word25</a></li>
+        <li><a href="">word26</a></li>
+        <li><a href="">word27</a></li>
+        <li><a href="">word28</a></li>
+        <li><a href="">word29</a></li>
+        <li><a href="">word30</a></li>
+        <li><a href="">word31</a></li>
+        <li><a href="">word32</a></li>
+        <li><a href="">word33</a></li>
+        <li><a href="">word34</a></li>
+        <li><a href="">word35</a></li>
+        <li><a href="">word36</a></li>
+        <li><a href="">word37</a></li>
+        <li><a href="">word38</a></li>
+        <li><a href="">word39</a></li>
+        <li><a href="">word40</a></li>
+        <li><a href="">word41</a></li>
+        <li><a href="">word42</a></li>
+        <li><a href="">word43</a></li>
+        <li><a href="">word44</a></li>
+        <li><a href="">word45</a></li>
+        <li><a href="">word46</a></li>
+        <li><a href="">word47</a></li>
+        <li><a href="">word48</a></li>
+        <li><a href="">word49</a></li>
+        <li><a href="">word50</a></li>
+        <li><a href="">word51</a></li>
+        <li><a href="">word52</a></li>
+        <li><a href="">word53</a></li>
+        <li><a href="">word54</a></li>
+        <li><a href="">word55</a></li>
+        <li><a href="">word56</a></li>
+        <li><a href="">word57</a></li>
+        <li><a href="">word58</a></li>
+        <li><a href="">word59</a></li>
+        <li><a href="">word60</a></li>
+      </ul>
+    </span>
+    <span class="twobox">
+      <header>
+        <h3>fantasy</h3>
+      </header>
+      <main>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut id iure voluptatibus vitae quasi officiis commodi ex saepe explicabo quibusdam ipsa consequatur, veniam alias sunt reprehenderit dolores non nemo iusto tenetur ducimus cumque porro. Quaerat, architecto quisquam enim recusandae id harum laudantium tempore necessitatibus debitis expedita. Eaque quia, cupiditate corrupti unde eum asperiores esse, fuga odit eos, illo magnam aliquid ratione quo. Inventore fuga animi similique saepe repudiandae rem quo numquam, vitae maiores et porro, consequatur ratione doloremque reiciendis ipsam voluptates atque, nihil autem tempora omnis veritatis nam! Vel, ea ab. Esse nam quas velit facilis quis! Rem illo facere dolorum similique possimus commodi laborum perspiciatis eveniet, mollitia assumenda, nobis quidem placeat deserunt consequatur tempora. Ut ad perferendis architecto recusandae consequuntur facere doloremque nihil aliquam aliquid molestias dolore odio, cum commodi saepe nemo, dolor eligendi numquam? Aperiam quibusdam dolore cupiditate alias deserunt minima sequi quasi quidem beatae libero illo, iste, ipsum explicabo laboriosam? Ea itaque exercitationem hic optio provident, veniam necessitatibus repudiandae repellendus magni laborum ratione mollitia saepe cumque deserunt blanditiis minima delectus quam possimus nihil nobis quis dolorum iure voluptatibus ducimus? Similique vel quisquam consectetur a reprehenderit! Vitae quod beatae error explicabo quo enim, consequuntur similique aliquam voluptas voluptatum dolorum esse labore reiciendis alias quibusdam id sequi repellendus recusandae sunt dolores. Animi voluptas exercitationem minima corrupti, odio alias, quas autem accusamus soluta non, ex illo rerum qui unde magni suscipit commodi magnam obcaecati? Sequi temporibus ut voluptatibus maxime explicabo, fugiat iusto, culpa, minima doloremque dolorem nostrum. Obcaecati aspernatur officiis dolorum? Autem rem rerum esse magnam asperiores inventore tempora, accusantium hic aspernatur quis minus enim blanditiis aliquam cum natus doloremque quo, reprehenderit, illum obcaecati officia. Dolor iure assumenda quos, et laborum fuga vel sequi adipisci ipsum nisi? Eaque, consequatur consectetur! Sed, magnam, dignissimos molestias voluptas, aperiam commodi illum dolorum voluptate fuga incidunt voluptates consectetur! Sint voluptatum maiores repellendus, possimus harum sapiente tenetur totam earum? Totam, animi itaque voluptatum, distinctio exercitationem, laboriosam corrupti a porro et velit rerum. Nesciunt facere maiores molestiae eveniet cumque dolorum totam blanditiis inventore, fugiat quaerat iste nisi vitae optio exercitationem impedit, necessitatibus dolorem modi eius, nihil aliquam voluptates. Tempora distinctio incidunt totam quae repudiandae nobis natus voluptatibus excepturi possimus accusamus ipsum quia facilis magni placeat perspiciatis, vel sapiente reprehenderit numquam, ducimus ut saepe alias dolorem in suscipit. Nulla omnis officiis veritatis pariatur dolore dolorem accusamus error eum, assumenda voluptatum ipsum minima dolor tempore quibusdam possimus corrupti quae. Expedita, quibusdam officiis assumenda ipsum natus, facilis consequatur quae aliquid dolores asperiores nihil accusamus doloribus laboriosam. Illum eum repudiandae quae labore maiores necessitatibus modi suscipit sunt deserunt debitis fugit accusamus, ex nostrum, amet at earum fuga a voluptates soluta sint odio ad numquam saepe. Adipisci nostrum, quo velit minima nisi voluptates officia, dolores necessitatibus totam magnam enim tenetur, culpa aliquid omnis vitae a autem distinctio. Voluptatum nulla aut eligendi ipsa officia est sequi consequuntur doloremque ex pariatur sit, incidunt rerum aperiam laboriosam neque eius voluptates quasi non, voluptatibus illum iure maxime recusandae. Dolores provident maiores officia doloremque laudantium accusantium fugit explicabo, enim aperiam, quaerat voluptates est quibusdam ut magni. Veniam dolore soluta voluptate! Neque provident ab pariatur laboriosam animi natus consectetur ex molestias iste nulla illo quae beatae enim alias mollitia corrupti velit, suscipit eligendi fugiat quos accusamus! Distinctio sed ratione porro odit dolore consectetur quis similique iusto voluptatum dolores, vel accusantium, quas qui aperiam quae aspernatur at ipsum voluptate harum ut nesciunt, corporis voluptates? Omnis eaque voluptas illo sequi ratione odio distinctio cupiditate ut deserunt ab quis, corrupti eius quia nesciunt laboriosam a. Quo vitae culpa ipsam, fuga amet exercitationem quod consequatur adipisci soluta hic incidunt dolor blanditiis voluptatibus reprehenderit aliquid, dolorem alias. Placeat veniam vel atque dolores consectetur, dolorum quisquam unde omnis expedita illum illo voluptatum, a repudiandae totam perspiciatis autem sint? Consequuntur, nihil dolor facere, ad tempora commodi eius quasi ipsum maxime, mollitia praesentium quisquam ratione! Fugit amet ducimus beatae ratione non, eum quasi cupiditate. Cupiditate repudiandae saepe voluptas fugit, adipisci commodi libero ea maiores. Officia similique quo numquam aliquid voluptas nisi dolore aut cumque, cum at ratione. Nam quam et deleniti eaque explicabo, quaerat veritatis, voluptatum magni corporis dignissimos ipsam. Vel optio, unde, similique placeat quas mollitia cum ex dolore corrupti quia, molestias ullam? Ipsum dolore corrupti provident, iure similique ea hic molestiae nobis nemo excepturi. Quas quisquam, enim nam officia nihil porro totam. Perspiciatis repellat hic exercitationem sequi distinctio at voluptatum soluta libero laborum ipsum id tempora saepe, modi dolores quos asperiores? Quaerat ad, vero culpa sapiente, esse magni accusantium facere sequi numquam eum tenetur cum ex? Maxime, numquam, vero mollitia fuga aperiam debitis odit labore tempora consequuntur eveniet illo architecto sequi. Mollitia voluptas in quo et consequatur fugiat, reprehenderit perferendis magnam quae, eius quasi beatae libero rem ratione error, ducimus quam vel tempore! Iure facilis reprehenderit sequi veniam vero eligendi, sint et quibusdam quaerat pariatur, quos inventore. Voluptate eligendi a doloremque vitae ab quaerat aliquam animi maxime cum, expedita quibusdam amet, ut ea, facere iure odit saepe autem rem delectus molestias similique! Perferendis, soluta nostrum! Odio, doloribus! Repellendus mollitia unde nisi tenetur dolorum minima quasi non blanditiis deserunt, beatae nihil? Rem, nesciunt animi? Quos debitis facilis fugiat veniam cupiditate numquam maxime, hic odit voluptatum veritatis ipsa animi sed corrupti reiciendis similique accusamus, nobis mollitia! Sunt aut voluptatum rem dolorum ratione nesciunt placeat delectus ab, cupiditate molestias libero porro maxime quaerat minima voluptatibus deserunt. Quidem nemo nam quae eaque consectetur fuga repellat molestias facere maiores, perspiciatis incidunt saepe deserunt corporis pariatur consequatur, aut at impedit cum eligendi. Magnam quos esse, quas tempore necessitatibus ipsa molestias iusto commodi possimus eum quo aliquam quis quod sapiente ut maiores laudantium similique mollitia. Quibusdam saepe nobis vero animi autem consequuntur, veniam aut cum, quia minus in quidem dolorum amet enim quaerat necessitatibus voluptate deleniti doloremque expedita perferendis ducimus laudantium laboriosam molestiae. Unde quam doloribus aperiam, voluptatum deserunt harum dolorem cum! Debitis esse soluta facere, delectus adipisci rerum, incidunt iure odio at velit in tempore molestias optio accusantium vero itaque deleniti maxime necessitatibus sed laboriosam officiis consequuntur. Facilis, reiciendis?</p>
+      </main>
+    </span>
+    <span class="threebox">
+      <h3>Vocabulary</h3>
+    </span>
+    <span class="fourbox">
+      <h3>History</h3>
+    </span>
+  </div>
 </body>
 </html>
