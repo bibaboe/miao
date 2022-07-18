@@ -11,158 +11,149 @@
       box-shadow: inset 0 0 1px red;
     }
     html,body {
+      margin: 0;
       width: 100%;
       height: 100%;
       background-color: rgb(30,30,30);
     }
-    main {
-      background-color: rgb(60,60,60);
-    }
-    main>div {
-      display: inline-block;
-      position: relative;
-      color: rgb(204,204,204);
-      margin: 10px;
-    }
     ul {
       list-style: none;
-      display: none;
       margin: 0;
       padding: 0;
-      position: absolute;
-      left: 0;
-      top: 100%;
+    }
+    .menu img {
+      width:16px;
+      height:16px;
+    }
+    .menu {
+      background-color: rgb(60,60,60);
+    }
+    .menu > li {
+      display: inline-block;
+    }
+    .menu li {
+      position: relative;
       white-space: nowrap;
-      color: rgb(204,204,204);
-      background-color: rgb(48, 48, 49);
+      padding: .5em;
+      color: rgb(204,204,204)
     }
-    li {
-      padding: 10px;
+    .menu li:hover {
+      background-color: rgb(69,70,70);
     }
-    ul li:hover {
+    .menu li li:hover {
       background-color: rgb(4, 57, 94);
     }
-
-    div.a:hover > ul {
-      display: block;
-    }
-    div.b:hover > ul {
-      display: block;
+    .menu ul {
+      padding-top: 10px;
+      padding-bottom: 10px;
       position: absolute;
       left: 0;
       top: 100%;
+      display: none;
+      border-radius: 5px 5px;
+      box-shadow: 0px 0px 3px gray, 0px 0px 3px gray, 0px 0px 3px gray,0px 0px 3px gray, 0px 0px 3px gray;
+      background-color: rgb(60,60,60);
     }
-    div.c:hover > ul {
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 100%;
-    }
-    div.d:hover > ul {
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 100%;
-    }
-    div.e:hover > ul {
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 100%;
-    }
-    div.f:hover > ul {
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 100%;
-    }
-
-
-    .dc {
-      position: relative;
-    }
-    .dc:hover > ul {
-      display: block;
-      position: absolute;
+    .menu ul ul {
       left: 100%;
-      top: 0;
+      top: -10px;
     }
-    .dd {
-      position: relative;
-    }
-    .dd:hover > ul {
+    .menu li:hover > ul {
       display: block;
+    }
+    .menu li li {
+      padding: 10px 200px 10px 10px;
+    }
+    .menu li li > span {
       position: absolute;
-      left: 100%;
-      top: 0;
+      right: 10px;
+      top: 10px;
     }
-
-    .dcd {
-      position: relative;
-    }
-    .dcd:hover > ul {
-      display: block;
-      position: absolute;
-      left: 100%;
-      top: 0;
-    }
-    .dce {
-      position: relative;
-    }
-    .dce:hover > ul {
-      display: block;
-      position: absolute;
-      left: 100%;
-      top: 0;
+    .menu li li.sep {
+      border-top: 1px solid;
+      padding: 0;
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
   </style>
  </head>
  <body>
-  <main>
-    <div class="a">文件(F)
+  <ul class="menu">
+    <li><a href="https://code.visualstudio.com/" target="_blank" alt="链接"><img src="https://oscimg.oschina.net/oscnet/e5638db8d01b01cb6339db50ed5c0ef4032.jpg" alt=""></a></li>
+    <li>文件(F)
       <ul>
-        <li>新建文本文件           Ctrl+N</li>
-        <li>新建文件...Ctrl+Alt+Windows+N</li>
-        <li>新建窗口         Ctrl+Shift+N</li>
-        <li>打开文件...            Ctrl+O</li>
-        <li>打开文件夹...   Ctrl+K Ctrl+O</li>
-      </ul>
-    </div>
-    <div class="b">编辑(E)
-      <ul>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-      </ul>
-    </div>
-    <div class="c">选择(S)
-      <ul>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-      </ul>
-    </div>
-    <div class="d">查看(V)
-      <ul>
-        <li>命令面板</li>
-        <li>打开视图</li>
-        <li class="dc">外观>>>>>>>
+        <li>新建文本文件<span>Ctrl+N</span></li>
+        <li>新建文件...<span>Ctrl+Alt+Windows+N</span></li>
+        <li>新建窗口<span>Ctrl+Shift+N</span></li>
+        <li class="sep"></li>
+        <li>打开文件...<span>Ctrl+O</span></li>
+        <li>打开文件夹...<span>Ctrl+K Ctrl+O</span></li>
+        <li>从文件打开工作区...<span></span></li>
+        <li>打开最近的文件<span>></span>
           <ul>
-            <li>全屏</li>
-            <li>禅模式</li>
-            <li>居中布局</li>
-            <li class="dcd">面板布局>>>
+            <li>重新打开已关闭的编辑器<span>Ctrl+Shift+T</span></li>
+            <li class="sep"></li>
+            <li>C:\Users\aaa\bbb\ccc<span></span></li>
+            <li>C:\Users\aaa\bbb\ddd<span></span></li>
+            <li>C:\Users\aaa\bbb\eee<span></span></li>
+            <li>C:\Users\aaa\bbb\fff<span></span></li>
+          </ul>
+        </li>
+        <li class="sep"></li>
+        <li>将文件夹添加到工作区...<span></span></li>
+        <li>将工作区另存为...<span></span></li>
+        <li>复制工作区<span></span></li>
+      </ul>
+    </li>
+    <li>编辑(E)
+      <ul>
+        <li>撤销<span>Ctrl+Z</span></li>
+        <li>恢复<span>Ctrl+Y</span></li>
+        <li class="sep"></li>
+        <li>剪切<span>Ctrl+X</span></li>
+        <li>复制<span>Ctrl+C</span></li>
+        <li>粘贴<span>Ctrl+V</span></li>
+        <li class="sep"></li>
+        <li>查找<span>Ctrl+F</span></li>
+        <li>替换<span>Ctrl+H</span></li>
+      </ul>
+    </li>
+    <li>选择(S)
+      <ul>
+        <li>全选<span>Ctrl+A</span></li>
+        <li>扩大选区<span>Shift+Alt+RightArrow</span></li>
+        <li>缩小选区<span>Shift+Alt+LeftArrow</span></li>
+        <li class="sep"></li>
+        <li>向上复制一行<span>Shift+Alt+UpArrow</span></li>
+        <li>向下复制一行<span>Shift+Alt+DownArrow</span></li>
+        <li>向上移动一行<span>Alt+UpArrow</span></li>
+        <li>向下移动一行<span>Alt+DownArrow</span></li>
+        <li>重复选择<span></span></li>
+        <li class="sep"></li>
+        <li>切换为"Ctrl+单击"进行多光标功能<span></span></li>
+        <li>列选择模式<span></span></li>
+      </ul>
+    </li>
+    <li>查看(V)
+      <ul>
+        <li>命令面板...<span>Ctrl+Shift+P</span></li>
+        <li>打开视图...<span></span></li>
+        <li class="sep"></li>
+        <li>外观<span>></span>
+          <ul>
+            <li>全屏<span>F11</span></li>
+            <li>禅模式<span>Ctrl+K Z</span></li>
+            <li>居中布局<span></span></li>
+            <li class="sep"></li>
+            <li>向左移动主侧栏<span></span></li>
+            <li>面板位置<span>></span>
               <ul>
                 <li>底部</li>
                 <li>右</li>
                 <li>左</li>
               </ul>
             </li>
-            <li class="dce">对齐面板>>>
+            <li>对齐面板<span>></span>
               <ul>
                 <li>居中</li>
                 <li>两端对齐</li>
@@ -172,36 +163,45 @@
             </li>
           </ul>
         </li>
-        <li class="dd">编辑器布局>>>
+        <li>编辑器布局<span>></span>
           <ul>
-            <li>向上拆分</li>
-            <li>向下拆分</li>
-            <li>向左拆分</li>
-            <li>向右拆分</li>
-            <li>在组中拆分</li>
+            <li>向上拆分<span></span></li>
+            <li>向下拆分<span></span></li>
+            <li>向左拆分<span></span></li>
+            <li>向右拆分<span></span></li>
+            <li class="sep"></li>
+            <li>在组中拆分<span>Ctrl+K Ctrl+Shift+\</span></li>
+            <li class="sep"></li>
+            <li>单列<span></span></li>
+            <li>双列<span></span></li>
+            <li>三列<span></span></li>
+            <li>双行<span></span></li>
+            <li>三行<span></span></li>
+            <li>2*2网格<span></span></li>
+            <li>右侧双行<span></span></li>
+            <li>底部双行<span></span></li>
+            <li class="sep"></li>
+            <li>翻转布局<span>Shift+Alt+0</span></li>
           </ul>
         </li>
-        <li>资源管理器</li>
+        <li class="sep"></li>
+        <li>资源管理器<span>Ctrl+Shift+E</span></li>
+        <li>搜索<span>Ctrl+Shift+F</span></li>
+        <li>源代码管理<span>Ctrl+Shift+G</span></li>
+        <li>运行<span>Ctrl+Shift+D</span></li>
+        <li>扩展<span>Ctrl+Shift+X</span></li>
       </ul>
-    </div>
-    <div class="e">转到(G)
+    </li>
+    <li>转到(G)
       <ul>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
+        <li>返回<span>Alt+LeftArrow</span></li>
+        <li>前进<span>Alt+RightArrow</span></li>
+        <li>上次编辑位置<span>Ctrl+K Ctrl+Q</span></li>
+        <li class="sep"></li>
+        <li>转到文件...<span>Ctrl+P</span></li>
+        <li>转到工作区中的符号...<span>Ctrl+T</span></li>
       </ul>
-    </div>
-    <div class="f">运行(R)
-      <ul>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-      </ul>
-    </div>
-  </main>
+    </li>
+  </ul>
  </body>
  </html>
