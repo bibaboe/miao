@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/less">
+    x* {
+      background-color: rgba(0,0,0,0.1);
+      box-shadow: inset 0 0 1px red;
+    }
+
+    .imgs {
+      position: relative;
+      width: 384px;
+      height: 216px;
+      img {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: 1s;
+        position: absolute;
+        &:nth-child(5){
+        opacity:1;
+        z-index: -1;
+        }
+      }
+    }/* 设置图片显示区宽高，用绝对定位使图片重叠,设置默认图*/
+
+    section {
+      border: 5px solid;
+      width: 384px;
+      height: 216px;
+      position: relative;
+      input {
+        display: none;
+      }
+    }/* 设置section边框、宽高，隐藏input */
+    .indicators {
+      position: absolute;
+      background-color: transparent;
+      color: white;
+      bottom: 0px;
+      left: 0px;
+      font-size: 0;
+      label {
+        display: inline-block;
+        background-color: blue;
+        border-radius: 10px 10px;
+        text-align: center;
+        width: 20px;
+        height: 20px;
+        font-size: 16px;
+      }/* 设置4个input分别对应的label按钮 */
+    }
+    input:nth-child(1):checked ~ .imgs img:nth-child(1),
+    input:nth-child(2):checked ~ .imgs img:nth-child(2),
+    input:nth-child(3):checked ~ .imgs img:nth-child(3),
+    input:nth-child(4):checked ~ .imgs img:nth-child(4), {
+      opacity: 1;
+    }/* 哪个input被点中，就显示对应的那张图片 */
+    input:nth-child(1):checked ~ .indicators label:nth-child(1),
+    input:nth-child(2):checked ~ .indicators label:nth-child(2),
+    input:nth-child(3):checked ~ .indicators label:nth-child(3),
+    input:nth-child(4):checked ~ .indicators label:nth-child(4), {
+      background-color: red;
+    }/* 哪个input被点中，就把对应的label背景颜色变为红色 */
+  </style>
+</head>
+<body>
+  <section>
+    <input type="radio" id="1" name="radio1">
+    <input type="radio" id="2" name="radio1">
+    <input type="radio" id="3" name="radio1">
+    <input type="radio" id="4" name="radio1">
+
+    <div class="imgs">
+      <img src="http://img.lemeitu.com/m00/e6/ec/794d12369e5099511e6b12af0751e646__w.jpg" alt="">
+      <img src="http://img.lemeitu.com/m00/68/18/92328ad8c76baae5ba74e0f91c9e90b1__w.jpg" alt="">
+      <img src="http://img.lemeitu.com/m00/7a/39/3ce474662feb1ab932425fab758a74cf__w.jpg" alt="">
+      <img src="http://img.lemeitu.com/m00/80/99/059841de1f4986e86b7d6d84ff26e518__w.jpg" alt="">
+      <img src="http://img.lemeitu.com/m00/be/85/2cb596d8d415ff97f88735402d4c78b2__w.jpg" alt="">
+    </div>
+
+    <div class="indicators">
+      <label for="1">1</label>
+      <label for="2">2</label>
+      <label for="3">3</label>
+      <label for="4">4</label>
+    </div>
+  </section>
+  <script src="less.js"></script>
+</body>
+</html>
