@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/less">
+    * {
+      background-color: rgba(0,0,0,0.08);
+      box-shadow: inset 0 0 1px red;
+    }
+    /* section {
+      display: flex;
+      margin: 0;
+      width: 600px;
+      gap: 15px 30px;
+      flex-wrap: wrap;
+      div {
+        box-sizing: border-box;
+        border: 3px solid;
+        width: 180px;
+        height: 40px;
+        background-color: pink;
+        text-align:center;
+      }
+    } */
+    html,body {
+      height:100%;
+      margin:0;
+    }
+    /* table {
+      display: block;
+      width:2000px;
+      border-collapse: collapse;
+      xborder-spacing:10px 5px;
+      empty-cells: hidden;
+      table-layout: fixed;
+
+      td {
+        height: 50px;
+        vertical-align: top;
+      }
+      caption {
+        caption-side: top;
+      }
+      col:nth-child(2n+1) {
+        border: 5px double;
+        background-color: red;
+        width:100px;
+        visibility:visible;
+      }
+    } */
+    section {
+      height: 100%;
+      width: 100%;
+      div {
+        &:nth-child(1) {
+          height: 100%;
+        width: 200px;
+        float: left;
+        }
+        &:nth-child(2) {
+          height: 100%;
+          overflow: hidden;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- <div>
+    <section>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+      <div>11</div>
+      <div>12</div>
+    </section>
+  </div> -->
+  <!-- <table class="table-responsive">
+    <caption>测试</caption>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="3" rowspan="2"> lorem1</td>
+        <td> lorem2</td>
+        <td> lorem3</td>
+        <td> lorem4</td>
+        <td> lorem5</td>
+        <td> lorem6</td>
+      </tr>
+      <tr>
+        <td> lorem1</td>
+        <td> lorem2</td>
+        <td> lorem3</td>
+        <td> lorem4</td>
+        <td> lorem5</td>
+        <td> lorem6</td>
+      </tr>
+      <tr>
+        <td> lorem1</td>
+        <td> lorem2</td>
+        <td> lorem3</td>
+        <td> lorem4</td>
+        <td> lorem5</td>
+        <td> lorem6</td>
+      </tr>
+      <tr>
+        <td> lorem1</td>
+        <td> lorem2</td>
+        <td> lorem3</td>
+        <td> lorem4</td>
+        <td> lorem5</td>
+        <td></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+      </tr>
+    </tfoot>
+  </table> -->
+  <section>
+    <div></div>
+    <div></div>
+  </section>
+  <script src="less.js"></script>
+</body>
+</html>

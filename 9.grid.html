@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style type="text/less">
-    * {
+    x* {
       background-color: rgba(0,0,0,0.08);
       box-shadow: inset 0 0 1px red;
     }
@@ -16,30 +16,32 @@
     h3 {
       text-align: center;
     }
-    table {
+    .table {
       border-collapse: collapse;
+      tr,col {
+        border: 3px solid blue;
+      }
       td {
         width: 50px;
         height: 50px;
-        border: 3px solid blue;
         text-align: center;
         &:hover {
           cursor: pointer;
-          border: 3.01px solid red;
+          border: 3px solid red;
         }
       }
     }
     .flex {
       display: flex;
-      width: 180px;
-      flex-wrap: wrap;
+      width: 162px;
+      flex-flow: row wrap;
+      align-content: start;
+      padding-bottom: 3px;
       div {
-        xbox-sizing: border-box;
         width:50px;
         height:50px;
         border: 3px solid blue;
-        margin-top: -3px;
-        margin-right: -3px;
+        margin: 0 -3px -3px 0;
         text-align: center;
         line-height: 50px;
         &:hover {
@@ -50,20 +52,21 @@
       }
     }
     .float {
-      width: 180px;
+      width: 162px;
+      overflow: hidden;
+      padding-bottom: 3px;
       div {
         float:left;
-        border: 3px solid blue;
-        margin-top: -3px;
-        margin-right: -3px;
         width: 50px;
         height: 50px;
+        border: 3px solid blue;
+        margin: 0 -3px -3px 0;
         text-align: center;
         line-height: 50px;
+        position: relative;
+        cursor: pointer;
         &:hover {
-          position: relative;
           z-index: 1;
-          cursor: pointer;
           border: 3px solid red;
         }
       }
@@ -88,8 +91,11 @@
 </head>
 <body>
   <h3>table布局</h3>
-  <table>
+  <table class="table">
     <tbody>
+      <col>
+      <col>
+      <col>
       <tr>
         <td>1</td>
         <td>2</td>
@@ -133,6 +139,7 @@
     <div>8</div>
     <div>9</div>
   </section>
+  <br>
   <div class="blogs">
     订 阅 博 客
   </div>
