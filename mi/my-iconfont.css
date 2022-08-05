@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 图标字体;
+  src: url(iconfont2.woff);
+}
+
+.icon {
+  font-family: 图标字体;
+}
+.icon-shopping-cart::before {
+  content: '\E60C'
+}
+.icon-search::before {
+  content: '\E616'
+}
+.icon-smile::before {
+  content: '\E60E'
+}
+.icon-good::before {
+  content: '\E60F'
+}
+.icon-message::before {
+  content: '\E610'
+}
+.icon-up::before {
+  content: '\E611'
+}
+.icon-down::before {
+  content: '\E612'
+}
+.icon-service::before {
+  content: '\E634'
+}
+.icon-seven::before {
+  content: '\E635'
+}
+.icon-fifteen::before {
+  content: '\E636'
+}
+.icon-place::before {
+  content: '\E637'
+}
+.icon-gift::before {
+  content: '\E638'
+}

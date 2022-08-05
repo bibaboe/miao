@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="my-iconfont.css">
+  <xlink rel="stylesheet" href="./index.css">
+  <style>
+      * {
+  background-color: rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 1px red;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+  font: 14px/1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+section {
+  width: 100%;
+  min-width: 1250px;
+
+  header {}
+
+  main {
+    width: 1250px;
+    margin: auto;
+
+    .search {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+
+      .left {
+        width: 100px;
+        height: 50px;
+        margin-right: 100px;
+        display: flex;
+        align-content: flex-end;
+
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .middle {
+        width: 750px;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+      }
+
+      .right {
+        width: 250px;
+        height: 100px;
+        margin-left: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        form {
+          width: 250px;
+          display: flex;
+        }
+
+        [type='text'] {
+          box-sizing: border-box;
+
+          width: 200px;
+          height: 50px;
+        }
+
+        [type='submit'] {
+          box-sizing: border-box;
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+
+    .three {
+      width: 1250px;
+      height: 420px;
+      display: flex;
+
+      .mune {
+        background-color: rgb(69, 63, 63);
+        width: 250px;
+        height: 420px;
+        position: relative;
+
+        ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            color: rgb(255, 255, 255);
+            padding: 9px 20px;
+
+            &:hover {
+              background-color: rgb(255, 103, 0);
+            }
+
+            span {
+              float: right;
+              left: 220px;
+            }
+
+            div {
+              position: absolute;
+              box-shadow: 0 0 10px;
+              width: 1000px;
+              height: 420px;
+              left: 100%;
+              top: 0;
+              color: rgb(51, 51, 51);
+              display: none;
+
+              &.threeCol {
+                width: 750px;
+              }
+
+              &.twoCol {
+                width: 500px;
+              }
+
+              ul {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-flow: column wrap;
+
+                li {
+                  padding: 0;
+                  width: 250px;
+                  height: 70px;
+
+                  &:hover {
+                    background-color: white;
+                  }
+
+                  &:hover a {
+                    color: rgb(255, 103, 0);
+                  }
+
+                  a {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: rgb(51, 51, 51);
+
+                    img {
+                      width: 40px;
+                      height: 40px;
+                      margin-left: 20px;
+                    }
+
+                    span {
+                      margin-left: 20px;
+                    }
+                  }
+                }
+              }
+            }
+
+            &:hover>div {
+              display: block;
+            }
+          }
+        }
+      }
+
+      .carouselDiagram {
+        width: 1000px;
+        height: 420px;
+      }
+    }
+  }
+}
+  </style>
+</head>
+
+<body>
+  <section>
+    <header>
+      <div class="navigationBar">
+        <ul>
+          <li><a href="https://www.mi.com/global/">小米官网</a></li>
+          <li><a href="https://www.mi.com/shop">小米商城</a></li>
+          <li><a href="https://home.miui.com/" target="_blank">MIUI</a></li>
+          <li><a href="https://iot.mi.com/" target="_blank">loT</a></li>
+          <li><a href="https://i.mi.com/" target="_blank">云服务</a></li>
+          <li><a href="https://airstar.com/home" target="_blank">天星数科</a></li>
+          <li><a href="https://www.xiaomiyoupin.com/" target="_blank">有品</a></li>
+          <li><a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a></li>
+          <li><a href="https://qiye.mi.com/" target="_blank">企业团购</a></li>
+          <li><a href="https://www.mi.com/shop/aptitude/list?id=88" target="_blank">资质证照</a></li>
+          <li><a href="https://www.mi.com/shop/aptitude/list" target="_blank">协议规则</a></li>
+          <li class="app"><a href="https://www.mi.com/appdownload">下载app</a>
+            <div>
+              <a href="https://www.mi.com/appdownload"><img src="img/download.png" alt="">小米商城APP
+              </a>
+            </div>
+          </li>
+          <li><a href="">Select Location</a></li>
+          <li class="enter"><a
+              href="https://account.xiaomi.com/fe/service/login/password?_qrsize=180&sid=mi_eshop&qs=%253Fcallback%253Dhttp%25253A%25252F%25252Forder.mi.com%25252Flogin%25252Fcallback%25253Ffollowup%25253Dhttps%2525253A%2525252F%2525252Fwww.mi.com%2525252Fshop%252526sign%25253DODA5NjU3ZjZkYjkxMWE3ZjVkYTE5M2MxMDNlYmJkYzJhZGFjNzBhYg%25252C%25252C%2526sid%253Dmi_eshop%2526_qrsize%253D180&callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Fshop%26sign%3DODA5NjU3ZjZkYjkxMWE3ZjVkYTE5M2MxMDNlYmJkYzJhZGFjNzBhYg%2C%2C&_sign=yBTYxCh0uB6YSglhQfg4uoP%2BRz4%3D&serviceParam=%7B%22checkSafePhone%22%3Afalse%2C%22checkSafeAddress%22%3Afalse%2C%22lsrp_score%22%3A0.0%7D&showActiveX=false&theme=&needTheme=false&bizDeviceType=&_locale=zh_CN">登录</a>
+          </li>
+          <li><a
+              href="https://cn.account.xiaomi.com/fe/service/register?source=&region=CN&sid=mi_eshop&qs=sid%3Dmi_eshop&callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback&_locale=zh_CN&_uRegion=CN">注册</a>
+          </li>
+          <li><a href="https://www.mi.com/shop/user/message">消息通知</a></li>
+          <li><a href="">购物车</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <div class="search">
+        <div class="left">
+          <a href="https://www.mi.com/global/"><img src="img/logo-mi2.png" alt=""></a>
+        </div>
+        <div class="middle">
+          <div>Xiaomi手机</div>
+          <div>Redmi手机</div>
+          <div>电视</div>
+          <div>笔记本</div>
+          <div>平板</div>
+          <div>家电</div>
+          <div>路由器</div>
+          <div>服务中心</div>
+          <div>社区</div>
+        </div>
+        <div class="right">
+          <form action="https://www.mi.com/shop/search" target="_blank">
+            <input type="text" name="keyword" placeholder="为发烧而生">
+            <input type="submit" value="搜索">
+          </form>
+        </div>
+      </div>
+
+      <div class="three">
+        <div class="mune">
+          <ul>
+            <li>手机<span>></span>
+              <div>
+                <ul>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                  <li><a href="https://www.mi.com/mi12s"><img src="img/Xiaomi 12s .png" alt=""><span>Xiaomi
+                        12s</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>电视<span>></span>
+              <div>
+                <ul>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15101"><img src="img/2.png"
+                        alt=""><span>Redmi X65 2022款</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>笔记本 平板<span>></span>
+              <div>
+                <ul>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=10000412"><img src="img/3.png"
+                        alt=""><span>Redmi G 游戏本 2022</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>出行 穿戴<span>></span>
+              <div class="threeCol">
+                <ul>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=16181"><img src="img/4.png"
+                        alt=""><span>小米手环 Pro</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>耳机 音箱<span>></span>
+              <div>
+                <ul>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                  <li><a href="https://www.mi.com/redmibuds4pro"><img src="img/5.png" alt=""><span>Redmi Buds 4
+                        Pro</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>家电<span>></span>
+              <div>
+                <ul>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"><img
+                        src="img/6.png" alt=""><span>壁挂空调</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>智能 路由器<span>></span>
+              <div class="threeCol">
+                <ul>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"><img
+                        src="img/7.png" alt=""><span>小米路由器</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>电源 配件<span>></span>
+              <div class="twoCol">
+                <ul>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                  <li><a href="https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"><img src="img/8.jpeg"
+                        alt=""><span>数据线</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>健康 儿童<span>></span>
+              <div class="threeCol">
+                <ul>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                  <li><a href="https://www.mi.com/shop/buy/detail?product_id=15025"><img src="img/9.png"
+                        alt=""><span>米家跑步机</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>生活 箱包<span>></span>
+              <div class="threeCol">
+                <ul>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                  <li><a
+                      href="https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"><img
+                        src="img/10.jpeg" alt=""><span>小背包</span></a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="carouselDiagram">
+
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+  </section>
+</body>
+
+</html>
