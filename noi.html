@@ -1,0 +1,206 @@
+
+
+<script type="" id="ch0103/01">
+  var a = Number(prompt('请输入a'))
+  var b = Number(prompt('请输入b'))
+
+  var r = (a + b)
+
+  console.log(r)
+</script>
+
+<script type="x" id="ch0103/02">
+  var a = Number(prompt('请输入a'))
+  var b = Number(prompt('请输入b'))
+  var c = Number(prompt('请输入c'))
+
+  var r = (a + b) * c
+
+  console.log(r)
+</script>
+
+<script type="x" id="ch0103/03">
+  var a = Number(prompt('请输入a'))
+  var b = Number(prompt('请输入b'))
+  var c = Number(prompt('请输入c'))
+
+  var r = parseInt((a + b) / c)
+
+  console.log(r)
+</script>
+
+<script type="x" id="ch0103/04">
+  var a = Number(prompt('请输入a'))
+  var b = Number(prompt('请输入b'))
+
+  var r = a / b
+  var x1 = r - r % 1
+  var x2 = a % b
+
+  console.log(x1)
+  console.log(x2)
+</script>
+
+<script type="x" id="ch0103/05">
+  var a = Number(prompt('请输入a'))
+  var b = Number(prompt('请输入b'))
+
+  var x1 = a / b
+
+  console.log(x1.toFixed(9))
+</script>
+
+<script type="x" id="ch0103/06">
+  var a = Number(prompt('请输入确诊数'))
+  var b = Number(prompt('请输入死亡数'))
+
+  var x1 = (b / a) * 100
+
+  console.log(x1.toFixed(3)+'%')
+</script>
+
+<script type="x" id="ch0103/07">
+  var x = Number(prompt('请输入x'))
+  var a = Number(prompt('请输入a'))
+  var b = Number(prompt('请输入b'))
+  var c = Number(prompt('请输入c'))
+  var d = Number(prompt('请输入d'))
+
+  var f = x => a * x * x * x + b * x * x + c * x + d
+
+  console.log(f(x).toFixed(7))
+</script>
+
+<script type="x" id="ch0103/08">
+  var f = Number(prompt('请输入华氏温度'))
+
+  var c = 5 * (f - 32) / 9
+
+  console.log(c.toFixed(5))
+</script>
+
+<script type="x" id="ch0103/09">
+  var r = Number(prompt('请输入圆的半径'))
+
+  var pi = 3.14159
+  var d = 2 * r
+  var c = 2 * pi * r
+  var s = pi * r * r
+
+  console.log(d.toFixed(4))
+  console.log(c.toFixed(4))
+  console.log(s.toFixed(4))
+</script>
+
+<script type="x" id="ch0103/10">
+  var r1 = Number(prompt('请输入阻值r1'))
+  var r2 = Number(prompt('请输入阻值r2'))
+
+  var R = 1 / (1 / r1 + 1 / r2)
+
+  console.log(R.toFixed(2))
+</script>
+
+<script type="x" id="ch0103/11">
+  var a = Number(prompt('请输入a'))
+  var b = Number(prompt('请输入b'))
+
+  var r = a % b
+
+  console.log(r.toFixed(4))
+</script>
+
+<script type="x" id="ch0103/12">
+  var r = Number(prompt('请输入球的半径r'))
+
+  var pi = 3.14
+  var V = 4 / 3 * pi * r * r * r
+
+  console.log(V.toFixed(2))
+</script>
+
+<script type="x" id="ch0103/13">
+  var a = Number(prompt('请输入一个三位数'))
+
+  // var x = (a % 10 * 100) + (((a - a % 10) / 10) % 10 *10) + ((a - a % 100) / 100)
+  var b = a % 10
+  var c = ((a - a % 10) / 10) % 10
+  var d = (a - a % 100) / 100
+
+  console.log('' + b + c + d)
+</script>
+
+<script type="x" id="ch0103/14">
+  var h = Number(prompt('请输入小圆桶的高h'))
+  var r = Number(prompt('请输入小圆桶的底面半径r'))
+
+  var pi = 3.14159
+  var x = parseInt(20000 / (h * pi * r * r)) + 1
+
+  console.log(x)
+</script>
+
+<script type="x" id="ch0103/15">
+  var n = Number(prompt('请输入苹果的总数n'))
+  var x = Number(prompt('请输入虫子几个小时能吃一个苹果x'))
+  var y = Number(prompt('请输入经过的时间y'))
+
+  var s = y % x === 0 ? n - y / x : n - parseInt(y / x) - 1
+
+  console.log(s)
+</script>
+
+<script type="x" id="ch0103/16">
+  var Xa = Number(prompt('请输入坐标A的x轴坐标'))
+  var Ya = Number(prompt('请输入坐标A的y轴坐标'))
+  var Xb = Number(prompt('请输入坐标B的x轴坐标'))
+  var Yb = Number(prompt('请输入坐标B的y轴坐标'))
+
+  var x = Math.sqrt((Xa - Xb) ** 2 + (Ya - Yb) ** 2)
+
+  console.log(x.toFixed(3))
+</script>
+
+<script type="x" id="ch0103/17">
+  var x1 = Number(prompt('请输入顶点1的x轴坐标'))
+  var y1 = Number(prompt('请输入顶点1的y轴坐标'))
+  var x2 = Number(prompt('请输入顶点2的x轴坐标'))
+  var y2 = Number(prompt('请输入顶点2的y轴坐标'))
+  var x3 = Number(prompt('请输入顶点3的x轴坐标'))
+  var y3 = Number(prompt('请输入顶点3的y轴坐标'))
+
+  var a = Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+  var b = Math.sqrt((x1 - x3) ** 2 + (y1 - y3) ** 2)
+  var c = Math.sqrt((x2 - x3) ** 2 + (y2 - y3) ** 2)
+  var s = (a + b + c) / 2
+
+  var A = Math.sqrt(s * (s - a) * (s - b) * (s - c))
+  console.log(A.toFixed(2))
+</script>
+
+<script type="x" id="ch0103/18">
+  var a1 = Number(prompt('请输入等差数列第一项的值'))
+  var a2 = Number(prompt('请输入等差数列第二项的值'))
+  var n = Number(prompt('请输入等差数列的第n项'))
+
+  var x = a1 + (n - 1) * (a2 - a1 )
+
+  console.log(x)
+</script>
+
+<script type="x" id="ch0103/19">
+  var A = Number(prompt('请输入正整数A'))
+  var B = Number(prompt('请输入正整数B'))
+
+  var x = A * B
+
+  console.log(x)
+</script>
+
+<script type="x" id="ch0103/20">
+  var n = Number(prompt('请输入一个非负整数'))
+
+  var x = Math.pow(2,n)
+
+  console.log(x)
+</script>
