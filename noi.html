@@ -1,6 +1,6 @@
 
 
-<script type="" id="ch0103/01">
+<script type="x" id="ch0103/01">
   var a = Number(prompt('请输入a'))
   var b = Number(prompt('请输入b'))
 
@@ -203,4 +203,353 @@
   var x = Math.pow(2,n)
 
   console.log(x)
+</script>
+
+<script type="x" id="ch0104/01">
+  var N = Number(prompt())
+
+  if (N > 0) {
+    console.log('positive')
+  } else {
+    if (N == 0) {
+      console.log('zero')
+    } else {
+      console.log('negative')
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/02">
+  var N = Number(prompt())
+
+  if (N > 0) {
+    console.log(N)
+  } else {
+    console.log(-N)
+  }
+
+</script>
+
+<script type="x" id="ch0104/03">
+  var n = Number(prompt())
+
+  if (n % 2 == 0) {
+    console.log('even')
+  } else {
+    console.log('odd')
+  }
+
+</script>
+
+<script type="x" id="ch0104/04">
+  var N = prompt()
+
+  if (N.charCodeAt(0) % 2 != 0) {
+    console.log('YES')
+  } else {
+    console.log('NO')
+  }
+
+</script>
+
+<script type="x" id="ch0104/05">
+  var x = Number(prompt())
+  var y = Number(prompt())
+
+  if (x > y) {
+    console.log('>')
+  } else {
+    if (x == y) {
+      console.log('=')
+    } else {
+      console.log('<')
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/06">
+  var N = Number(prompt())
+
+  if (N >= 10 && N <= 99) {
+    console.log('1')
+  } else {
+    console.log('0')
+  }
+
+</script>
+
+<script type="x" id="ch0104/07">
+  var x = Number(prompt())
+  var y = Number(prompt())
+
+  if (x >=10 || y >= 20) {
+    console.log('1')
+  } else {
+    console.log('0')
+  }
+
+</script>
+
+<script type="x" id="ch0104/08">
+  var N = Number(prompt())
+
+  if (N % 3 == 0 && N % 5 == 0) {
+    console.log('YES')
+  } else {
+      console.log('NO')
+  }
+
+</script>
+
+<script type="x" id="ch0104/09">
+  var N = Number(prompt())
+
+  if (N % 105 == 0) {
+    console.log('3 ' + '5 ' + '7')
+  } else {
+    if (N % 15 == 0) {
+      console.log('3 ' + '5')
+    } else {
+      if (N % 21 == 0) {
+        console.log('3 ' + '7')
+      } else {
+        if (N % 35 == 0) {
+          console.log('5 ' + '7')
+        } else {
+          if (N % 3 == 0) {
+            console.log('3')
+          } else {
+            if (N % 5 == 0) {
+              console.log('5')
+            } else {
+              if (N % 7 == 0) {
+                console.log('7')
+              } else {
+                console.log('n')
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/10">
+  var x = Number(prompt())
+  var y = Number(prompt())
+
+  if (x < 60 && y >= 60 || x >= 60 && y < 60) {
+    console.log('1')
+  } else {
+      console.log('0')
+  }
+
+</script>
+
+<script type="x" id="ch0104/11">
+  var N = Number(prompt())
+
+  if (N == 2 || N == 4 || N == 6 || N == 7) {
+    console.log('YES')
+  } else {
+      console.log('NO')
+  }
+
+</script>
+
+<script type="x" id="ch0104/12">
+  var N = Number(prompt())
+
+  if (N / 3 > 60 / (3 - 6 / 5)) {
+    console.log('Bike')
+  } else {
+    if (N / 3 < 60 / (3 - 6 / 5)) {
+      console.log('Walk')
+    } else {
+      console.log('All')
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/13">
+  var N = Number(prompt())
+
+  f1 = -N + 2.5
+  f2 = 2 - 1.5 * (N - 3) *(N - 3)
+  f3 = N / 2 - 1.5
+
+  if (N >= 0 && N < 5) {
+    console.log(f1.toFixed(3))
+  } else {
+    if (N >= 5 && N < 10) {
+      console.log(f2.toFixed(3))
+    } else {
+      if (N >= 10 && N < 20) {
+        console.log(f3.toFixed(3))
+      }
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/14">
+  var x = Number(prompt())
+  var y = prompt()
+
+  var f1 = 8 + Math.ceil((x - 1000) / 500) * 4 + 5
+  var f2 = 8 + Math.ceil((x - 1000) / 500) * 4
+
+  if (x <= 1000 && y == 'y') {
+    console.log('13')
+  } else {
+    if (x <= 1000 && y == 'n') {
+      console.log('8')
+    } else {
+      if (x > 1000 && y == 'y') {
+        console.log(f1)
+      } else{
+        console.log(f2)
+      }
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/15">
+  var x = Number(prompt())
+  var y = Number(prompt())
+  var z = Number(prompt())
+
+  if (x > y && x > z) {
+    console.log(x)
+  } else {
+    if (y > z) {
+      console.log(y)
+    } else {
+        console.log(z)
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/16">
+  var x = Number(prompt())
+  var y = Number(prompt())
+  var z = Number(prompt())
+
+  if (x ** 2 + y ** 2 >= z ** 2) {
+    console.log('yes')
+  } else {
+      console.log('no')
+  }
+
+</script>
+
+<script type="x" id="ch0104/17">
+  var N = Number(prompt())
+
+  if (N % 100 != 0 && N % 4 == 0 || N % 400 == 0) {
+    console.log('Y')
+  } else {
+      console.log('N')
+  }
+
+</script>
+
+<script type="x" id="ch0104/18">
+  var x = Number(prompt())
+  var y = Number(prompt())
+
+
+  if (x >= -1 && x <= 1 && y >= -1 && y <= 1) {
+    console.log('yes')
+  } else {
+      console.log('no')
+  }
+
+</script>
+
+<script type="x" id="ch0104/19">
+  var x = Number(prompt())
+  var y = Number(prompt())
+  var z = prompt()
+
+  f1 = x + y
+  f2 = x - y
+  f3 = x * y
+  f4 = x / y
+
+  if (z != '+' && z != '-' && z != '*' && z != '/') {
+    console.log('Invalid operator!')
+  } else {
+    if (y == 0 && z == '/') {
+      console.log('Divided by zero!')
+    } else {
+      if (z == '+') {
+        console.log(f1)
+      } else {
+        if (z == '-') {
+          console.log(f2)
+        } else {
+          if (z == '*') {
+            console.log(f3)
+          } else {
+            if (z == '/') {
+              console.log(f4)
+            }
+          }
+        }
+      }
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0104/20">
+    var a = Number(prompt())
+    var b = Number(prompt())
+    var c = Number(prompt())
+
+    var delta = b * b - 4 * a * c
+
+    var sqrt_delta = Math.sqrt(delta)
+
+    var x1 = (-b + sqrt_delta) / (2 * a)
+    var x2 = (-b - sqrt_delta) / (2 * a)
+    var 实部 = -b / (2 * a)
+    var 虚部 = Math.sqrt((4 * a * c - b * b)) / (2 * a)
+
+    if (delta > 0) {
+      console.log('x1=' + x1.toFixed(5) + ';x2=' + x2.toFixed(5))
+    } else {
+      if (delta == 0) {
+        console.log('x1=x2=' + x1.toFixed(5))
+      } else {
+        if (delta < 0) {
+          console.log('x1=' + 实部.toFixed(5) + '+' + 虚部.toFixed(5) + 'i;x2=' + 实部.toFixed(5) + '-' + 虚部.toFixed(5) + 'i')
+        }
+      }
+    }
+
+</script>
+
+<script type="x" id="ch0104/21">
+  var n = Number(prompt())
+  var x = Number(prompt())
+  var y = Number(prompt())
+
+  f1 = n - y / x
+  f2 = n - (parseInt(y/x) + 1)
+
+  if (y % x == 0) {
+    console.log(f1)
+  } else {
+      console.log(f2)
+  }
+
 </script>
