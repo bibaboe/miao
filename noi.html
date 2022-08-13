@@ -1287,21 +1287,42 @@
 
 <script type="x" id="ch0105/43">
   var n = Number(prompt('请输入一个正整数'))
-  var count1 = 0
-
-  for (var i = 1; i <= n; i = i + 1) {
-    x = '' + i
-    for (var y = 0; y < x.length; y = y + 1) {
-      if (x.charAt(y) == '1') {
-        count1 = count1 + 1
+  var x
+  for (i = 2; i <= n; i = i + 1) {
+    if (i == 2 || i == 3 || i == 5 || i == 7 || i == 11 || i == 13 || i % 2 != 0 && i % 3 != 0 && i % 5 != 0 && i % 7 != 0 && i % 11 != 0 && i % 13 != 0) {
+      x = n % i
+      if (x == 0) {
+        console.log(n / i)
+        break
       }
     }
   }
 
-  console.log(count1)
 </script>
 
 <script type="x" id="ch0105/44">
+  var n = Number(prompt('请输入一个正整数'))
+  var count = 0
+  var flag
+  for (var i = 2; count < n; i = i + 1) {
+    flag = 0
+    for (var c = 2; c < i; c = c + 1) {
+      if (i % c == 0) {
+        flag = 1
+      }
+    }
+    if (flag == 0) {
+      count = count + 1
+    }
+    if (count == n) {
+      break
+    }
+  }
+
+  console.log(i)
+</script>
+
+<script type="x" id="ch0105/45">
   var n = Number(prompt('请输入一个正整数'))
   var count1 = 0
 
