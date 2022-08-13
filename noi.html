@@ -1054,52 +1054,265 @@
   }
 </script>
 
-<script type="" id="ch0105/30">
-  var n = Number(prompt('请输入一个测量血压次数'))
-  var maxtime = 0
-  var time = 0
+<script type="x" id="ch0105/30">
+  var m = Number(prompt('请输入第一个正整数'))
+  var k = Number(prompt('请输入第二个正整数'))
+  var count = 0
+  var c = '' + m
 
-  for (var i = 1; i <= n; i = i + 1) {
-    var shrink = Number(prompt('请输入第' + i + '次测量的收缩压'))
-    var diastolic = Number(prompt('请输入第' + i + '次测量的舒张压'))
-    if (shrink >= 90 && shrink <= 140 && diastolic >= 60 && diastolic <= 90) {
-      time += 1
-    } else if (time > maxtime) {
-      maxtime = time
-      time = 0
-    } else {
-      time = 0
+  if (m % 19 == 0) {
+    for (var i = 1; i <= c.length; i++) {
+      alone = m % 10
+      if (alone == 3) {
+        count = count + 1
+      }
+      m = parseInt(m / 10)
     }
-  }
+    if (count == k) {
+      console.log('YES')
+    } else (
+      console.log('NO')
+    )
+  } else (
+    console.log('NO')
+  )
 
-  if (time > maxtime) {
-    maxtime = time
-  }
-
-  console.log(maxtime)
 </script>
 
 <script type="x" id="ch0105/31">
-  var n = Number(prompt('请输入一个测量血压次数'))
-  var maxtime = 0
-  var time = 0
+  var N = Number(prompt('请输入有几个灯'))
+  var M = Number(prompt('请输入有几个人'))
+  var count = '1'
 
-  for (var i = 1; i <= n; i = i + 1) {
-    var shrink = Number(prompt('请输入第' + i + '次测量的收缩压'))
-    var diastolic = Number(prompt('请输入第' + i + '次测量的舒张压'))
-    if (shrink >= 90 && shrink <= 140 && diastolic >= 60 && diastolic <= 90) {
-      time += 1
-    } else if (time > maxtime) {
-      maxtime = time
-      time = 0
-    } else {
-      time = 0
+  for (var i = 2; i <= N; i = i + 1) {
+    var  开关次数 = 0
+    for (var c = 1; c <= M; c = c + 1) {
+      if (i % c == 0) {
+        开关次数= 开关次数 + 1
+      }
+    }
+    if (开关次数 % 2 != 0) {
+      count = count + ',' + i
     }
   }
 
-  if (time > maxtime) {
-    maxtime = time
+  console.log(count)
+</script>
+
+<script type="x" id="ch0105/32">
+  var n = Number(prompt('请输入一个正整数'))
+  var sn = 0
+  var q = 2
+  var p = 1
+  var flag = q
+
+  for (var i = 1; i <= n; i = i + 1) {
+    sn = sn + q / p
+    q = q + p
+    p = flag
+  }
+  console.log(sn.toFixed(4))
+</script>
+
+<script type="x" id="ch0105/33">
+  var n = Number(prompt('请输入一个正整数'))
+  var sn = 0
+
+  for (var i = 1; i <= n; i = i + 1) {
+    sn = sn + Math.pow(-1, i - 1) * (1 / i)
   }
 
-  console.log(maxtime)
+  console.log(sn.toFixed(4))
+</script>
+
+<script type="x" id="ch0105/34">
+  var n = Number(prompt('请输入一个正整数'))
+  var sn = 0
+  var sum = 1
+
+  for (var i = 1; i <= n; i = i + 1) {
+    sum = sum * i
+    sn = sn + sum
+  }
+
+  console.log(sn)
+</script>
+
+<script type="x" id="ch0105/35">
+  var n = Number(prompt('请输入一个整数'))
+  var e = 1
+  var denominatorN = 1
+  for (var i = 1; i <= n; i = i + 1) {
+    denominatorN = denominatorN * i
+    sumN = 1 / denominatorN
+    e = e + sumN
+  }
+
+  console.log(e.toFixed(10))
+</script>
+
+<script type="x" id="ch0105/36">
+  var x = Number(prompt('请输入一个单精度浮点数'))
+  var n = Number(prompt('请输入一个正整数'))
+  var sn = 1
+
+  for (var i = 1; i <= n; i = i + 1) {
+    sn = sn + Math.pow(x, i)
+  }
+
+  console.log(sn.toFixed(2))
+</script>
+
+<script type="x" id="ch0105/37">
+  var M = Number(prompt('请输入体力最大值'))
+  var N = Number(prompt('请输入初始战斗力'))
+  var X = Number(prompt('请输入初始能量元素的数量'))
+
+  for (X = X - Math.ceil(M / N); X >= 0 ; X = X - Math.ceil(M / N)) {
+    N = N + Math.floor(M / N)
+  }
+
+  console.log(N)
+</script>
+
+<script type="x" id="ch0105/38">
+  var 组数 = Number(prompt('请输入组数'))
+
+  for (var x = 1; x <= 组数; x = x + 1) {
+    var n = Number(prompt('请输入一个整数'))
+
+    if (n == 0) {
+      var d = Number(prompt())
+      console.log(0)
+    } else {
+      for (var i = n; i >= 0; i = i - 1) {
+        var c = Number(prompt())
+        if (i != 0) {
+          console.log(i * c)
+        }
+      }
+    }
+
+  }
+</script>
+
+<script type="x" id="ch0105/39">
+  var n = Number(prompt('请输入一个正整数'))
+  var count = 0
+
+  for (var i = 1; i <= n; i = i + 1) {
+    var count7 = 0
+    var x = i
+    var y = '' + i
+    for (var z = 1; z <= y.length; z = z + 1) {
+      alone = x % 10
+      x = parseInt(x / 10)
+      if (alone == 7) {
+        count7 = count7 + 1
+      }
+    }
+    if (count7 == 0 && i % 7 != 0) {
+      count = count + i * i
+    }
+  }
+
+  console.log(count)
+</script>
+
+<script type="x" id="ch0105/40">
+  var n = Number(prompt('请输入一个正整数'))
+  var count1 = 0
+
+  for (var i = 1; i <= n; i = i + 1) {
+    x = '' + i
+    for (var y = 0; y < x.length; y = y + 1) {
+      if (x.charAt(y) == '1') {
+        count1 = count1 + 1
+      }
+    }
+  }
+
+  console.log(count1)
+</script>
+
+<script type="x" id="ch0105/41">
+  var L = Number(prompt('请输入一个正整数'))
+  var R = Number(prompt('请输入一个正整数'))
+  var count2 = 0
+
+  for (var i = L; i <= R; i = i + 1) {
+    x = '' + i
+    for (var y = 0; y < x.length; y = y + 1) {
+      if (x.charAt(y) == '2') {
+        count2 = count2 + 1
+      }
+    }
+  }
+
+  console.log(count2)
+</script>
+
+<script type="x" id="ch0105/42">
+  var height = Number(prompt('请输入一个正整数'))
+  var width = Number(prompt('请输入一个正整数'))
+  var str = prompt('请输入一个符号')
+  var heart = Number(prompt('请输入0或1'))
+  var result = ''
+  if (heart == 1) {
+    for (i = 1; i <= height; i = i +1) {
+      for(c = 1; c <= width; c = c + 1) {
+        if (c != width || c == width && i == height) {
+          result = result + str
+        } else if (c == width && i != height) {
+          result = result + str + '\n'
+        }
+      }
+    }
+    console.log(result)
+  } else {
+    for (i = 1; i <= height; i = i +1) {
+      for(c = 1; c <= width; c = c + 1) {
+        if (c != width && (i == 1 || i == height) || c == 1 || c == width && i == height) {
+          result = result + str
+        } else if (c == width && i != height) {
+          result = result + str + '\n'
+        } else if (i >= 1 && i <= height && c >= 1 && c <= width) {
+          result = result + ' '
+        }
+      }
+    }
+    console.log(result)
+  }
+</script>
+
+<script type="x" id="ch0105/43">
+  var n = Number(prompt('请输入一个正整数'))
+  var count1 = 0
+
+  for (var i = 1; i <= n; i = i + 1) {
+    x = '' + i
+    for (var y = 0; y < x.length; y = y + 1) {
+      if (x.charAt(y) == '1') {
+        count1 = count1 + 1
+      }
+    }
+  }
+
+  console.log(count1)
+</script>
+
+<script type="x" id="ch0105/44">
+  var n = Number(prompt('请输入一个正整数'))
+  var count1 = 0
+
+  for (var i = 1; i <= n; i = i + 1) {
+    x = '' + i
+    for (var y = 0; y < x.length; y = y + 1) {
+      if (x.charAt(y) == '1') {
+        count1 = count1 + 1
+      }
+    }
+  }
+
+  console.log(count1)
 </script>
