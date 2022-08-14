@@ -1292,17 +1292,14 @@
 
 <script type="x" id="ch0105/43">
   var n = Number(prompt('请输入一个正整数'))
-  var x
+
   for (i = 2; i <= n; i = i + 1) {
-    if (i == 2 || i == 3 || i == 5 || i == 7 || i == 11 || i == 13 || i % 2 != 0 && i % 3 != 0 && i % 5 != 0 && i % 7 != 0 && i % 11 != 0 && i % 13 != 0) {
-      x = n % i
-      if (x == 0) {
-        console.log(n / i)
-        break
+    if (n % i == 0) {
+      break
       }
     }
-  }
 
+    console.log(n / i)
 </script>
 
 <script type="x" id="ch0105/44">
@@ -1342,4 +1339,32 @@
   }
   count = count + (n + i - flag1) * i
   console.log(count)
+</script>
+
+<script type="x" id="weekday">
+  var year = Number(prompt('请输入年份'))
+  var month = Number(prompt('请输入月份'))
+  var count = 0
+  count = 365 * year + Math.floor(year / 4) - year / 100 + year / 400 + (153 * month - 457) / 5 + 1 - 306
+  var result = count % 7
+  console.log(parseInt(result))
+  // for (var i = 1; i < year; i = i + 1) {
+  //   if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+  //     count = count + 366
+  //   } else {
+  //     count = count + 355
+  //   }
+  // }
+  // for (var c = 1; c < month; c = c + 1) {
+  //   if (c == 2 && year % 4 == 0 && year % 100 != 0 || c == 2 && year % 400 == 0) {
+  //     count = count + 29
+  //   } else if (c == 2) {
+  //     count = count + 28
+  //   } else if (c == 4 || c == 6 || c == 9 || c == 11) {
+  //     count = count + 30
+  //   } else {
+  //     count = count + 31
+  //   }
+  // }
+
 </script>
