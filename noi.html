@@ -890,12 +890,11 @@
     if (n % 2 == 0) {
       result = n / 2
       console.log(n + '/2=' + result)
-      n = result
     } else {
       result = n * 3 + 1
       console.log(n + '*3+1=' + result)
-      n = result
     }
+    n = result
   }
   console.log('End')
 </script>
@@ -1109,12 +1108,11 @@
   var sn = 0
   var q = 2
   var p = 1
-  var flag = q
 
   for (var i = 1; i <= n; i = i + 1) {
     sn = sn + q / p
     q = q + p
-    p = flag
+    p = q - p
   }
   console.log(sn.toFixed(4))
 </script>
@@ -1328,17 +1326,67 @@
   var n = Number(prompt('请输入一个整数'))
   var count = 0
   var flag1 = 0
-  for (var i = 1; i <= n; i = i + 1) {
+  for (var i = 1; ; i = i + 1) {
     flag1 = flag1 + i
     if (flag1 > n) {
       break
     }
   }
-  for (var c = 1; c < i; c = c + 1) {
-    count = count + c * c
-  }
-  count = count + (n + i - flag1) * i
+
+  count = ((i - 1) * i * (2 * i - 1)) / 6 + (n + i - flag1) * i
+  // 平方和公式1^2+2^2+3^2+…+n^2=n(n+1)(2n+1)/6
   console.log(count)
+</script>
+
+
+
+<script type="x" id="narcissistic">
+
+  var n = Number(prompt())
+  var flag = 0
+  var x = n
+  for ( ; n > 0 ; ) {
+    var d = n % 10
+    flag = flag + d * d * d
+    n = (n - d) / 10
+  }
+  if (flag == x) {
+    console.log('YES')
+  } else {
+    console.log('NO')
+  }
+
+</script>
+
+<script type="x" id="narcissistics">
+  var flag
+  for (var i = 100; i <= 10000; i++) {
+    flag = 0
+    for (var n = i;  n > 0 ; ) {
+      var d = n % 10
+      flag = flag + d * d * d
+      n = (n - d) / 10
+    }
+    if (flag == i) {
+      console.log(i)
+    }
+  }
+</script>
+
+<script type="x" id="palindrom">
+  var i = Number(prompt())
+  var flag = ''
+  for (var n = i;  n > 0 ; ) {
+    var d = n % 10
+    flag = flag + d
+    n = (n - d) / 10
+  }
+  if (flag == i) {
+    console.log('YES')
+  } else {
+    console.log('NO')
+  }
+
 </script>
 
 <script type="x" id="weekday">
@@ -1367,4 +1415,109 @@
   //   }
   // }
 
+</script>
+
+<script type="x" id="complete-number">
+  var flag
+  for (var i = 100; i <= 10000; i++) {
+    flag = 0
+    for (var n = i;  n > 0 ; ) {
+      var d = n % 10
+      flag = flag + d * d * d
+      n = (n - d) / 10
+    }
+    if (flag == i) {
+      console.log(i)
+    }
+  }
+</script>
+
+<script type="x" id="sqrt">
+  var n = Number(prompt('请输入一个整数'))
+  var i = 0
+  while (i**2 < n) {
+    i = i + 1
+  }
+  var flag = 1
+  var c = i
+  for (;flag >= 0.0001;) {
+    flag = flag / 2
+    if (c * c > n) {
+      c = c - flag
+    } else if (c * c < n) {
+      c = c + flag
+    } else if (c * c == n) {
+      break
+    }
+  }
+  console.log(c.toFixed(3))
+</script>
+
+<script type="" id="lcf&lcm">
+  var m = Number(prompt())
+  var n = Number(prompt())
+  console.log(largestCommonFactor(m,n),littlestCommonMultiple(m,n))
+  function largestCommonFactor(m,n) {
+    var r
+    do {
+      r = m % n
+      m = n
+      n = r
+    } while (r != 0)
+    return m
+  }
+  function littlestCommonMultiple(m,n) {
+    return m * n / largestCommonFactor(m,n)
+  }
+</script>
+
+<script type="x" id="ch0155/34"> // 声明一个求X阶乘函数
+  var factorial = function(x) {
+    var sn = 0
+    var sum = 1
+
+    for (var i = 1; i <= x; i = i + 1) {
+      sum = sum * i
+      sn = sn + sum
+    }
+    return sn
+  }
+  console.log(factorial(2))
+</script>
+
+<script type="x" id="ch0155/39">// 判断n与7是否有关
+  var has7 = function(n) {
+    var count = true
+
+      var count7 = 0
+      var x = n
+      var y = '' + x
+      for (var z = 1; z <= y.length; z = z + 1) {
+        alone = x % 10
+        x = parseInt(x / 10)
+        if (alone == 7) {
+          count7 = count7 + 1
+        }
+      }
+      if (count7 == 0 && n % 7 != 0) {
+        count = false
+      }
+      return count
+  }
+  console.log(has7(13))
+</script>
+
+<script type="x" id="ch0155/17">//菲波那契数列的第n项
+  var f = function(n) {
+    var a = 0
+    var b = 1
+    var c
+    for (var i = 0; i < n; i++) {
+      c = a + b
+      a = b
+      b = c
+    }
+    return a
+  }
+  console.log(f(7))
 </script>
