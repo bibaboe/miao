@@ -1418,17 +1418,151 @@
 </script>
 
 <script type="x" id="complete-number">
-  var flag
-  for (var i = 100; i <= 10000; i++) {
-    flag = 0
-    for (var n = i;  n > 0 ; ) {
-      var d = n % 10
-      flag = flag + d * d * d
-      n = (n - d) / 10
-    }
-    if (flag == i) {
+  function isCompleteNumber(n) {
+    var sum = 0
+    for (var i = 1; i <= n / 2; i++) {
+      if (n % i == 0) {
+        sum += i
+      }
+   }
+   if (sum === n) {
+    return 'YES'
+   } else {
+    return 'NO'
+   }
+  }
+  var n = +prompt()
+  console.log(isCompleteNumber(n))
+</script>
+
+<script type="x" id="complete-numbers">
+  function isCompleteNumber(n) {
+    var sum = 0
+    for (var i = 1; i <= n / 2; i++) {
+      if (n % i == 0) {
+        sum += i
+      }
+   }
+   if (sum === n) {
+    return 'YES'
+   } else {
+    return 'NO'
+   }
+  }
+  for (i = 1; i <= 1000; i++) {
+    if (isCompleteNumber(i) === 'YES') {
       console.log(i)
     }
+  }
+</script>
+
+<script type="x" id="prime">
+  function isPrime(n) {
+    var end = Math.sqrt(n)
+    for (var i = 2; i <= end; i++) {
+      if (n % i == 0) {
+        return 'NO'
+      }
+    }
+    if (n == 1) {
+      return 'NO'
+    }
+    return 'YES'
+  }
+  var n = +prompt()
+  console.log(isPrime(n))
+</script>
+
+<script type="x" id="primes">
+  function isPrime(n) {
+    var end = Math.sqrt(n)
+    for (var i = 2; i <= end; i++) {
+      if (n % i == 0) {
+        return 'NO'
+      }
+    }
+    if (n == 1) {
+      return 'NO'
+    }
+    return 'YES'
+  }
+
+  for (var i = 1; i <= 100; i = i + 1) {
+    if (isPrime(i) == 'YES') {
+      console.log(i)
+    }
+  }
+</script>
+
+<script type="x" id="itob">
+  function itob(n) {
+    flag = true
+    if (n < 0) {
+      n = - n
+      flag = false
+    }
+    var result = ''
+    do {
+      var ge = n % 10
+      if (ge == 0) {
+        c = '0'
+      }
+      if (ge == 1) {
+        c = '1'
+      }
+      if (ge == 2) {
+        c = '2'
+      }
+      if (ge == 3) {
+        c = '3'
+      }
+      if (ge == 4) {
+        c = '4'
+      }
+      if (ge == 5) {
+        c = '5'
+      }
+      if (ge == 6) {
+        c = '6'
+      }
+      if (ge ==7) {
+        c = '7'
+      }
+      if (ge == 8) {
+        c = '8'
+      }
+      if (ge == 9) {
+        c = '9'
+      }
+      result = c + result
+      n = (n - ge) / 10
+    } while (n > 0)
+
+    if (flag) {
+      return result
+    } else {
+      return -result
+    }
+  }
+  var n = +prompt()
+  console.log(itob(n))
+</script>
+
+<script type="x" id="lcf&lcm">
+  var m = Number(prompt())
+  var n = Number(prompt())
+  console.log(largestCommonFactor(m,n),littlestCommonMultiple(m,n))
+  function largestCommonFactor(m,n) {
+    var r
+    do {
+      r = m % n
+      m = n
+      n = r
+    } while (r != 0)
+    return m
+  }
+  function littlestCommonMultiple(m,n) {
+    return m * n / largestCommonFactor(m,n)
   }
 </script>
 
@@ -1453,23 +1587,8 @@
   console.log(c.toFixed(3))
 </script>
 
-<script type="" id="lcf&lcm">
-  var m = Number(prompt())
-  var n = Number(prompt())
-  console.log(largestCommonFactor(m,n),littlestCommonMultiple(m,n))
-  function largestCommonFactor(m,n) {
-    var r
-    do {
-      r = m % n
-      m = n
-      n = r
-    } while (r != 0)
-    return m
-  }
-  function littlestCommonMultiple(m,n) {
-    return m * n / largestCommonFactor(m,n)
-  }
-</script>
+
+
 
 <script type="x" id="ch0155/34"> // 声明一个求X阶乘函数
   var factorial = function(x) {
@@ -1520,4 +1639,30 @@
     return a
   }
   console.log(f(7))
+</script>
+
+
+<script type="x" >
+  function f1() {
+    var a = 1
+
+    function f2() {
+      var a = 2
+
+      function f3() {
+        console.log('f3:', a)
+      }
+
+      a = 22
+      f3()
+    }
+
+    console.log('f2:', a)
+    a = 100
+
+    f2()
+  }
+
+  f1()
+
 </script>
