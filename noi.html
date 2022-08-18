@@ -1392,10 +1392,7 @@
 <script type="x" id="weekday">
   var year = Number(prompt('请输入年份'))
   var month = Number(prompt('请输入月份'))
-  var count = 0
-  count = 365 * year + Math.floor(year / 4) - year / 100 + year / 400 + (153 * month - 457) / 5 + 1 - 306
-  var result = count % 7
-  console.log(parseInt(result))
+  console.log(weekday(year, month))
   // for (var i = 1; i < year; i = i + 1) {
   //   if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
   //     count = count + 366
@@ -1414,7 +1411,43 @@
   //     count = count + 31
   //   }
   // }
-
+  function isLeapYear(year) {
+    if (year % 400 == 0) {
+      return true
+    }
+    if (year % 100 == 0) {
+      return false
+    }
+    if (year % 4 == 0) {
+      return true
+    }
+    return false
+  }
+  function is31DayMonth(n) {
+    return n == 1 || n == 3 || n == 5 || n == 7 || n == 8 || n == 10 || n == 12
+  }
+  function getMonthDay(year, month) {
+    if (month == 2) {
+      if (isLeapYear(year)) {
+        return 29
+      } else {
+        return 28
+      }
+    }
+    if (is31DayMonth(month)) {
+      return 31
+    }
+    return 30
+  }
+  function weekday(year, month) {
+    var y = year - 1
+    var days = y * 365 + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400)
+    for (var m = 1; m < month; m++) {
+      days += getMonthDay(year, m)
+    }
+    days++ // 加上当月的第一天
+    return days % 7
+  }
 </script>
 
 <script type="x" id="complete-number">
