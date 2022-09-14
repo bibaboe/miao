@@ -184,4 +184,64 @@ var bibaboe = {
       return -1
     }
   },
+
+  // 反转数组
+  reverse: function (array) {
+    if (array.length == 0 || array.length == 1) return array
+
+    var i = 0, j = array.length - 1
+    while (i < j) {
+      var a = array[i]
+      array[i] = array[j]
+      array[j] = a
+    }
+
+    return array
+  },
+
+  //连接字符串
+  join: function (array, separator = ',') {
+    var str = array[0]
+
+    for (var i = 1; i < array.length; i++) {
+      str = str + separator + array[i]
+    }
+
+    return str
+  },
+
+  // 返回删除最后一个元素的数组
+  initial: function (array) {
+    array.pop()
+    return array
+  },
+
+  // 删除在values出现的元素
+  pull: function (array, ...values) {
+    var map = {}
+    for (var i = 0; i < values.length; i++) {
+      if (!(values[i] in map)) {
+        map[values[i]] = 0
+      }
+    }
+
+    var j = 0
+    while (j < array.length) {
+      if (!(array[j] in map)) {
+        j++
+      } else {
+        array.remove(array[j])
+      }
+    }
+
+    return array
+  },
+
+  // 从末尾检索数组
+  lastIndexOf: function (array, value, fromIndex = array.length - 1) {
+    for (var i = fromIndex; i >= 0; i++) {
+      if (array[i] == value) return i
+    }
+    return -1
+  }
 }
