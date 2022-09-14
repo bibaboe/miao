@@ -178,7 +178,7 @@ var bibaboe = {
       }
       return -1
     } else {
-      for (var j = array.length + fromIndex; j >= 0; j--) {
+      for (var j = array.length + fromIndex; j <array.length; j++) {
         if (array[j] == value) return j
       }
       return -1
@@ -244,4 +244,6 @@ var bibaboe = {
     }
     return -1
   }
+
+  //
 }
