@@ -5,7 +5,7 @@ var bibaboe = {
   compact: function() {},
 
   fill: function (array, value, start = 0, end = array.length) {
-    var result = []
+    var result = array
     for (var i = start; i < end; i++) {
       result[i] = value
     }
