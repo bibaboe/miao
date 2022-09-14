@@ -256,5 +256,25 @@ var bibaboe = {
     return map
   },
 
+  // 返回交集元素
+  intersection: function (...arrays) {
+    var result = []
+    var map = {}
+    for (var i = 0; i < arrays.length; i++) {
+      for (var j = 0; j < arrays[i].length; j++) {
+        if (!(arrays[i][j] in map)) {
+          map[arrays[i][j]] = 0
+        }
+        map[arrays[i][j]]++
+      }
+    }
 
+    for (var key in map) {
+      if (map[key] > 1) {
+        result.push(+key)
+      }
+    }
+
+    return result
+  },
 }
