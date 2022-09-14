@@ -84,7 +84,7 @@ var bibaboe = {
   flattenDeep: function flattenDeep(array) {
     return array.reduce((result, it) => {
       if (Array.isArray(it)) {
-        return flattenDeep(it)
+        return result.concat(flattenDeep(it))
       }
       return result.concat(it)
     },[])
