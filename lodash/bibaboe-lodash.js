@@ -60,7 +60,7 @@ var bibaboe = {
     }
 
     var result = []
-    for (var k = 0; k < array.length; j++) {
+    for (var k = 0; k < array.length; k++) {
       if (!(array[k] in map)) {
         result.push(array[k])
       }
