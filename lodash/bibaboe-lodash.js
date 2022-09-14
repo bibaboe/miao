@@ -28,6 +28,17 @@ var bibaboe = {
     return result
   },
 
+  // 合并数组，返回新数组
+  concat: function (array, ...values) {
+    var result = array
+    for (var i = 0; i < values.length; i++) {
+      for (var j = 0; j < values[i].length; j++) {
+        result.push(values[i][j])
+      }
+    }
+    return result
+  },
+
     // 把array从start下标开始，不包含end下标的元素替换成value
   fill: function (array, value, start = 0, end = array.length) {
     for (var i = start; i < end; i++) {
@@ -103,4 +114,6 @@ var bibaboe = {
     }
     return array
   },
+
+  //
 }
