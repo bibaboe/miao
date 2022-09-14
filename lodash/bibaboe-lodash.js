@@ -53,6 +53,20 @@ var bibaboe = {
     return result
   },
 
-  //
+  // 数组降维
+  flatten: function flatten(array) {
+    return array.reduce((result, it) => {
+      return result.concat(it)
+    })
+  },
 
+  // 数组多重降维
+  flattenDeep: function flattenDeep(array) {
+    return array.reduce((result, it) => {
+      if (Array.isArray(it)) {
+        return flattenDeep(it)
+      }
+      return result.concat(it)
+    })
+  },
 }
