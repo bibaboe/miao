@@ -88,6 +88,19 @@ var bibaboe = {
   // },
   // console.log(flattenDepth([1,[2,[3,[4]],5]]))
 
-  //
+  //从开头删除n个元素
+  drop: function (array, n = 1) {
+    for (var i = 0; i < n && array.length != 0; i++) {
+      array.shift()
+    }
+    return array
+  },
 
+  //从末尾删除n个元素
+  dropRight: function (array, n = 1) {
+    for (var i = 0; i < n && array.length != 0; i++) {
+      array.pop()
+    }
+    return array
+  },
 }
