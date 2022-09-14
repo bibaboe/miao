@@ -6,7 +6,7 @@ var bibaboe = {
 
     for (var i = 0; i < Math.ceil(array.length / size); i++) {
       var ary = []
-      for (var j = 0; j < size; j++) {
+      for (var j = 0; j < size && i * size + j < array.length; j++) {
         ary.push(array[i * size + j])
       }
       result.push(ary)
@@ -37,16 +37,21 @@ var bibaboe = {
   },
 
   // 把在values中存在的值排除，返回新数组
-  difference: function (array, values) {
+  difference: function (array, ...values) {
     var map = {}
+
     for (var i = 0; i < values.length; i++) {
-      map[values[i]] = 0
+      for (var j = 0; j < values[i].length; j++) {
+        if (!(values[i][j] in map)) {
+          map[values[i][j]] = 0
+        }
+      }
     }
 
     var result = []
-    for (var j = 0; j < array.length; j++) {
-      if (!(array[j] in map)) {
-        result.push(array[j])
+    for (var k = 0; k < array.length; j++) {
+      if (!(array[k] in map)) {
+        result.push(array[k])
       }
     }
 
@@ -69,4 +74,20 @@ var bibaboe = {
       return result.concat(it)
     })
   },
+
+  //
+  // flattenDepth: function flattenDepth(array, depth = 1) {
+  //   var f = 1
+  //   return array.reduce((result, it) => {
+  //     if (Array.isArray(it) && f < depth) {
+  //       f++
+  //       return flattenDepth(it)
+  //     }
+  //     return result.concat(it)
+  //   })
+  // },
+  // console.log(flattenDepth([1,[2,[3,[4]],5]]))
+
+  //
+
 }
