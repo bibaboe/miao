@@ -119,5 +119,50 @@ var bibaboe = {
     return array
   },
 
+  //返回数组第一个元素
+  head: function (array) {
+    if (array.length == 0) {
+      return undefined
+    } else {
+      return array[0]
+    }
+  },
+
+  //返回数组最后一个元素
+  last: function (array) {
+    if (array.length == 0) {
+      return undefined
+    } else {
+      return array[array.length - 1]
+    }
+  },
+
+  // 返回数组中最小的元素
+  min: function (array) {
+    if (array.length == 0) return undefined
+    var minNum = Infinity
+    for (var i = 0; i < array.length; i++) {
+      if (minNum > array[i]) {
+        minNum = array[i]
+      }
+    }
+    return minNum
+  },
+
+  // 返回数组中最大的元素
+  max: function (array) {
+    if (array.length == 0) return undefined
+    var maxNum = -Infinity
+    for (var i = 0; i < array.length; i++) {
+      if (maxNum < array[i]) {
+        maxNum = array[i]
+      }
+    }
+    return maxNum
+  },
+
   //
+  size: function (collection) {
+
+  }
 }
