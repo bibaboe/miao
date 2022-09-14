@@ -161,8 +161,27 @@ var bibaboe = {
     return maxNum
   },
 
-  //
-  size: function (collection) {
+  // 返回下标为n的元素，如果n为负数，则返回倒数第n个元素
+  nth: function (array, n = 0) {
+    if (n >= 0) {
+      return array[n]
+    } else {
+      return array[array.length + n]
+    }
+  },
 
-  }
+  //
+  indexOf: function (array, value, fromIndex = 0) {
+    if (fromIndex >= 0) {
+      for (var i = fromIndex; i < array.length; i++) {
+        if (array[i] == value) return i
+      }
+      return -1
+    } else {
+      for (var j = array.length + fromIndex; j >= 0; j--) {
+        if (array[j] == value) return j
+      }
+      return -1
+    }
+  },
 }
