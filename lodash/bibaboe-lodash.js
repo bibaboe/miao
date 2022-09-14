@@ -32,8 +32,12 @@ var bibaboe = {
   concat: function (array, ...values) {
     var result = array
     for (var i = 0; i < values.length; i++) {
-      for (var j = 0; j < values[i].length; j++) {
-        result.push(values[i][j])
+      if (!Array.isArray(values[i])) {
+        result.push(values[i])
+      } else {
+        for (var j = 0; j < values[i].length; j++) {
+          result.push(values[i][j])
+        }
       }
     }
     return result
