@@ -77,7 +77,7 @@ var bibaboe = {
   flatten: function flatten(array) {
     return array.reduce((result, it) => {
       return result.concat(it)
-    })
+    },[])
   },
 
   // 数组多重降维
@@ -87,7 +87,7 @@ var bibaboe = {
         return flattenDeep(it)
       }
       return result.concat(it)
-    })
+    },[])
   },
 
   //
@@ -243,7 +243,18 @@ var bibaboe = {
       if (array[i] == value) return i
     }
     return -1
-  }
+  },
 
-  //
+  //数组转对象
+  fromPairs: function (pairs) {
+    var map = {}
+
+    for (var i = 0; i < pairs.length; i++) {
+      map[pairs[i][0]] = pairs[i][1]
+    }
+
+    return map
+  },
+
+
 }
