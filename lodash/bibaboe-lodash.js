@@ -194,6 +194,8 @@ var bibaboe = {
       var a = array[i]
       array[i] = array[j]
       array[j] = a
+      i++
+      j--
     }
 
     return array
