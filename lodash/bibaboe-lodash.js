@@ -80,7 +80,7 @@ var bibaboe = {
     },[])
   },
 
-  // 数组多重降维
+  // 数组无限重降维
   flattenDeep: function flattenDeep(array) {
     return array.reduce((result, it) => {
       if (Array.isArray(it)) {
@@ -90,18 +90,21 @@ var bibaboe = {
     },[])
   },
 
-  //
-  // flattenDepth: function flattenDepth(array, depth = 1) {
-  //   var f = 1
-  //   return array.reduce((result, it) => {
-  //     if (Array.isArray(it) && f < depth) {
-  //       f++
-  //       return flattenDepth(it)
-  //     }
-  //     return result.concat(it)
-  //   })
-  // },
-  // console.log(flattenDepth([1,[2,[3,[4]],5]]))
+  //数组多重降维
+  flattenDepth: function flattenDepth(array, depth = 1) {
+    if (depth == 0) return array
+    var result = []
+
+    for (var i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i]) && depth >= 1) {
+        result = result.concat(flattenDepth(array[i],depth - 1))
+      } else {
+        result.push(array[i])
+      }
+    }
+
+    return result
+  },
 
   //从开头删除n个元素
   drop: function (array, n = 1) {
