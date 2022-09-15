@@ -203,7 +203,7 @@ var bibaboe = {
 
   //连接字符串
   join: function (array, separator = ',') {
-    var str = array[0]
+    var str ='' + array[0]
 
     for (var i = 1; i < array.length; i++) {
       str = str + separator + array[i]
@@ -241,7 +241,8 @@ var bibaboe = {
 
   // 从末尾检索数组
   lastIndexOf: function (array, value, fromIndex = array.length - 1) {
-    for (var i = fromIndex; i >= 0; i++) {
+    var i = fromIndex >= 0 ? fromIndex : fromIndex + array.length
+    for ( ; i >= 0; i--) {
       if (array[i] == value) return i
     }
     return -1
