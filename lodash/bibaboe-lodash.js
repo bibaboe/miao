@@ -325,7 +325,7 @@ var bibaboe = {
     }
   },
 
-  //对升序数组找value，返回下标或-1
+  //对升序数组从头找value，返回下标或-1
   sortedIndexOf: function (array, value) {
     var low = 0, high = array.length - 1
 
@@ -343,4 +343,97 @@ var bibaboe = {
     return -1
   },
 
+  // 对升序数组从末尾找value，返回下标或-1
+  sortedLastIndexOf: function (array, value) {
+    var low = 0, high = array.length - 1
+
+    while (low <= high) {
+      var mid = Math.floor((low + high) / 2)
+      if (array[mid] == value && array[mid + 1] > value || array[mid] == value && mid == array.length - 1) {
+        return mid
+      } else if (array[mid] <= value) {
+        low = mid + 1
+      } else if (array[mid] > value) {
+        high = mid - 1
+      }
+    }
+
+    return -1
+  },
+
+  //返回从末尾数第value个下标的元素
+  sortedLastIndex: function (array, value) {
+    var low = 0, high = array.length - 1
+
+    while (low <= high) {
+      var mid = Math.floor((low + high) / 2)
+      if (mid == array.length - value) {
+        return array[mid]
+      } else if (mid < array.length - value) {
+        low = mid + 1
+      } else if (mid > array.length - value) {
+        high = mid - 1
+      }
+    }
+  },
+
+  //返回唯一元素的数组
+  sortedUniq: function (array) {
+    var newAry = []
+    var map = {}
+
+    for (var i = 0; i < array.length; i++) {
+      if (!(array[i] in map)) {
+        map[array[i]] = 0
+        newAry.push(array[i])
+      }
+    }
+
+    return newAry
+  },
+
+  // 返回经过iteratee函数后唯一元素的数组
+  sortedUniqBy: function (array, iteratee) {
+    var newAry = []
+    var map = {}
+
+    for (var i = 0; i < array.length; i++) {
+      if (!(iteratee(array[i]) in map)) {
+        map[iteratee(array[i])] = 0
+        newAry.push(array[i])
+      }
+    }
+
+    return newAry
+  },
+
+  // 返回除第一个元素之外的所有元素
+  tail: function (array) {
+    array.shift()
+    return array
+  },
+
+  //返回从头数n个元素的数组
+  take: function (array, n = 1) {
+    var newAry = []
+
+    for (var i = 0; i < array.length && i < n; i++) {
+      newAry.push(array[i])
+    }
+
+    return newAry
+  },
+
+  // 返回从末尾数n个元素的数组
+  takeRight: function (array, n = 1) {
+    var newAry = []
+
+    for (var i = array.length - 1; i >= 0 && i >= array.length - n; i--) {
+      newAry.unshift(array[i])
+    }
+
+    return newAry
+  },
+
+  //
 }
