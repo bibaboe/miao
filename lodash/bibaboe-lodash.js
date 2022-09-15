@@ -232,10 +232,31 @@ var bibaboe = {
 
     var j = 0
     while (j < array.length) {
-      if (!(array[j] in map)) {
-        j++
+      if (array[j] in map) {
+        array.splice(j,1)
       } else {
-        array.remove(array[j])
+        j++
+      }
+    }
+
+    return array
+  },
+
+  //
+  pullAll: function (array, values) {
+    var map = {}
+    for (var i = 0; i < values.length; i++) {
+      if (!(values[i] in map)) {
+        map[values[i]] = 0
+      }
+    }
+
+    var j = 0
+    while (j < array.length) {
+      if (array[j] in map) {
+        array.splice(j,1)
+      } else {
+        j++
       }
     }
 
