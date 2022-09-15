@@ -435,5 +435,89 @@ var bibaboe = {
     return newAry
   },
 
+  //返回所有数组里出现过的元素组成的新数组，出现多次只取一个
+  union: function (...arrays) {
+    var map = {}
+    var uniqAry = []
+
+    for (var i = 0; i < arrays.length; i++) {
+      for (var j = 0; j < arrays[i].length; j++) {
+        if (!(arrays[i][j] in map)) {
+          map[arrays[i][j]] = 0
+          uniqAry.push(arrays[i][j])
+        }
+      }
+    }
+
+    return uniqAry
+  },
+
+  // 返回array里出现过的元素组成的新数组，出现多次只取一个
+  uniq: function (array) {
+    var map = {}
+    var uniqAry = []
+
+    for (var i = 0; i < array.length; i++) {
+      if (!(array[i] in map)) {
+        map[array[i]] = 0
+        uniqAry.push(array[i])
+      }
+    }
+
+    return uniqAry
+  },
+
+  // 解压数组
+  unzip: function (array) {
+    var newAry = []
+
+    for (var i = 0; i < array[0].length; i++) {
+      var ary = []
+      for (var j = 0; j < array.length; j++) {
+        ary.push(array[j][i])
+      }
+      newAry.push(ary)
+    }
+
+    return newAry
+  },
+
+  // 返回没有在values里出现过的元素组成的数组
+  without: function (array, ...values) {
+    var map = {}
+    for (var i = 0; i < values.length; i++) {
+      if (!(values[i] in map)) {
+        map[values[i]] = 0
+      }
+    }
+
+    var newAry = []
+    for (var j = 0; j < array.length; j++) {
+      if (!(array[j] in map)) {
+        newAry.push(array[j])
+      }
+    }
+
+    return newAry
+  },
+
+  // 压缩数组
+  zip: function(...arrays) {
+    var newAry = []
+
+    for (var i = 0; i < arrays[0].length; i++) {
+      var ary = []
+      for (var j = 0; j < arrays.length; j++) {
+        ary.push(arrays[j][i])
+      }
+      newAry.push(ary)
+    }
+
+    return newAry
+  },
+
   //
+  countBy: function (collection, iteratee = identity) {
+
+  },
 }
