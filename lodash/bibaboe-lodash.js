@@ -517,7 +517,28 @@ var bibaboe = {
   },
 
   //
-  countBy: function (collection, iteratee = identity) {
+  // countBy: function (collection, iteratee = identity) {
 
+  // },
+
+  //
+  // every: function (collection, predicate = identity) {
+
+  // },
+
+  //返回collection(数组或对象或字符串)的长度
+  size: function (collection) {
+    if (typeof (collection) == 'string' || Array.isArray(collection)) {
+
+      return collection.length
+    } else {
+      var len = 0
+
+      for (var key in collection) {
+        len++
+      }
+
+      return len
+    }
   },
 }
