@@ -305,7 +305,7 @@ var bibaboe = {
     return result
   },
 
-  //
+  // 返回value插入数组的下标
   sortedIndex: function (array, value) {
     if (array.length == 0 || array[0] >= value) return 0
     if (array[array.length - 1] < value) return array.length
@@ -324,4 +324,23 @@ var bibaboe = {
       }
     }
   },
+
+  //对升序数组找value，返回下标或-1
+  sortedIndexOf: function (array, value) {
+    var low = 0, high = array.length - 1
+
+    while (low <= high) {
+      var mid = Math.floor((low + high) / 2)
+      if (array[mid] == value && array[mid - 1] < value || array[mid] == value && mid == 0) {
+        return mid
+      } else if (array[mid] < value) {
+        low = mid + 1
+      } else if (array[mid] >= value) {
+        high = mid - 1
+      }
+    }
+
+    return -1
+  },
+
 }
