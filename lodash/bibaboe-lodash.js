@@ -541,4 +541,77 @@ var bibaboe = {
       return len
     }
   },
+
+
+  // 从左往右迭代，返回第一个通过predicate元素的索引值
+  findIndex: function (array, predicate = identity, fromIndex = 0) {
+    var s = predicate
+    if (typeof s == 'function') {
+      for (var i = fromIndex; i < array.length; i++) {
+        if (s(array[i])) return i
+      }
+      return -1
+    }
+    if (Array.isArray(s)) {
+      for (var i = fromIndex; i < array.length; i++) {
+        if (array[i][s[0]] == s[1]) return i
+      }
+      return -1
+    }
+    if (typeof s == 'object') {
+      for (var i = fromIndex; i < array.length; i++) {
+        var f = true
+        for (var key in array[i]) {
+          if (array[i][key] != s[key]) {
+            f = false
+            break
+          }
+        }
+        if (f) return i
+      }
+      return -1
+    }
+    if (typeof s == 'string') {
+      for (var i = fromIndex; i < array.length; i++) {
+        if (array[i][s]) return i
+      }
+      return -1
+    }
+  },
+
+  // 从右到左迭代，返回第一个通过predicate元素的索引值
+  findLastIndex: function (array, predicate = identity, fromIndex = array.length - 1) {
+    var s = predicate
+    if (typeof s == 'function') {
+      for (var i = fromIndex; i >= 0; i--) {
+        if (s(array[i])) return i
+      }
+      return -1
+    }
+    if (Array.isArray(s)) {
+      for (var i = fromIndex; i >= 0; i--) {
+        if (array[i][s[0]] == s[1]) return i
+      }
+      return -1
+    }
+    if (typeof s == 'object') {
+      for (var i = fromIndex; i >= 0; i--) {
+        var f = true
+        for (var key in array[i]) {
+          if (array[i][key] != s[key]) {
+            f = false
+            break
+          }
+        }
+        if (f) return i
+      }
+      return -1
+    }
+    if (typeof s == 'string') {
+      for (var i = fromIndex; i >= 0; i--) {
+        if (array[i][s]) return i
+      }
+      return -1
+    }
+  },
 }
