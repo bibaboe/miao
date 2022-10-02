@@ -1,17 +1,72 @@
 var bibaboe = {
+
+  // 解决predicate接不同类型实参问题
+  iteratee: function (predicate) {
+    if (typeof predicate == 'function') {
+      return predicate
+    }
+    if (typeof predicate == 'string') {
+      return this.property(predicate)
+    }
+    if (Array.isArray(predicate)) {
+      return this.matchesProperty(predicate)
+    }
+    if (typeof predicate == 'object') {
+      return this.matches(predicate)
+    }
+  },
+
+  // 返回一个获取某对象propName属性值的函数[str]
+  property: function (propName) {
+    return function (obj) {
+      return obj[propName]
+    }
+  },
+
+  // 返回一个判断对象【是否匹配pair键值对】的函数[ary]
+  matchesProperty: function (pair) {
+    var [key, val] = pair
+
+    return function (obj) {
+      return obj[key] === val
+    }
+  },
+
+  // 返回一个判断对象【是否匹配target里的每个键值对】的函数[obj]
+  matches: function (target) {
+    return function (obj) {
+      return bibaboe.isMatch(obj, target)
+    }
+  },
+
+  // 判断对象【是否匹配target里的每个键值对】
+  isMatch: function (obj, target) {
+    for (var key in target) {
+      if (key in obj) {
+        if (obj[key] !== target[key]) {
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+    return true
+  },
+
+  // 返回自己本身
+  identity: function (val) {
+    return val
+  },
+
+ // ------------------------------------------------------------------------------------------------------------------------
+
   // 将一个数组里的元素分成【size】个一组
   chunk: function (array, size = 1) {
-    if (size == 1) return array
     var result = []
-
-    for (var i = 0; i < Math.ceil(array.length / size); i++) {
-      var ary = []
-      for (var j = 0; j < size && i * size + j < array.length; j++) {
-        ary.push(array[i * size + j])
-      }
-      result.push(ary)
+    for (var i = 0; i < array.length; i += size) {
+      var part = array.slice(i, i + size)
+      result.push(part)
     }
-
     return result
   },
 
@@ -544,39 +599,17 @@ var bibaboe = {
 
 
   // 从左往右迭代，返回第一个通过predicate元素的索引值
-  findIndex: function (array, predicate = identity, fromIndex = 0) {
-    var s = predicate
-    if (typeof s == 'function') {
-      for (var i = fromIndex; i < array.length; i++) {
-        if (s(array[i])) return i
+
+  findIndex: function (array, predicate = this.identity, fromIndex = 0) {
+    predicate = this.iteratee(predicate)
+
+    for (var i = fromIndex; i < array.length; i++) {
+      if (predicate(array[i])) {
+        return i
       }
-      return -1
     }
-    if (Array.isArray(s)) {
-      for (var i = fromIndex; i < array.length; i++) {
-        if (array[i][s[0]] == s[1]) return i
-      }
-      return -1
-    }
-    if (typeof s == 'object') {
-      for (var i = fromIndex; i < array.length; i++) {
-        var f = true
-        for (var key in array[i]) {
-          if (array[i][key] != s[key]) {
-            f = false
-            break
-          }
-        }
-        if (f) return i
-      }
-      return -1
-    }
-    if (typeof s == 'string') {
-      for (var i = fromIndex; i < array.length; i++) {
-        if (array[i][s]) return i
-      }
-      return -1
-    }
+
+    return -1
   },
 
   // 从右到左迭代，返回第一个通过predicate元素的索引值
@@ -614,4 +647,36 @@ var bibaboe = {
       return -1
     }
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
