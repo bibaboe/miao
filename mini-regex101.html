@@ -7,6 +7,7 @@
   <title>Mini RegExp101</title>
   <style>
     #regexpInput, #stringInput, #resultMatch, #replaceStringInput, #resultReplace {
+      outline: none;
       width: 500px;
       box-sizing: border-box;
       border: 2px solid;
@@ -18,7 +19,19 @@
     }
     #stringInput, #resultMatch, #resultReplace {
       height: 300px;
+      overflow: auto;
     }
+    #resultMatch span {
+      background-color: lightblue;
+    }
+    #resultMatch span:nth-child(even) {
+      background-color: #9fcfff;
+    }
+    #resultMatch, #resultReplace {
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+
   </style>
 </head>
 <body>
@@ -38,30 +51,97 @@
           <label for=""><input type="checkbox" onchange="run()" data-flag="u" id="flagU" >u</label>
           <label for=""><input type="checkbox" onchange="run()" data-flag="s" id="flagS" >s</label>
           <label for=""><input type="checkbox" onchange="run()" data-flag="d" id="flagD" >d</label>
+          <span id="info"></span>
       </div>
 
       <!-- oninput:当元素获得用户输入时运行脚本 -->
-      <input type="text" id = "regexpInput" value = "请输入正则表达式" oninput = "run()">
+      <input type="text" id = "regexpInput" placeholder = "请输入正则表达式" value="" oninput = "run()">
     </div>
 
 
     <!-- 字符串匹配 -->
     <div id="stringMatch">
       <div class="title"><strong>Test String</strong></div>
-      <textarea spellcheck="false" id="stringInput" onscroll="同步滚动条()" oninput="run()"></textarea>
+      <textarea spellcheck="false" id="stringInput" placeholder = "请输入测试文本" onscroll="同步滚动条()" oninput="run()" value=""></textarea>
       <pre id="resultMatch"></pre>
     </div>
 
     <!-- 字符串替换 -->
     <div id="stringReplace">
       <div class="title"><strong>Substitution</strong></div>
-      <input type="text" oninput="run()" id="replaceStringInput">
+      <input type="text" placeholder = "请输入替换内容" oninput="run()" id="replaceStringInput" value="">
       <pre id="resultReplace"></pre>
     </div>
   </div>
 
   <script>
+    run()
 
+    function 同步滚动条() {
+      resultMatch.scrollTo(0, stringInput.scrollTop)
+    }
+    function run() {
+      // 获取创建正则表达式所需的字符和标志，以及测试内容
+      var reStr = regexpInput.value
+      var str = stringInput.value
+      var flags = getFlags()
+
+      // 根据获取的字符和标志创建创建正则表达式，如果出错则提示用户
+      try {
+        var re = new RegExp(reStr, flags)
+      } catch(e) {
+        info.innerHTML = '正则表达式错误：' + e
+        return
+      }
+      info.innerHTML = ''
+
+      // 将匹配结果拼接并返回
+      var result = ''
+      var match
+      var lastIndex = 0
+
+      while (match = re.exec(str)) {
+        result += str.slice(lastIndex, match.index)
+        result += '<span>' + match[0] + '</span>'
+        lastIndex = re.lastIndex
+        if (!re.global) {
+          lastIndex = match.index + match[0].length
+          break
+        }
+        if (match[0] == '') {
+          re.lastIndex++
+        }
+      }
+      result += str.slice(lastIndex)
+      resultMatch.innerHTML = result
+      resultReplace.innerHTML = str.replace(re, replaceStringInput.value)
+    }
+
+    function getFlags() {
+      var result = ''
+      if (flagG .checked == true) {
+        result += 'g'
+      }
+      if (flagM .checked == true) {
+        result += 'm'
+      }
+      if (flagI .checked == true) {
+        result += 'i'
+      }
+      if (flagY .checked == true) {
+        result += 'y'
+      }
+      if (flagU .checked == true) {
+        result += 'u'
+      }
+      if (flagS .checked == true) {
+        result += 's'
+      }
+      if (flagD.checked == true) {
+        result += 'd'
+      }
+      return result
+    }
   </script>
 </body>
 </html>
