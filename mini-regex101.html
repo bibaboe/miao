@@ -18,20 +18,57 @@
       font-family: consolas;
     }
     #stringInput, #resultMatch, #resultReplace {
-      height: 300px;
+      height: 200px;
       overflow: auto;
-    }
-    #resultMatch span {
-      background-color: lightblue;
-    }
-    #resultMatch span:nth-child(even) {
-      background-color: #9fcfff;
     }
     #resultMatch, #resultReplace {
       white-space: pre-wrap;
       overflow-wrap: break-word;
     }
 
+    #resultMatch strong {
+      background-color: lightblue;
+    }
+    #resultMatch strong:nth-child(even) {
+      background-color: #9fcfff;
+    }
+    [data-group-index="1"] {
+      background-color: #c4e8ac;
+    }
+    [data-group-index="2"] {
+      background-color: #f6d7a6;
+    }
+    [data-group-index="3"] {
+      background-color: #c8c8ff;
+    }
+    [data-group-index="4"] {
+      background-color: #f9c0bb;
+    }
+    [data-group-index="5"] {
+      background-color: #c8e7d6;
+    }
+    [data-group-index="6"] {
+      background-color: #c4e8ac;
+    }
+    [data-group-index="7"] {
+      background-color: #c4e8ac;
+    }
+
+    strong:hover, [data-group-index]:hover {
+      box-shadow: 0 0 3px 1px #666, 0 0 3px 1px #666, 0 0 3px 1px #666, 0 0 3px 1px #666;
+      position: relative;
+      z-index: 5;
+    }
+
+    *:has(:hover):has(:hover) {
+      box-shadow: none;
+    }
+    strong:hover :not(:has(:hover)):hover * {
+      background-color: inherit !important;
+    }
+    strong:hover:not(:has(:hover)) * {
+      background-color: inherit !important;
+    }
   </style>
 </head>
 <body>
@@ -55,21 +92,21 @@
       </div>
 
       <!-- oninput:当元素获得用户输入时运行脚本 -->
-      <input type="text" id = "regexpInput" placeholder = "请输入正则表达式" value="" oninput = "run()">
+      <input type="text" id = "regexpInput" placeholder = "请输入正则表达式" value="a(.)(.)(.)" oninput = "run()">
     </div>
 
 
     <!-- 字符串匹配 -->
     <div id="stringMatch">
       <div class="title"><strong>Test String</strong></div>
-      <textarea spellcheck="false" id="stringInput" placeholder = "请输入测试文本" onscroll="同步滚动条()" oninput="run()" value=""></textarea>
+      <textarea spellcheck="false" id="stringInput" placeholder = "请输入测试文本" onscroll="同步滚动条()" oninput="run()" value="">aaaa aaaa aaaa aaaa</textarea>
       <pre id="resultMatch"></pre>
     </div>
 
     <!-- 字符串替换 -->
     <div id="stringReplace">
       <div class="title"><strong>Substitution</strong></div>
-      <input type="text" placeholder = "请输入替换内容" oninput="run()" id="replaceStringInput" value="">
+      <input type="text" placeholder = "请输入替换内容" oninput="run()" id="replaceStringInput" value="b">
       <pre id="resultReplace"></pre>
     </div>
   </div>
@@ -99,10 +136,11 @@
       var result = ''
       var match
       var lastIndex = 0
+      var i = 1 // 表示第几个匹配项
 
       while (match = re.exec(str)) {
         result += str.slice(lastIndex, match.index)
-        result += '<span>' + match[0] + '</span>'
+        result += `<strong title="Pos:${match.index}-${match.index + match[0].length}">` + 高亮捕获分组(match, i++) + '</strong>'
         lastIndex = re.lastIndex
         if (!re.global) {
           lastIndex = match.index + match[0].length
@@ -115,6 +153,30 @@
       result += str.slice(lastIndex)
       resultMatch.innerHTML = result
       resultReplace.innerHTML = str.replace(re, replaceStringInput.value)
+    }
+
+    function 高亮捕获分组(match, matchIdx) {
+      console.log(match)
+      var posArray = Array(match[0].length + 1).fill('')
+
+      var i = 1 // 记录当前是第几个捕获分组
+      for (var [start, end] of match.indices.slice(1)) {
+        start -= match.index
+        end -= match.index
+        posArray[start] += `<span data-group-index="${i}" title="Match ${matchIdx}\nGroup ${i}: ${match[i]}\nPos: ${start + match.index}-${end + match.index}">`
+        i++
+        posArray[end] = '</span>' + posArray[end]
+      }
+
+      // 把标签与匹配内容按顺序一个一个拼到html上并返回
+      var html = ''
+      for (var i = 0; i < match[0].length; i++) {
+        html += posArray[i] + match[0][i]
+      }
+      html += posArray[i]
+
+      console.log(html)
+      return html
     }
 
     function getFlags() {
@@ -137,7 +199,7 @@
       if (flagS .checked == true) {
         result += 's'
       }
-      if (flagD.checked == true) {
+      if (true || flagD.checked == true) { // 让d一直生效
         result += 'd'
       }
       return result
