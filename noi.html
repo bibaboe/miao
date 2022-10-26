@@ -1699,3 +1699,2207 @@
   f1()
 
 </script>
+
+<script type='x'>//汉诺塔
+  function hanoi(n,start,end) {
+    if (n == 1) {
+      console.log(start + '->' + end)
+      return
+    }
+    var mid = 6 - start - end
+    hanoi(n - 1, start,mid)
+    console.log(start + '->' + end)
+    hanoi(n - 1, mid, end)
+  }
+  hanoi(4, 1, 3)
+</script>
+
+<script type= 'x'>//输入n个数并倒序输出
+  function daoxu(n) {
+    if (n == 0) {
+      return
+    }
+    var a = +prompt()
+    daoxu(n - 1)
+    console.log(a)
+  }
+  daoxu(3)
+
+</script>
+
+<script type= 'x'>
+    debugger
+  var checkPerfectNumber = function(num) {
+    var count = 1
+    if (num == 1) {
+      return false
+    }
+    for (var i = 2; i <= num / 2; i++) {
+        if (num % i == 0) {
+          count = count + i
+        }
+    }
+    if (count == num) {
+      return true
+    }
+    return false
+  }
+  console.log(checkPerfectNumber(28))
+</script>
+
+<script type='x'>//pow(x,n)
+  var myPow = function(x, n) {
+    var flag = true
+    if (n < 0) {
+      n = -n
+      flag = false
+    }
+    var result = 1
+    for (var i = n; i >= 1; i = Math.floor(i / 2)) {
+      if (i % 2 != 0) {
+        result = result * x
+      }
+      x = x * x
+    }
+    if (flag) {
+      return result
+    }
+    return 1 / result
+  };
+</script>
+
+<script type= 'x'>// 汉明距离
+  var hammingDistance = function(x, y) {
+    var xCopy = x.toString(2)
+    var yCopy = y.toString(2)
+    var l = xCopy.length - yCopy.length
+    if (l > 0) {
+      for (var i = 1; i <= l; ++i) {
+        yCopy = '0' + yCopy
+      }
+    } else if (l < 0) {
+      for (var i = 1; i <= -l; ++i) {
+        xCopy = '0' + xCopy
+      }
+    }
+    var length = xCopy.length - 1
+    var count = 0
+    for (var c = 0; c <= length; ++c) {
+      if (xCopy.charAt(c) != yCopy.charAt(c)) {
+        count += 1
+      }
+    }
+    return count
+  }
+  hammingDistance(1, 4)
+</script>
+
+<script type= 'x'>  // 数字符串中有几个char表示的字母，不区分大小写
+  function countChars(str,char) {
+    var count = 0
+    var char = char[0]
+    var anotherChar = getReverseChar(char)
+
+    for (var i = 0; i < str.length; i++) {
+      if (str[i] == char || str[i] == anotherChar) {
+        count++
+      }
+    }
+    return count
+  }
+
+  function getReverseChar(c) {
+    var code = c.charCodeAt(0)
+
+    if (code >= 97 && code <= 97 + 26 - 1) {
+      code = code - 32
+    } else if (code >= 65 && code <= 65 + 26 - 1) {
+      code = code + 32
+    }
+
+    return String.fromCharCode(code)
+  }
+  console.log(countChars('dDdDabc','d'))
+</script>
+<script type= ''> // 高阶函数
+  // 字符串转对象
+  // www.baidu.com/search?a=asdf&b=aef&c=3&c=2&c=5&d=wfe
+  function parseQueryString(str) {
+    var obj = {}
+    var pairs = str.split('&')
+
+    pairs.forEach(function(pair) {
+      var [key, val] = pair.split('=')
+      if (key in obj) {
+        if (!Array.isArray(obj[key])) {
+          obj[key] = [obj[key]]
+        }
+        obj[key].push(val)
+      } else {
+        obj[key] = val
+      }
+    })
+
+    return obj
+  }
+  parseQueryString('a=asdf&b=aef&c=3&c=2&c=5&d=wfe')
+
+
+  // 利用系统自带forEach函数求数组的和
+  var sum = 2;
+  [1,2,3,4,5].forEach(function(it) {
+    sum += it
+  })
+  console.log(sum)
+
+  var sum = 2
+  ;[1,2,3,4,5].forEach(it => sum += it)
+  console.log(sum)
+
+  // 在forEach里实现break
+  function forEach(ary,action) {
+    for (var i = 0; i < ary.length; i++) {
+      if (action(ary[i]) === false) {
+        break
+      }
+    }
+  }
+  var sum = 2
+  forEach([1,2,3,4,5], function(it,idx) {
+    sum += it
+    if (it > 3) return false
+  })
+  console.log(sum)
+
+  // 在forEach实现continue
+  var sum = 2
+  ;[1,2,3,4,5].forEach(function(it,idx) {
+    sum += it
+    if (it > 2) return
+    console.log(it)
+  })
+  console.log(sum)
+
+  // 利用filter保留奇数
+  [1,2,3,4,5].filter(function(it) {
+    if (it % 2 == 1) {
+      return true
+    } else {
+      return false
+    }
+  })
+
+  // map函数
+  [1,2,3,4,5,6].map(it => it + 1)
+
+  // 系统自带reduce
+  function reduce(ary, reducer, initialvalue) {
+    var result = initialvalue
+    for (var i = 0; i < ary.length; i++) {
+      result = reducer(result,ary[i],i,ary)
+    }
+    return result
+  }
+
+  //优化版reduce
+  function reduce(ary, reducer, initialValue) {
+    var result = initialValue
+    var start = 0
+    if (initialValue == undefined) {
+      result = ary[0]
+      start = 1
+    }
+
+    for (var i = start; i < ary.length; i++) {
+      result = reducer(result, ary[i], i, ary)
+    }
+    return result
+  }
+
+  // 利用redece映射数组的元素和下标
+  reduce([1,2,3,4,5], (result, it, i) => (result[it] = i, result), {})
+
+  // 利用reduce找到最古老的人
+  ancestry = [{born: 5}, { born: 2}]
+  ancestry.reduce((result, it) => {
+    if (result.born < it) {
+      return result
+    } else {
+      return it
+    }
+  })
+
+
+
+  //利用函数组合求平均年龄
+  function avg(numbers) {
+    return numbers.reduce((a, b) => a + b) / numbers.length
+  }
+  avg(ancestry.filter(it => it.sex == 'm').map(it => it.died - it.born))
+
+
+  // every函数
+  function every(ary, action) {
+    for (var i = 0; i < ary.length; i++) {
+      if (!action(ary[i], i, ary)) {
+        return false
+      }
+    }
+    return true
+  }
+
+  every([1,2,3,4],it => it > 1)
+
+  // some函数
+  function some(ary, action) {
+    for (var i = 0; i < ary.length; i++) {
+      if (action(ary[i], i, ary)) {
+        return true
+      }
+    }
+    return false
+  }
+
+  some([1,2,3,4], it => it > 2)
+
+  // reduce实现every函数
+
+  // reduce实现some函数
+
+  // find函数
+  function find(ary, action) {
+    for (var i = 0; i < ary.length; i++) {
+      if (action(ary[i], i ,ary)) {
+        return ary[i]
+      }
+    }
+  }
+
+  find([1,2,3,4],it => it == 3)
+
+  // findIndex函数
+  function find(ary, action) {
+    for (var i = 0; i < ary.length; i++) {
+      if (action(ary[i], i ,ary)) {
+        return i
+      }
+    }
+  }
+
+  find([1,2,3,4],it => it == 3)
+
+  // flatMap函数
+  [1,2,3,4].map(it => [1,2,3]).flat()
+  [1,2,3,4].flatMap(it => [1,2,3])
+
+  // bind函数
+  function foo(a,b) {
+    return a + b
+  }
+  foo1 = foo.bind(null,1)
+  console.log(foo1(2))
+
+  // bind函数的实现
+  function bind(f, ...a) {
+    return function(...b) {
+      return f(...a, ...b)
+    }
+  }
+
+  function foo(a,b) {
+    return a + b
+  }
+
+  foo1 = bind(foo, 1)
+  console.log(foo1(2))
+
+  // 数组降维
+  function flatten(ary) {
+    return ary.reduce((result, it) => {
+      return result.concat(it)
+    },[])
+  }
+  console.log(flatten([[1,2],[3,4],[5,[6,7]]]))
+
+  var flatten = ary => {
+    return ary.reduce((result, it) => result.concat(it),[])
+  }
+
+  //数组多重降维
+  var flatten = ary => {
+    return ary.reduce((result, it) => {
+      if (Array.isArray(it)) {
+        return result.concat(flatten(it))
+      }
+      return result.concat(it)
+    }, [])
+  }
+  console.log(flatten([[1,2],[3,4],[5,[6,7]]]))
+
+  //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script type= ''> // 二叉树
+  // 一.二叉树的转换
+
+  // 将存储于array中的二叉树转换为二叉链表形式
+  function arrayToTree(array, rootPos = 0) {
+    if (array[rootPos] == null) return null
+
+    var root = {
+      val: array[rootPos],
+      left: null,
+      right: null,
+    }
+
+    root.left = arrayToTree(array, rootPos * 2 + 1)
+    root.right = arrayToTree(array, rootPos * 2 + 2)
+
+    return root
+  }
+
+  // 将链式二叉树转数组二叉树(套一层函数写法)
+  function treeToArray(root) {
+    var array = []
+
+    function 把结点的值填进数组(root, pos = 0) {
+      if (root == null) return
+
+      array[pos] = root.val
+      把结点的值填进数组(root.left, pos * 2 + 1)
+      把结点的值填进数组(root.right, pos * 2 + 2)
+    }
+
+    把结点的值填进数组(root)
+
+    return array
+  }
+
+  // 将链式二叉树转数组二叉数(将数组作为形参写法)
+  function treeToArray2(root, pos = 0, array = []) {
+    if (root == null) return
+
+    array[pos] = root.val
+
+    treeToArray2(root.left, pos * 2 + 1, array)
+    treeToArray2(root.right, pos * 2 + 2, array)
+
+    return array
+  }
+
+  // 数组优化版转链表二叉树
+  function condensedArrayToTree(ary) {
+    if (ary.length == 0) return null
+
+    var root = {
+      val: ary[0]
+      left: null,
+      right: null,
+    }
+
+    var nodes = [root]
+
+    for (var i = 1; i < ary.length; i++) {
+      var currNode = nodes.shift()
+
+      if (ary[i] != null) {
+        var node = {
+          val: ary[i],
+          left: null,
+          right: null,
+        }
+        currNode.left = node
+        nodes.push(node)
+      }
+
+      i++
+
+      if (ary[i] != null) {
+        var node = {
+          val: ary[i],
+          left: null,
+          right: null,
+        }
+        currNode.right = node
+        nodes.push(node)
+      }
+    }
+
+    return root
+  }
+
+  // 链表二叉树转数组优化版
+  function treeToCondensedArray(root) {
+    var ary = []
+    if (!root) return ary
+
+    var nodes = [root]
+
+    while (nodes.length) {
+      var node = nodes.shift()
+
+      if (node) {
+        ary.push(node.val)
+        nodes.push(node.left)
+        nodes.push(node.right)
+      } else {
+        ary.push(node)
+      }
+    }
+
+    return ary
+  }
+
+
+
+
+  // 二.二叉树的遍历
+
+  // 前序遍历
+  function preOrderTraverse(root) {
+    if (root) {
+      console.log(root.val)
+      preOrderTraverse(root.left)
+      preOrderTraverse(root.right)
+    }
+  }
+
+  // 中序遍历
+  function inOrderTraverse(root) {
+    if (root) {
+      inOrderTraverse(root.left)
+      console.log(root.val)
+      inOrderTraverse(root.right)
+    }
+  }
+
+  // 后序遍历
+  function postOrderTraverse(root) {
+    if (root) {
+      postOrderTraverse(root.left)
+      postOrderTraverse(root.right)
+      console.log(root.val)
+    }
+  }
+
+  // 先序遍历高阶函数版本
+  function preOrderTraverseH(root, action) {
+    if (root) {
+      action(root.val)
+      preOrderTraverseH(root.left, action)
+      preOrderTraverseH(root.right, action)
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script type= 'x'> // 面向对象知识点
+    面向对象：核心思想就是可以为每种事物（东西）在编程语言中建立一个对应的类型，对应到语言里就是一个class，
+    不同事物对够进行不同的操作：
+    数值能做运算
+    字符串能拼接
+    汽车能“开”
+    空调能“调大风量”“调高温度”
+    数组可以“push”“排序”“pop”
+
+    面向对象的三大特性：封装，多态，继承
+
+    大部分语言都有自己的语法/功能来实现面向对象方式的编程范式
+    js语言算某种例外，以前版本并没有专门设计的面向对象的书写方式
+    在js里面，设计了一些机制来辅助实现面向对象
+    比如this的绑定
+    原型与原型链
+    js就是通过原型链的方式实现了面向对象的
+    原型链在js中其实也只是指针（对象的指向关系）
+
+    this的确定：
+    this是函数内的一隐含参数
+      它不由函数“定义位置”决定
+      也不同函数“调用位置”决定
+      而是由函数的“调用方式”决定
+        f()  当函数调用，this是全局作用域对象，严格模式下是undefined
+        obj.f()  当一对象的方法调用（此时不管f来源于obj还是obj的原型链上），this是所属对象
+        new f()  当构造函数调用，this是新的空对象，且以f.prototype为原型
+        f.call/apply(foo) 用call或apply调用，this为指定的值
+      箭头函数的this与普通函数不同
+        可以认为箭头函数内部没有自己的this，读取this是直接读外面
+      在js里，函数从来不“属于”一个对象，都是被对象指向，所以它的this也不会一成不变的是那个对象
+        因为这个函数还可以被其它对象指向
+      所以当从一个对象里读到一个函数，并赋值给一个变量后，这个函数在调用时this就可能不是读出它时的那个对象了
+        可能导致函数不能正确运行
+
+    原型与原型链
+    js中除了null与undefined，每个值都有原型。原型也只是一个普通对象
+      所以这个对象也有其原型
+      以此类推就形成了“原型链”，在原型链的顶端，是Object.prototype
+    原型用来做为对象属性查找的后备来源
+      即在一个对象上查找某个属性时，如果找不到，会继续在其原型上找
+    原型链存在的作用一方面是为了继承，另一方面是为了节省空间
+      如果一组对象都想有某些方法/属性，则把这些共用的方法/属性放到它们的原型上，可以节省存储空间
+
+    为了方便的创建出很多共用原型的对象
+    设计了构造函数
+      通过new F()调用返回的对象，都以这个函数的prototype属性为其原型
+</script>
+
+<script type= ''> // 面向对象 类
+
+  class Map2 {
+    constructor() {
+      this.keys = [] // 用来存储每组映射的key
+      this.vals = [] // 用来存储每组映射的val
+    }
+    get(key) {
+      var keyIdx = this.keys.indexOf(key)
+      if (keyIdx >= 0) {
+        return this.vals[keyIdx]
+      }
+    }
+    set(key, val) {
+      var keyIdx = this.keys.indexOf(key)
+      if (keyIdx >= 0) {
+        this.vals[keyIdx] = val
+      } else {
+        this.keys.push(key)
+        this.vals.push(val)
+      }
+      return this
+    }
+    has(key) {
+      var keyIdx = this.keys.indexOf(key)
+      if (keyIdx >= 0) {
+        return true
+      }
+      return false
+    }
+    delete(key) {
+      var keyIdx = this.keys.indexOf(key)
+      if (keyIdx >= 0) {
+        this.keys.splice(keyIdx, 1)
+        this.vals.splice(keyIdx, 1)
+        return true
+      } else {
+        return false
+      }
+    }
+    clear() { // 清空所有的映射
+      this.keyx = []
+      this.vals = []
+      // this.keyx.length = 0
+      // this.vals.length = 0
+    }
+    size() {
+      return this.keys.length
+    }
+  }
+
+  class Stack {
+    #size = 0
+    #top = null // 用于存储栈内元素的链表
+    constructor() {
+    }
+
+    // 进栈
+    push(val) {
+      var node = new ListNode(val, this.#top)
+      this.#top = node
+      this.#size++
+
+      return this
+    }
+    // 出栈
+    pop() {
+      if (this.#top) {
+      var val = this.#top.val
+      this.#top = this.#top.next
+      this.#size--
+      return val
+      }
+    }
+    // 查看栈顶元素的值，但不让它出栈
+    peek() {
+      if (this.#top) {
+        return this.#top.val
+      }
+    }
+    size() {
+      return this.#size
+    }
+  }
+
+  class Queue {
+    constructor() {
+      this._head = null
+      this._tail = null
+      this._size = 0
+    }
+    // 进队
+    enqueue(val) {
+      var node = {
+        val: val,
+        next: null,
+      }
+      this._size++
+      if (this._head == null) {
+        this._head = this._tail = node
+      } else {
+        this._tail.next = node
+        this._tail = node
+      }
+      return this
+    }
+    // 出队
+    dequeue() {
+      if (this._head) {
+        this._size--
+        var result = this._head.val
+
+        if (this._head == this._tail) {
+          this._head = this._tail = null
+        } else {
+          this._head = this._head.next
+        }
+        return result
+      }
+    }
+    // 查看第一个结点的值
+    peek() {
+      if (this._head) {
+        return this._head.val
+      }
+    }
+    // 返回当前队列的元素个数
+    size() {
+      return this._size
+    }
+  }
+
+  class Vec {
+    constructor(x, y) {
+      this.x = x
+      this.y = y
+    }
+
+    plus(v) {
+      var x = this.x + v.x
+      var y = this.y + v.y
+
+      return new Vector(x, y)
+    }
+
+    minus(v) {
+      var x = this.x - v.x
+      var y = this.y - v.y
+
+      return new Vector(x, y)
+    }
+
+    length() {
+      return Math.sqrt(this.x ** 2 + this.y ** 2)
+    }
+  }
+
+  class Group {
+
+    // from 静态方法
+    static from(iterable) {
+
+      var group = new Group()
+
+      var iterator = iterable[Symbol.iterator]()
+      var iterated = iterator.next()
+      while(!iterated.done) {
+        group.add(iterated.value)
+        iterated = iterator.next()
+      }
+
+      return group
+    }
+
+    // 构造函数
+    constructor(iterable = []) {
+      this._elements = []
+
+      for (var item of iterable) {
+        this.add(item)
+      }
+    }
+
+    // 迭代器接口
+    [Symbol.iterator]() {
+      var i = 0
+
+      return {
+        next: () => {
+          return {
+            value: this._elements[i++],
+            done: i > this._elements.length
+          }
+        }
+      }
+    }
+    // 往集合里加val
+    add(val) {
+      if (!this.has(val)) {
+        this._elements.push(val)
+      }
+      return this
+    }
+    // 删除集合里的val，删除成功返回true，否则返回false
+    delete(val) {
+      var idx = this._elements.indexOf(val)
+      if (idx >= 0) {
+        this._elements.splice(idx, 1)
+        return true
+      }
+      return false
+    }
+    // 判断集合里是否有val
+    has(val) {
+      if (this._elements.indexOf(val) >= 0) {
+        return true
+      }
+      return false
+    }
+    // 获取集合长度
+    get size() {
+      return this._elements.length
+    }
+
+  }
+</script>
+<script type= ''> // 迭代器接口
+  // 迭代器接口的运用
+  var obj = {}
+  obj[Symbol.iterator] = function() {
+    var a = 1
+    return {
+      next() {
+        return {
+          value: a++,
+          done: a > 3
+        }
+      }
+    }
+  }
+  var iterator = obj[Symbol.iterator]()
+
+  for (var x of obj) {
+    console.log(x)
+  }
+
+
+
+  // 数组的iterator方法
+  a = [2,3,5,7,11]
+  aIterator = a[Symbol.iterator]()
+  aIterator.next()
+
+
+  // 数组迭代器的实现
+  var b = [2,3,4,5]
+  b[Symbol.iterator] = function() {
+    var i = 0
+    return {
+      next: () => {
+        return {
+          value: this[i++],
+          done: i > this.length,
+        }
+      }
+    }
+  }
+  var it = b[Symbol.iterator]()
+
+  // 数组迭代器接口不用闭包写法
+  var b = [2,3,4,5]
+  b[Symbol.iterator] = function() {
+    return {
+      array: this,
+      idx: 0,
+      next() {
+        return {
+          value: this.array[this.idx++],
+          done: this.idx > this.array.length
+        }
+      }
+    }
+  }
+  var it = b[Symbol.iterator]()
+
+
+  // 实现迭代器接口遍历【10】
+  Number.prototype[Symbol.iterator] = function() {
+    var target = this
+    var curr = 0
+    return {
+      next() {
+        return {
+          value: ++curr,
+          done: curr > target,
+        }
+      }
+    }
+  }
+
+  for (var val of 10) {
+    console.log(val)
+  }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''>// 读写器和静态
+
+  // 用【valueOf】方法使【b == 1 && b == 2 】条件成立
+  var b = {
+    c: 1,
+    valueOf() {
+      return this.c++
+    }
+  }
+  if (b == 1 && b == 2) {
+    console.log('hhhhh')
+  }
+
+  // 用【Object.defineProperty】使【a == 1 && a == 2 && a == 3】条件成立
+  var i = 1
+  Object.defineProperty(window, 'a', {
+    get: function() {return i++}
+  })
+  if (a == 1 && a == 2 && a == 3) {
+    console.log('hhh')
+  }
+
+  // 用函数实现括号读取对象的属性值
+  function foo() {
+    var obj = {
+      x: 1,
+      y: 2,
+      z: 3,
+    }
+    return function getProp(name) {
+      return obj[name]
+    }
+  }
+  get = foo()
+  // 利用给对象原型增加一个【get】实现读取对象本象
+  Object.defineProperty(Object.prototype, 'self', {
+    get: function() {return this}
+  })
+  get('self')
+
+  // 实现一个记录温度的类 c == celsius f == fahrenheit T == temperature
+  class T {
+    constructor(c) {
+      this.c = c
+    }
+    get f() {
+      return this.c * 1.8 + 32
+    }
+    set f(value) {
+      this.c = (value - 32) / 1.8
+    }
+    static fromF(value) {
+      return new T((value - 32) / 1.8)
+    }
+  }
+
+  var tmpe = new T(5)
+  console.log(tmpe.f) // 41
+  tmpe.f = 50
+  console.log(tmpe.c) // 10
+  var a = T.fromF(50) // a = {c:10}
+
+  // 【String】将不同种类型转为字符串
+  String(324324)
+  String('dfds')
+  String('dssfd','dfdsf','dfds') // 不能用
+  String.fromCharCode(97,98,99)
+
+  // 将常量以静态属性的形式挂在构造函数上
+  class A {
+    static b = 3
+    constructor() {}
+  }
+  A.b
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''>// 继承
+
+  // 用继承写三个相关的类 A == 生物 B == 动物  C == 狗
+  class A {
+    constructor(age) {
+      this.age = age
+    }
+    grow() {
+      this.age++
+    }
+  }
+
+  class B extends A {
+    constructor(age, name) {
+      super(age) // 父类的构造函数运行完，可以认为this已被'构造'为一个A
+      this.name = name
+      this.x = 0
+      this.y = 0
+    }
+    moveTo(x, y) {
+      this.x = x
+      this.y = y
+    }
+  }
+
+  class C extends B {
+
+    constructor(age, name, type, f) {
+      super(age, name)
+      this.type = type
+      this.腿断了 = f
+    }
+    speak() {
+      console.log('wang ......')
+    }
+    moveTo(x, y) {
+      if (this.腿断了) {  // f如果为true，说明腿断了，跑不了了
+        this.x = 0
+        this.y = 0
+      } else {
+        super.moveTo(x, y) // 如果腿没断,就调用父类的moveTo
+      }
+    }
+  }
+
+  var dog = new C(3, 'xnhw', 'dog', false)
+  // 1.先在C的constructor上面一行创建一个空对象
+  // 2.把constructor里的东西附给空对象
+  // 3.把对象的__proto__指向C的prototype
+  // 4.返回对象
+  // 5.把对象附给dog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''> // instanceof运算符
+
+  // 二元运算符，判断左边是不是右边的实例
+  2 instanceof Number // false
+  Object(2) instanceof Number // true
+  Object(2) instanceof Object // true
+  [1] instanceof Array // true
+  new B(2) instanceof B // true
+  new B(2) instanceof A // true (B 继承于 A)
+  new A(2) instanceof B // false
+
+  // instanceof 常见报错
+  instanceof Object // 报错
+  {} instanceof Object // 报错
+  function ff() {} instanceof Function // 报错
+
+  // 解决方法 左边用括号包起来
+  ({}) instanceof Object // true
+  (function ff() {}) instanceof Function // true
+
+  // 用Object.prototype.toString 做类型判断
+  Object.prototype.toString.call([1,2]) // [object Array]
+  Object.prototype.toString.call({x:1, y:2})// [object Object]
+  Object.prototype.toString.call(2) // [object Number]
+  Object.prototype.toString.call(function () {})// [object Function]
+  Object.prototype.toString.call(null) // [object Null]
+  Object.prototype.toString.call(undefined) // [object Undefined]
+  Object.prototype.toString.call(true) // [object Boolean]
+  Object.prototype.toString.call(222n) // [object BigInt]
+
+  // Object.setPrototypeOf(x,y)
+  var a = {x:1}
+  var b = {y:2}
+  Object.setPrototypeOf(a, b)
+  a.__proto__
+
+  // Object.defineProperty 定义属性
+  var a = {x:1}
+  Object.defineProperty(a, 'baab', {// 属性描述符，描述一个属性的对象
+    value: 111,
+    enumerable: true, // 可枚举(在for in中出现) 不写时默认为false
+    writable: true,  // 可写 不写时默认为false
+    configurable: true, // 可重新定义，不写时默认为false
+  })
+
+  //让x以a为原型
+  var a = {x:1}
+  var x = Object.create(a,{
+    y: {
+      value: 2,
+    },
+    z: {
+      value: 3,
+    }
+  })
+
+  // Object.is 判断两个参数是否全等
+  Object.is(-0, 0) // false
+  Object.is(NaN, NaN) // true
+  Object.is({a:1}, {a:1}) // false
+
+  //修复调用的方法
+  var map = {one: true, two: true, hasOwnProperty: true}
+
+  console.log(Object.prototype.hasOwnProperty.call(map, 'one'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''> // 第八章课后练习
+
+  //重试
+  class MultiplicatorUnitFailure extends Error {}
+
+  function primitiveMultiply(a, b) { // 原始乘法器
+    if (Math.random() > 0.5) {
+      return a * b
+    } else { // 抛出错误
+      throw new MultiplicatorUnitFailure('multiplicator unit failure, please try again')
+    }
+  }
+
+  function reliableMultiply(a, b) { // 可靠的乘法器
+    try {
+      return primitiveMultiply(a, b)
+    } catch (e) { // 捕获错误
+      if (e instanceof MultiplicatorUnitFailure) {
+        return reliableMultiply(a, b)
+      }
+      throw e
+    }
+  }
+
+  reliableMultiply(4, 9)
+
+
+
+
+
+
+
+  // 上锁的箱子
+  var box = { // 带锁的箱子
+    locked: true,
+    unlock() {
+      this.locked = false
+    },
+    lock() {
+      this.locked = true
+    },
+    _content: [],
+    get content() {
+      if (this.locked) {
+        throw new Error('Locked!')
+      }
+      return this._content
+    }
+  }
+
+  //解锁箱子
+  function withBoxUnlocked(body) {
+    box.unlock()
+    try {
+      return body() // body运行的时候，箱子一定是打开的，运行完后箱子一定是关的
+    } catch (e) {
+      throw e
+    } finally { // 无论是正常返回还是抛出异常，都会关闭箱子
+      box.lock()
+    }
+  }
+
+  // 测试
+  withBoxUnlocked( () => { // 正常返回
+    box.content.push(1)
+    console.log(box.content)
+  })
+  console.log(box.locked)
+
+  try {          // 抛出异常
+    withBoxUnlocked( () => {
+      throw new Error('pirates on the horizon! Abort!')
+    })
+  } catch (e) {
+    console.log('Error raised:', e)
+  }
+  console.log(box.locked)
+
+  // 直接调用，会提示箱子是关的
+  box.content.push(1)
+
+
+
+  // 实现类似python的with函数
+  function With(...resources) {
+    var func = resources.pop()
+    try {
+      func(...resources)
+    } finally {
+      resources.forEach(it => {
+        if (typeof it.close == 'function') {
+          it.close()
+        }
+      })
+    }
+  }
+
+  function With(...resources) {
+    var func = resources.pop()
+    try {
+      func(...resources)
+    } finally {
+      resources.forEach(it => {
+        if (typeof it.close == 'function') {
+          it.close()
+        }
+      })
+    }
+  }
+
+  With(open('a.txt'), open('b.txt'), (a, b) => {
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''> // 哈希表 【未写完】
+
+  class HashMap {
+  constructor() {
+    this._keys = new Array(1024).fill(null)
+    this._vals = new Array(1024).fill(null)
+  }
+
+  hashKey(key) {
+    var seed = 13131
+    var hash = 1313131313
+
+    for (var c of key) {
+      hash = ((hash * seed >>> 0) + c.charCodeAt(0)) >>> 0
+    }
+
+    return hash % this._keys.length
+  }
+
+  set(key, val) {
+    var idx = this.hashKey(key)
+    this._keys[idx] = key
+    this._vals[idx] = val
+  }
+
+  get(key) {
+    var idx = this.hashKey(key)
+    return this._vals[idx]
+  }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''> // 堆与堆排序【优先队列】
+
+  // 从堆heap中取出堆顶元素并返回
+  // 同时调整堆让它继续满足堆的性质
+  function remove(heap) {
+    // 如果堆元素只有一个，直接取出并返回
+    if (heap.length <= 1) return heap.pop()
+
+    // 如果堆元素大于一个，则先取出堆顶元素
+    var result = heap[0]
+
+    // 然后将末尾元素放入堆顶
+    heap[0] = heap.pop()
+
+    // 调用heapDown使heap恢复堆的性质
+    heapDown(heap, 0)
+
+    // 返回取出的元素
+    return result
+  }
+
+  // 辅助函数1，从idx位置开始向下调整，最多调整到stop位置，不包含stop位置
+  function heapDown(heap, idx, stop = heap.length) {
+    for (;;) {
+      // 根据根结点的下标获取左子结点和右子结点的下标
+      var leftIdx = idx * 2 + 1
+      var rightIdx = idx * 2 + 2
+
+      // 先假设此时的根元素是最大的
+      var maxIdx = idx
+
+      // 判断左子结点是否存在并且大于当前最大元素，是则把左子结点作为最大元素
+      if (leftIdx < stop && heap[leftIdx] > heap[maxIdx]) {
+        maxIdx = leftIdx
+      }
+
+      // 判断右子结点是否存在并且大于当前最大元素，是则把右子结点作为最大元素
+      if (rightIdx < stop && heap[rightIdx] > heap[maxIdx]) {
+        maxIdx = rightIdx
+      }
+
+      // 判断最大元素的下标是不是根结点，是则跳出循环
+      // 否则调用swap交换最大元素下标与根元素下标的值,让最大元素下标作为新的根元素下标，继续循环，直到恢复堆
+      if (maxIdx == idx) {
+        break
+      } else {
+        swap(heap, idx, maxIdx)
+        idx = maxIdx
+      }
+    }
+  }
+
+  // 辅助函数2，交换array中i与j下标对应的值
+  function swap(array, i, j) {
+    var t = array[i]
+    array[i] = array[j]
+    array[j] = t
+  }
+
+  // --------------------------------------------------------------------------------------------------------------------
+
+  // 向堆中添加元素
+  function add(heap, val) {
+    // 先把元素添加到堆末尾
+    heap.push(val)
+
+    // 调用heapUp函数恢复堆
+    heapUp(heap, heap.length - 1)
+
+    // 返回堆
+    return heap
+  }
+
+  // 辅助函数1，从idx位置开始向上调整，最多调整到根结点
+  function heapUp(heap, idx) {
+    while (idx > 0) {
+      // 计算出焦点的父元素位置
+      var pIdx = (idx - 1) >> 1
+
+      // 如果父元素小于焦点元素，调用swap交换两个元素的位置，把父元素的位置作为焦点继续循环，直到恢复堆
+      // 否则跳出循环
+      if (heap[pIdx] < heap[idx]) {
+        swap(heap, idx, pIdx)
+        idx = pIdx
+      } else {
+        break
+      }
+    }
+  }
+
+  // 辅助函数2，交换array中i与j下标对应的值
+  function swap(array, i, j) {
+    var t = array[i]
+    array[i] = array[j]
+    array[j] = t
+  }
+
+
+  // ----------------------------------------------------------------------------------------------------------------------
+
+  // 【堆化】将一个无序数组转成堆
+  function heapify(heap) {
+    // 从最后元素的父元素开始，调用heapDown依次往前恢复堆
+    for (var i = (heap.length - 2) >> 1; i >= 0; i--) {
+      heapDown(heap, i)
+    }
+
+    // 返回堆
+    return heap
+  }
+
+  // 辅助函数1，从idx位置开始向下调整，最多调整到stop位置，不包含stop位置
+  function heapDown(heap, idx, stop = heap.length) {
+    for (;;) {
+      // 根据根结点的下标获取左子结点和右子结点的下标
+      var leftIdx = idx * 2 + 1
+      var rightIdx = idx * 2 + 2
+
+      // 先假设此时的根元素是最大的
+      var maxIdx = idx
+
+      // 判断左子结点是否存在并且大于当前最大元素，是则把左子结点作为最大元素
+      if (leftIdx < stop && heap[leftIdx] > heap[maxIdx]) {
+        maxIdx = leftIdx
+      }
+
+      // 判断右子结点是否存在并且大于当前最大元素，是则把右子结点作为最大元素
+      if (rightIdx < stop && heap[rightIdx] > heap[maxIdx]) {
+        maxIdx = rightIdx
+      }
+
+      // 判断最大元素的下标是不是根结点，是则跳出循环
+      // 否则调用swap交换最大元素下标与根元素下标的值,让最大元素下标作为新的根元素下标，继续循环，直到恢复堆
+      if (maxIdx == idx) {
+        break
+      } else {
+        swap(heap, idx, maxIdx)
+        idx = maxIdx
+      }
+    }
+  }
+
+  // 辅助函数2，交换array中i与j下标对应的值
+  function swap(array, i, j) {
+    var t = array[i]
+    array[i] = array[j]
+    array[j] = t
+  }
+
+  // ------------------------------------------------------------------------------------------------------------------
+
+  // 堆排序 // 可以作为类的静态方法
+  // 时间复杂度：n * log(n)
+  // 空间复杂度：1
+  function heapSort(array) {
+    // 调用heapify将数组堆化
+    heapify(array) // 1.24n
+
+    // 从最后一个元素开始，跟最大的元素交换，并把当前位置之前的元素恢复成堆，循环直到排完序
+    for (var i = array.length - 1; i > 0; i--) {
+      swap(array, i, 0)
+      heapDown(array, 0, i) // log(n)
+    }
+
+    // 返回排完序的数组
+    return array
+  }
+
+  // ---------------------------------------------------------------------------------------------------------------------
+
+  // 实现一个构造堆的类,放进队列里的元素基于predicate的返回值来决定其在堆中的位置
+  // 这样一来，队列可以不只是放数值，而是可以放对象或其它类型，只要提供一个对该对象返回数值的函数即可
+
+
+  class priorityQueue {
+    constructor (init = [], predicate = it => it) {
+      this.heap = []
+      this.predicate = predicate
+
+      for (var item of init) {
+        this.heap.push(item)
+      }
+      this.heapify()
+      return this
+    }
+
+    get size() {
+      return this.heap.length
+    }
+
+    get peek() {
+      return this.heap[0]
+    }
+
+    heapify() {
+      for (var i = (this.heap.length - 2) >> 1; i >= 0; i--) {
+        this.heapDown(i)
+      }
+      return this
+    }
+
+    swap(array, i, j) {
+      var t = array[i]
+      array[i] = array[j]
+      array[j] = t
+    }
+
+    remove() {
+      if (this.heap.length <= 1) return this.heap.pop()
+
+      var result = this.heap[0]
+      this.heap[0] = this.heap.pop()
+
+      this.heapDown(0)
+
+      return result
+    }
+
+    add(val) {
+      this.heap.push(val)
+
+      this.heapUp(this.heap.length - 1)
+
+      return this
+    }
+
+    heapUp(idx) {
+      while (idx > 0) {
+        var pIdx = (idx - 1) >> 1
+
+        if (this.predicate(this.heap[pIdx]) < this.predicate(this.heap[idx])) {
+          this.swap(this.heap, pIdx, idx)
+          idx = pIdx
+        } else {
+          break
+        }
+      }
+    }
+
+    heapDown(idx, stop = this.heap.length) {
+      for (;;) {
+        var leftIdx = idx * 2 + 1
+        var rightIdx = idx * 2 + 2
+
+        var maxIdx = idx
+
+        if (leftIdx < stop && this.predicate(this.heap[leftIdx]) > this.predicate(this.heap[maxIdx])) {
+          maxIdx = leftIdx
+        }
+
+        if (rightIdx < stop && this.predicate(this.heap[rightIdx]) > this.predicate(this.heap[maxIdx])) {
+          maxIdx = rightIdx
+        }
+
+        if (maxIdx == idx) {
+          break
+        } else {
+          this.swap(this.heap, maxIdx, idx)
+          idx = maxIdx
+        }
+      }
+    }
+
+  }
+
+  // ----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''> // 正则
+
+  var str = 'can we publish a string with s'
+  //exec方法
+  re = /w(..)(.)/gd
+  re.lastIndex
+  re.exec(str)
+  re.lastIndex
+  re.exec(str)
+  re.lastIndex
+
+
+  // test方法,会像exec一样受lastIndex属性的影响并修改lastIndex属性
+  /w../.test(str) // true
+  /abc/.test(str) // false
+
+  // search方法,返回匹配到的第一个字符的起始下标
+  str.search(/w/)
+  str.search(/w/g)
+
+  // match方法,需要考虑正则有无g标志,正则有g标志时不再关心捕获
+  str.match(/w.../g) // ['we p','with']
+  str.match(/w.(.)(.)/g) // ['we p','with']
+  str.match(/w.(.)(.)/)  // ['we p', ' ', 'p', index: 4, input: 'can we publish a string with s', groups: undefined]
+
+  // split方法
+  str.split(' ')
+  str.split(/ \w/)
+  str.split(/ (\w)/) // 要考虑匹配到的内容的捕获分组也要出现再结果数组中
+  str.split(/ (?:\w)/) // 不想要的话就使用非捕获分组
+
+  // replace方法
+  str.replace('w','m')
+  str.replace(/w/,'m')
+  str.replace(/w/g,'m')
+  str.replace(/(w)(.)/,'$2$1')
+  str.replace(/(w)(.)/g,function(match, $1, $2) {
+    return $2 + $1
+  })
+  // replaceAll方法
+
+
+
+
+
+  // ---------------------------------------------------------------------------------------------------
+  // 仅借助exec方法实现所有其它与正则有关的函数
+
+  // test方法
+  RegExp.prototype.test2 = function (str) {// test方法也会像exec一样受lastIndex属性的影响并修改lastIndex属性
+    var match = this.exec(str) || []
+    if (match.length >= 1) {
+      return true
+    } else {
+      return false
+    }
+  }
+  RegExp.prototype.test3 = function (str) {// 优化写法
+    return Boolean(this.exec(str))
+  }
+  var re = new RegExp('a','g')
+  var str = 'abcabcabc'
+  re.test3(str)
+
+  // search方法
+  String.prototype.search2 = function (re) {
+    var initLastIndex = re.lastIndex
+    re.lastIndex = 0
+    var match = re.exec(this)
+    re.lastIndex = initLastIndex
+    if (match) {
+      return match.index
+    } else {
+      return -1
+    }
+  }
+  String.prototype.search3 = function (re) {  // 优化写法
+    re = new RegExp(re)
+    return re.exec(this)?.index ?? -1
+  }
+  var re = new RegExp('d','g')
+  var str = 'abcabcabc'
+  str.search3(re)
+
+  // match方法
+  String.prototype.match2 = function (re) {// 需要考虑re有无g标志
+    re = new RegExp(re)
+
+    // 有g标志，返回所有的匹配(不包含捕获)组成的数组
+    // 没有匹配，返回null
+    if (re.global) {
+      var result = []
+      var match
+
+      while(match = re.exec(this)) {
+        result.push(match[0])
+        if (match[0] == '')
+        re.lastIndex++
+      }
+
+      if (result.length) {
+        return result
+      } else {
+        return null
+      }
+    } else { // 没g标志，返回字符串中的第一个匹配
+      return re.exec(this)
+    }
+  }
+  var re = new RegExp('a','g')
+  var str = 'abcabcabc'
+  str.match2(re)
+
+  // split方法
+  String.prototype.split2 = function (re) { // 要考虑匹配到的内容的捕获分组也要出现在结果数组中
+    // 拷贝正则，如果原来正则的flags没有g,则给它加上一个，因为我们需要一个带有g标志的正则对象
+    var flags = re.flags
+    if (!re.global) {
+      flags += 'g'
+    }
+    re = new RegExp(re.source, flags)
+
+    // 创建result,match,lastIndex
+    var result = []
+    var match
+    var lastIndex = 0
+
+    // 当还能匹配到内容，就将匹配到的内容之前的字符及捕获到的内容都push到结果数组中
+    // 如果匹配的是零宽断言，就将re的lastIndex属性++
+    while (match = re.exec(this)) {
+      result.push(this.slice(lastIndex,match.index))
+      result.push(...match.slice(1))
+      lastIndex = re.lastIndex
+      if (match[0] == '') {
+        re.lastIndex++
+      }
+    }
+
+
+    // 循环结束将剩余字符也push到结果数组里
+    result.push(this.slice(lastIndex))
+
+    // 返回结果数组
+    return result
+  }
+  var re = /b/
+  var str = 'ababa'
+  str.split2(re)
+
+  // replace方法，可以只考虑第二个参数为函数的情况，但第一个参数必须两种情况都考虑
+  String.prototype.replace2 = function (re, replacer) {
+    // 当re是字符串时
+    if (typeof re == 'string') {
+      let result = ''
+      var idx = this.indexOf(re)
+      result += this.slice(0,idx)
+      result += replacer
+      result += this.slice(idx + re.length)
+      return result
+    }
+
+
+    // 当re是正则表达式时
+    // 创建result进行替换拼接，regex复制re，match接匹配结果，lastIndex为未替换的起始位置
+    var result = ''
+    var regex = new RegExp(re)
+    var match
+    var lastIndex = 0
+
+    // 当还能匹配到内容就继续循环
+    while (match = regex.exec(this)) {
+      // 把匹配到的内容之前的字符拼接到result
+      result += this.slice(lastIndex, match.index)
+
+      // 跟据replacer是字符串还是函数进行内容替换，把替换结果拼接到result
+      if (typeof replacer == 'string') {
+        result += replace$n(match, replacer)
+      } else {
+        result += replacer(...match)
+      }
+
+      // 重置lastIndex
+      lastIndex = regex.lastIndex
+      if (!regex.global) {
+        lastIndex = match.index + match[0].length
+        break
+      }
+    }
+
+    // 把剩下的字符拼接到result上
+    result += this.slice(lastIndex)
+
+    // 返回result
+    return result
+
+    // 辅助函数 replace$n ，将replacer字符串里的$&替换为match[0],$n替换为match[n]并返回结果
+    function replace$n(match, replacer) {
+      return replacer.replace2(/\$(\d)/g, function (_, n) {
+        return match[n]
+      }).replace2(/\$\&/g, match[0])
+    }
+  }
+
+  var str = 'abcdabcd'
+  var re = /a(.)(.)/g
+  str.replace2(re, function (m,a,b) {
+    return m + a + b
+  })
+
+  // replaceAll方法
+  String.prototype.replaceAll2 = function (re, replacer) {
+    // 只判断两个都是string类型的情况
+    if (typeof re == 'string') {
+      var result = ''
+      var prevIdx = 0
+      var idx
+
+      while ((idx = this.indexOf(re, prevIdx)) !== -1) {
+        result += this.slice(prevIdx, idx)
+        result += replacer
+        prevIdx = idx + re.length
+      }
+
+      result += this.slice(prevIdx)
+      return result
+    }
+  }
+
+  var str = 'aaaa'
+  re = 'a'
+  str.replaceAll2(re, 'b') // => 'bbbb'
+
+
+
+</script>
+<script type= ''> // taggedTemplateString
+  // String上的raw方法（`xxx`可以直接写在一个函数后面，作为函数的所有参数来源）
+  String.raw`abc\n\\\\` // => 'abc\\n\\\\\\\\'
+  console.log(String.raw`abc\n\\\\`) // => abc\n\\\\
+
+
+  // 获取函数接到的参数
+  // 第一个参数是一个数组，记录被${}分割的每个，数组的raw属性记录每个部分的原始内容
+  // 后面的参数记录每个${}的运算结果
+  function foo() {
+    console.log(arguments)
+    return 888
+  }
+  var a = foo`a\b${3 + 5}c\d${2 + 3}e\f`
+  a // => 888
+
+
+
+  // 实现【String.raw】
+  function raw(strParts, ...inters) {
+    var result = ''
+    var rawParts = strParts.raw
+
+    for (var i = 0; i < inters.length; i++) {
+      result += rawParts[i] + inters[i]
+    }
+    result += rawParts[i]
+
+    return result
+  }
+
+
+</script>
+<script type= ''> // 递归下降法，语法树
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''> // dom
+
+  console.dir()
+  document.documentElement.children[1]
+  document.documentElement.children[1].children[0]
+  var obj = {
+    tagName: 'div',
+    attrs: {
+      if: 'foo',
+      calss: 'bar',
+    }
+    children: ['aa',{tagName: 'span', attrs: {},children: ['bb']}]
+  }
+  document.documentElement
+  document.body
+  $0.nodeType == document.COMMENT_NODE
+  document.ELEMENT_NODE == 1
+  document.TEXT_NODE == 3
+  document.COMMENT_NODE == 8
+  document.nodeType == 9
+
+  // 实现同时创建多个元素结点与文本结点的函数
+  function elt(tagName, ...children) {
+    var node = document.createElement(tagName)
+
+    for (var child of children) {
+      if (typeof child == 'string') {
+        child = document.createTextNode(child)
+      }
+
+      node.appendChild(child)
+    }
+
+    return node
+  }
+
+  console.log(elt('div', elt('span'), 'aaa'))
+
+  // 创建语法树结点
+  function elt(tagName, ...children) {
+    var node = {type:'node', tagName: tagName, children: []}
+
+    for (var child of children) {
+      if (typeof child == 'string') {
+        child = {type: 'text', data: child}
+      }
+
+      node.children.push(child)
+    }
+
+    return node
+  }
+  console.log(elt('div', elt('span'), 'aaa'))
+
+  // 同时创建标签、标签属性与文本
+  function elt(tagName, attrs = {}, ...children) {
+    var node = document.createElement(tagName)
+
+    if (attrs) {
+      for (var key in attrs) {
+        var val = attrs[key]
+        node.setAttribute(key, val)
+      }
+    }
+
+    for (var child of children) {
+      if (typeof child == 'string') {
+        child = document.createTextNode(child)
+      }
+
+      node.appendChild(child)
+    }
+
+    return node
+  }
+
+  console.log(elt('div', {id:'foo'}, 'asdfas'))
+
+  // 实现getElementsByTagName函数
+  function getElementsByTagName(node, tagName) {
+    var result = []
+    for (var child of node.children) {
+      if (child.tagName == tagName) {
+        result.push(child)
+      }
+
+      return.push(...getElementsByTagName(child, tagName))
+    }
+    return result
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script type= ''> //事件处理
+
+
+</script>
+<script type= 'x'></script>
+<script type= 'x'></script>
+<script type= 'x'></script>
+<script type= 'x'></script>
+<script type= 'x'></script>
+<script type= 'x'></script>

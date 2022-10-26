@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    body {
+      height: 1000px;
+    }
+    .dot {
+      font-size: 2em;
+      position: absolute;
+      user-select: none;
+    }
+  </style>
+<body>
+
+  <script>
+    window.addEventListener('click', e => {
+      var dot = document.createElement('span')
+      dot.textContent = '♥'
+      dot.style.color = '#' + Math.random().toString(16).slice(2, 5)
+      dot.classList.add('dot')
+      dot.style.left = e.pageX - 10 + 'px'
+      dot.style.top = e.pageY - 30 + 'px'
+      dot.style.opacity = 1
+      document.body.append(dot)
+
+      var startTime = null
+      requestAnimationFrame(function ani(time) {
+        if (startTime == null) {
+          startTime = time
+        }
+        var runTime = time - startTime
+        dot.style.top = (parseFloat(dot.style.top) - runTime / 5) + 'px'
+        dot.style.opacity -= 0.05
+
+        if (runTime < 320) {
+          requestAnimationFrame(ani)
+        } else {
+          document.body.removeChild(dot)
+        }
+      })
+    })
+  </script>
+</body>
+</html>

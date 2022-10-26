@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+    #sun, #earth, #moon {
+      position: fixed;
+      border-radius: 99999px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #sun {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      box-shadow: 0 0 100px orange;
+      margin-top: -50px;
+      margin-left: -50px;
+      Z-index: 3;
+    }
+    #earth {
+      width: 30px;
+      height: 30px;
+      background-color: lightblue;
+      box-shadow: 0 0 50px lightblue;
+      margin-top: -15px;
+      margin-left: -15px;
+      Z-index: 2;
+    }
+    #moon {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      box-shadow: 0 0 10px red;
+      margin-top: -5px;
+      margin-left: -5px;
+    }
+    </style>
+</head>
+<body>
+  <span id="sun">Sun</span>
+  <span id="earth">Earch</span>
+  <span id="moon">Moon</span>
+
+  <script>
+    var angle = 0, lastTime = null
+
+    requestAnimationFrame(function animate(time) {
+      if (lastTime != null) {
+        angle += (time - lastTime) * 0.01
+      }
+      lastTime = time
+
+      var sunX = Math.cos(angle/10) * 00 + window.innerWidth / 2
+      var sunY = Math.sin(angle/10) * 00 + window.innerHeight / 2
+      sun.style.left = sunX + 'px'
+      sun.style.top = sunY + 'px'
+
+      var earthX = sunX + Math.cos(angle/4) * 140
+      var earthY = sunY + Math.sin(angle/4) * 60 + 40
+      earth.style.left = earthX + 'px'
+      earth.style.top = earthY + "px"
+
+      var moonX = earthX + Math.cos(angle/2) * 70
+      var moonY = earthY + Math.sin(angle/2) * 30
+      moon.style.left = moonX + 'px'
+      moon.style.top = moonY + 'px'
+
+      requestAnimationFrame(animate)
+    })
+  </script>
+</body>
+</html>

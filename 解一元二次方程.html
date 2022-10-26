@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    debugger
+
+    var a = Number(prompt('请输入a'))
+    var b = Number(prompt('请输入b'))
+    var c = Number(prompt('请输入c'))
+
+    var delta = b * b - 4 * a * c
+
+    var sqrt_delta = Math.sqrt(delta)
+
+    var x1 = (-b + sqrt_delta) / (-2 * a)
+    var x2 = (-b - sqrt_delta) / (-2 * a)
+
+    console.log('x1 = ' + x1)
+    console.log('x2 = ' + x2)
+
+    if (sqrt_delta > 0) {
+      console.log('x1 = ' + x1)
+      console.log('x2 = ' + x2)
+    } else {
+      if (sqrt_delta == 0) {
+        console.log('x1 = x2 =' + x1)
+      }
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

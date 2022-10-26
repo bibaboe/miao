@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    body {
+      height: 1000px;
+    }
+    .dot {
+      font-size: 2em;
+      position: absolute;
+      user-select: none;
+      /* 用户不可选中 */
+    }
+  </style>
+<body>
+
+  <script>
+    window.addEventListener('click', e => {
+      console.log(e)
+      var dot = document.createElement('span')
+      dot.textContent = '♥'
+      dot.classList.add('dot')
+      dot.style.color = '#' + Math.random().toString(16).slice(2, 5)
+      dot.style.left = e.pageX - 10 + 'px'
+      dot.style.top = e.pageY - 30 + 'px'
+      document.body.append(dot)
+    })
+  </script>
+</body>
+</html>

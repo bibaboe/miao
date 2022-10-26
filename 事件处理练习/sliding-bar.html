@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    div {
+      width: 60px;
+      height: 20px;
+      background-color: lightblue;
+    }
+  </style>
+<body>
+  <div></div>
+
+  <script>
+    var div = document.querySelector('div')
+    var lastX
+
+    div.addEventListener('mousedown', function(e) {
+      if (e.which == 1) {
+        e.preventDefault()
+        lastX = e.pageX
+        window.addEventListener('mousemove', move)
+      }
+
+      function move(e) {
+        if (e.which == 0) {
+          window.removeEventListener('mousemove', move)
+          console.log('un bind')
+        } else {
+          var mouseMoveDistance = e.pageX - lastX
+          var newWidth = Math.max(10, div.offsetWidth + mouseMoveDistance)
+          div.style.width = newWidth + 'px'
+          lastX = e.pageX
+        }
+      }
+    })
+  </script>
+</body>
+</html>

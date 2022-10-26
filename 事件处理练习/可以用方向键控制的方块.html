@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      border-radius: 15px;
+      position: absolute;
+    }
+    div + div {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div style="left:300px;top:300px"></div>
+  <div style="left:30px;top:30px"></div>
+
+  <script>
+    var div1 = document.querySelector('div')
+    var div2 = document.querySelector('div + div')
+
+    var x1 = 300
+    var y1 = 300
+
+    var x2 = 30
+    var y2 = 30
+
+    var speed = 3
+    var vx = 0
+    var vy = 0
+    var rate = 1
+
+    var speed2 = 3
+    var vx2 = 0
+    var vy2 = 0
+    var rate2 = 1
+
+    var leftHold = false
+    var rightHold = false
+    var upHold = false
+    var downHold = false
+
+    var aHold = false
+    var fHold = false
+    var wHold = false
+    var sHold = false
+
+    document.addEventListener('keydown', e => {
+      if (e.key == 'Shift') {
+        rate = 5
+      }
+      if (e.key == 'ArrowLeft') {
+        leftHold = true
+        vx = -speed
+      }
+      if (e.key == 'ArrowRight') {
+        rightHold = true
+        vx = speed
+      }
+      if (e.key == 'ArrowUp') {
+        upHold = true
+        vy = -speed
+      }
+      if (e.key == 'ArrowDown') {
+        downHold = true
+        vy = speed
+      }
+      if (e.key == 'a') {
+        aHold = true
+        vx2 = -speed
+      }
+      if (e.key == 'd') {
+        dHold = true
+        vx2 = speed
+      }
+      if (e.key == 'w') {
+        wHold = true
+        vy2 = -speed
+      }
+      if (e.key == 's') {
+        sHold = true
+        vy2 = speed
+      }
+    })
+    document.addEventListener('keyup', e => {
+      if (e.key == 'Shift') {
+        rate = 1
+      }
+      if (e.key == 'ArrowLeft') {
+        leftHold = false
+        if (rightHold) {
+          vx = speed
+        } else {
+          vx = 0
+        }
+      }
+      if (e.key == 'ArrowRight') {
+        rightHold = false
+        if (leftHold) {
+          vx = -speed
+        } else {
+          vx = 0
+        }
+      }
+      if (e.key == 'ArrowUp') {
+        upHold = false
+        if (downHold) {
+          vy = speed
+        } else {
+          vy = 0
+        }
+      }
+      if (e.key == 'ArrowDown') {
+        downHold = false
+        if (upHold) {
+          vy = -speed
+        } else {
+          vy = 0
+        }
+      }
+      if (e.key == 'a') {
+        aHold = false
+        if (dHold) {
+          vx2 = speed
+        } else {
+          vx2 = 0
+        }
+      }
+      if (e.key == 'd') {
+        dHold = false
+        if (aHold) {
+          vx2 = -speed
+        } else {
+          vx2 = 0
+        }
+      }
+      if (e.key == 'w') {
+        wHold = false
+        if (sHold) {
+          vy2 = speed
+        } else {
+          vy2 = 0
+        }
+      }
+      if (e.key == 's') {
+        sHold = false
+        if (wHold) {
+          vy2 = -speed
+        } else {
+          vy2 = 0
+        }
+      }
+    })
+    var lastTime = 0
+    requestAnimationFrame(function move(time) {
+      var t = 0
+      if (lastTime != 0) {
+        t = time - lastTime
+      }
+      lastTime = time
+      var rate45 = 1
+      if (vx != 0 && vy != 0) {
+        rate45 = Math.sqrt(2)
+      }
+
+      x1 += vx * t / 20 * rate
+      y1 += vy * t / 20 * rate
+      x2 += vx2 * t / 20 * rate
+      y2 += vy2 * t / 20 * rate
+      div1.style.left = x1 + 'px'
+      div1.style.top = y1 + 'px'
+      div2.style.left = x2 + 'px'
+      div2.style.top = y2 + 'px'
+      requestAnimationFrame(move)
+    })
+  </script>
+</body>
+</html>

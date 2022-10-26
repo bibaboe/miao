@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      /* overflow: scroll; */
+    }
+    div {
+      height: 1500px;
+      border: 3px solid;
+      /* overflow: scroll; */
+    }
+  </style>
+</head>
+<body>
+  <div>sdfsdfsda</div>
+  <script>
+
+    // 获取滚动条位置
+    // window.scrollY
+    // window.pageYOffset
+
+    // 窗口可视高度
+    // innerHeight
+
+    // 捕获事件 被动事件 单次事件绑定
+    // xwindow.addEventListener('mousewheel', function(e) {
+
+    // }, {
+    //   capture: true/false,//是否绑定捕获事件
+    //   passive: true/false,// 是否是被动事件，即事件函数是否会调用preventDefault()，为true时表示事件处理函数不会调用
+    //    // 如果设定了事件处理函数为被动事件，则它就不能用preventDefault，如果调用会报错
+    //   once: true/false,// 是否是单次事件绑定，如果是，则执行一次就删掉
+    // })
+
+    // 被动事件的运用
+    window.addEventListener('mousewheel', function(e) {
+      var start = Date.now()
+      while (Date.now() - start < 5000) {
+
+      }
+    }, {
+      passvie: true
+    })
+  </script>
+</body>
+</html>

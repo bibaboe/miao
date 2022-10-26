@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .draggable {
+      width: 150px;
+      height: 150px;
+      position: fixed;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="draggable" style="z-index:1;left:0;top:0;background-color: lightblue"></div>
+  <div class="draggable" style="z-index:2;left:0;top:0;background-color: lightgreen"></div>
+  <div class="draggable" style="z-index:3;left:0;top:0;background-color: lightpink"></div>
+
+  <script>
+
+    var startX
+    var startY
+    var startLeft
+    var startTop
+    var movingEl
+    var maxZindex = 3
+
+    document.addEventListener('mousedown', function(e) {
+      if (e.target.matches('.draggable')) {
+        startX = e.clientX
+        startY = e.clientY
+
+        movingEl = e.target
+        startLeft = parseInt(movingEl.style.left)
+        startTop = parseInt(movingEl.style.top)
+        movingEl.style.zIndex = ++maxZindex
+
+        window.addEventListener('mousemove', onMouseMove)
+      }
+    })
+
+    function onMouseMove(e) {
+      if (e.which != 1) {
+        window.removeEventListener('mousemove', onMouseMove)
+      } else {
+        var moveX = e.clientX - startX
+        var moveY = e.clientY - startY
+
+        var newLeft = startLeft + moveX
+        var newTop = startTop + moveY
+
+        if (newLeft < 100) {
+          newLeft = 0
+        } else if (newLeft > innerWidth - movingEl.offsetWidth - 100) {
+          newLeft = innerWidth - movingEl.offsetWidth
+        }
+
+        if (newTop < 100) {
+          newTop = 0
+        } else if (newTop > innerHeight - movingEl.offsetHeight - 100) {
+          newTop = innerHeight - movingEl.offsetHeight
+        }
+
+        movingEl.style.left = newLeft + 'px'
+        movingEl.style.top = newTop + 'px'
+      }
+    }
+
+
+
+  </script>
+</body>
+</html>

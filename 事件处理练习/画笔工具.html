@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 1000px;
+    }
+    div {
+      height: 600px;
+      border: 2px solid;
+    }
+    .dot {
+      border-radius: 9999px;
+      position: absolute;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <input type="color">
+  <input type="range" min="1" max="20">
+  <div></div>
+
+  <script>
+    var colorInput = document.querySelector('input[type="color"]')
+    var pencilWidthInput = document.querySelector('input[type="range"]')
+    var div = document.querySelector('div')
+
+    div.addEventListener('mousedown', e => {
+      if (e.which == 1) {
+        drawDot(e)
+        div.addEventListener('mousemove', move)
+      }
+    })
+
+    function move(e) {
+      if (e.which == 0) {
+        div.removeEventListener('mousemove', move)
+        return
+      }
+      if (e.which == 1) {
+        drawDot(e)
+      }
+    }
+
+    function drawDot(e) {
+      var dot = document.createElement('span')
+      dot.classList.add('dot')
+      dot.style.left = e.pageX - pencilWidthInput.value / 2 + 'px'
+      dot.style.top = e.pageY - pencilWidthInput.value / 2 + 'px'
+      dot.style.backgroundColor = colorInput.value
+      dot.style.width = pencilWidthInput.value + 'px'
+      dot.style.height = pencilWidthInput.value + 'px'
+      document.body.append(dot)
+    }
+  </script>
+</body>
+</html>

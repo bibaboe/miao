@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var i = 1
+    function throttle(f, time) {
+      var lastArgs
+      var lastThis
+      var lastCallTime = 0
+      var scheduled = false
+      var timeoutId
+
+      return function(...args) {
+        lastArgs = args
+        lastThis = this
+
+        var nowTime = Date.now()
+        if (nowTime - lastCallTime > time) {
+          lastCallTime = nowTime
+          clearTimeout(timeoutId)
+          // console.log(i++)
+          f.call(lastThis, ...lastArgs)
+        } else if (nowTime - lastCallTime <= time) {
+          if (!scheduled) {
+            scheduled = true
+            timeoutId = setTimeout(() => {
+              lastCallTime = Date.now()
+              scheduled = false
+              // console.log(i++)
+              f.call(lastThis, ...lastArgs)
+            }, time - (nowTime - lastCallTime))
+          }
+        }
+      }
+    }
+    addEventListener('mousemove', throttle(() => {
+      console.log('节流')
+    }, 1000))
+  </script>
+</body>
+</html>

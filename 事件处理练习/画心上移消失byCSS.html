@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 1000px;
+    }
+    .dot {
+      font-size: 2em;
+      position: absolute;
+      user-select: none;
+      animation: move-fade 1s forwards;
+      /* forwards 动画完成后元素不会回到原位 */
+    }
+    /* 关键帧 */
+    @keyframes move-fade {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(0, -200px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    window.addEventListener('click', e => {
+      var dot = document.createElement('span')
+      dot.textContent = '♥'
+      dot.style.color = '#' + Math.random().toString(16).slice(2, 5)
+      dot.classList.add('dot')
+      dot.style.left = e.pageX - 10 + 'px'
+      dot.style.top = e.pageY - 30 + 'px'
+      document.body.append(dot)
+
+      // 延时删除结点的两种方法
+
+      // 第一种：触发animation结束事件
+      dot.onanimationend = function () {
+        document.body.removeChild(dot)
+        dot.onanimationend = null
+      }
+      // 第二种：定时器
+      setTimeout(function () {
+        document.body.removeChild(dot)
+      },1000)
+    })
+  </script>
+</body>
+</html>

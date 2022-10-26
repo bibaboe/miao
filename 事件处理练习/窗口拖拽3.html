@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .draggable {
+      width: 150px;
+      height: 150px;
+      position: fixed;
+      user-select: none;
+    }
+    .draggable .resizer {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      right: 0;
+      bottom: 0;
+      cursor: nwse-resize;
+      clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+    }
+    .draggable .window-title {
+      margin: 0;
+      background-color: rgba(0,0,0,0.3);
+      cursor: move;
+    }
+    .draggable:has(textarea) {
+      width: auto;
+      height: auto;
+    }
+    .draggable textarea {
+      width: 150px;
+      height: 100px;
+      min-width: 100px;
+      min-height: 100px;
+      background-color: transparent;
+      display: block;
+      outline: none;
+      resize: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="draggable" style="z-index:1;left:0;top:0;background-color: lightblue">
+    <h4 class="window-title">Title</h4>
+    <span class="resizer"></span>
+  </div>
+  <div class="draggable" style="z-index:2;left:0;top:0;background-color: lightgreen">
+    <h4 class="window-title">Title</h4>
+<span class="resizer"></span>
+  </div>
+  <div class="draggable" style="z-index:3;left:0;top:0;background-color: lightpink">
+    <h4 class="window-title">Title</h4>
+    <textarea></textarea>
+    <!-- <span class="resizer"></span> -->
+  </div>
+
+  <script>
+
+    var startX
+    var startY
+    var startLeft
+    var startTop
+    var movingEl
+    var maxZIndex = 3
+
+    var resizingEl
+    var startWidth
+    var startHeight
+
+    document.addEventListener('mousedown', function(e) {
+      if (e.target.matches('draggable, .draggable *')) { // 调整zIndex
+        e.target.closest('.draggable').style.zIndex = ++maxZIndex
+      }
+
+      if (e.target.matches('.draggable .window-title')) { // 利用title拖拽div
+        startX = e.clientX
+        startY = e.clientY
+
+        movingEl = e.target.closest('.draggable')
+        startLeft = parseInt(movingEl.style.left)
+        startTop = parseInt(movingEl.style.top)
+
+        window.addEventListener('mousemove', onMouseMove)
+      }
+
+      if (e.target.matches('.draggable .resizer')) { //利用span调整div的大小
+        startX = e.clientX
+        startY = e.clientY
+
+        resizingEl = e.target.closest('.draggable')
+        startWidth = resizingEl.offsetWidth
+        startHeight = resizingEl.offsetHeight
+        document.documentElement.style.cursor = 'nwse-resize'
+
+        window.addEventListener('mousemove', onMouseMoveResize)
+      }
+    })
+
+
+    function onMouseMoveResize(e) { //调整大小
+      if (e.which != 1) {
+        window.removeEventListener('mousemove', onMouseMoveResize)
+        document.documentElement.style.cursor = 'default'
+      } else {
+        var moveX = e.clientX - startX
+        var moveY = e.clientY - startY
+
+        var newWidth = startWidth + moveX
+        var newHeight = startHeight + moveY
+
+        if (newWidth < 100) newWidth = 100
+        if (newHeight < 100) newHeight = 100
+
+        resizingEl.style.width = newWidth + 'px'
+        resizingEl.style.height = newHeight + 'px'
+      }
+    }
+
+    function onMouseMove(e) { //移动元素
+      if (e.which != 1) {
+        window.removeEventListener('mousemove', onMouseMove)
+      } else {
+        var moveX = e.clientX - startX
+        var moveY = e.clientY - startY
+
+        var newLeft = startLeft + moveX
+        var newTop = startTop + moveY
+
+        if (newLeft < 100) {
+          newLeft = 0
+        } else if (newLeft > innerWidth - movingEl.offsetWidth - 100) {
+          newLeft = innerWidth - movingEl.offsetWidth
+        }
+
+        if (newTop < 100) {
+          newTop = 0
+        } else if (newTop > innerHeight - movingEl.offsetHeight - 100) {
+          newTop = innerHeight - movingEl.offsetHeight
+        }
+
+        movingEl.style.left = newLeft + 'px'
+        movingEl.style.top = newTop + 'px'
+      }
+    }
+
+  </script>
+</body>
+</html>

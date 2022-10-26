@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin-top: 30vh;
+      text-align: center;
+      background-color: black;
+    }
+    #sun {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      background-color: red;
+      color: white;
+      position: relative;
+      line-height: 200px;
+      text-align: center;
+      box-shadow: 0 0 100px red;
+      left: 0px;
+      top: 0px;
+    }
+    #earth {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+      background-color: lightblue;
+      color: white;
+      position: relative;
+      line-height: 60px;
+      text-align: center;
+      box-shadow: 0 0 100px lightblue;
+      left: 0px;
+      top: 0px;
+    }
+    #moon {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      background-color: yellow;
+      color: white;
+      position: relative;
+      line-height: 30px;
+      text-align: center;
+      box-shadow: 0 0 100px yellow;
+      left: 0px;
+      top: 0px;
+    }
+
+  </style>
+</head>
+<body>
+  <span id="sun">sun</span>
+  <span id="earth">earth</span>
+  <span id="moon">moon</span>
+  <script>
+    var r = 400
+
+    var t = 0, lastTime = null
+
+
+
+    requestAnimationFrame(function ani(time) {
+      if (lastTime != null) {
+        t += (time - lastTime) * 0.001 // 根据两次运行之间时间流逝的量来增加角度
+      }
+      lastTime = time
+
+      var x0 = Math.cos(t) * 100
+      var y0 = Math.sin(t) * 100
+      var x1 = Math.cos(t) * r
+      var y1 = Math.sin(t) * r
+      var x2 = Math.cos(t*2) * r * 0.2
+      var y2 = Math.sin(t*2) * r * 0.2
+
+      sun.style.left = x0 + 'px'
+      sun.style.top = y0 + 'px'
+      earth.style.left = x0 + x1 - 130 + 'px'
+      earth.style.top = y0 + y1 + 'px'
+      moon.style.left = x0 + x1 - 130 - 50 + x2 + 'px'
+      moon.style.top =y0 + y1 + y2 + 'px'
+
+
+      requestAnimationFrame(ani)
+
+    })
+  </script>
+</body>
+</html>

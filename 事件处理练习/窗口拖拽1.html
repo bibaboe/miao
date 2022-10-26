@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    .draggable {
+      width: 150px;
+      height: 150px;
+      position: fixed;
+      user-select: none;
+    }
+  </style>
+<body>
+  <div class="draggable" style="z-index:1;left:0;top:0;background-color: lightblue"></div>
+  <div class="draggable" style="z-index:2;left:0;top:0;background-color: lightgreen"></div>
+  <div class="draggable" style="z-index:3;left:0;top:0;background-color: lightpink"></div>
+
+  <script>
+    var lastX
+    var lastY
+    var movingEl
+    var maxZIndex = 3
+
+    document.addEventListener('mousedown', function(e) {
+      if (e.target.matches('.draggable')) {
+        lastX = e.clientX
+        lastY = e.clientY
+        movingEl = e.target
+        e.target.style.zIndex = ++maxZIndex
+
+        window.addEventListener('mousemove', onMouseMove)
+      }
+    })
+
+    function onMouseMove(e) {
+      if (e.which !=1) {
+        window.removeEventListener('mousemove', onMouseMove)
+      } else {
+        var moveX = e.clientX - lastX
+        var moveY = e.clientY - lastY
+
+        var newleft = Math.max(parseInt(movingEl.style.left) + moveX, 0)
+        var newtop = Math.max(parseInt(movingEl.style.top) + moveY, 0)
+
+        movingEl.style.left = newleft + 'px'
+        movingEl.style.top = newtop + 'px'
+
+        lastX = e.clientX
+        lastY = e.clientY
+      }
+    }
+  </script>
+</body>
+</html>

@@ -318,8 +318,20 @@
     return table
   }  // 用table[0,0,0,0]记录事件与有没有变松鼠4种情况的次数，
 
-  for (var i = 0; i < journalEvents(journal).length; i++) {
-    var events = journalEvents(journal)
-    console.log(events[i] + ':', phi(tableFor(events[i],journal)))
-  }
+  var events = journalEvents(journal)
+  for (var i = 0; i < events.length; i++) {
+    var correlation = phi(tableFor(events[i],journal))
+    if (correlation > 0.1 || correlation < -0.1) {
+    console.log(events[i] + ':', correlation)
+    }
+  } // 仅显示大于0.1或小于-0.1的相关性
+
+  for (var j = 0; j < journal.length; j++) {
+    if (journal[j].events.includes('peanuts') && !journal[j].events.includes('brushed teeth')) {
+      journal[j].events.push('peanuts teeth')
+    }
+  } // 如果entry的events里有吃花生且没有刷牙，就把这个事件push进去
+
+  console.log(phi(tableFor('peanuts teeth',journal)))//计算有吃花生且没有刷牙与变松鼠的相关性
+
 </script>

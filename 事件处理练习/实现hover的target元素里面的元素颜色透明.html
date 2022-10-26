@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    .box {
+      border: 1px solid;
+      margin: 50px 100px;
+    }
+    .active {
+      border-color: red;
+    }
+    .active * {
+      background-color: transparent !important;
+    }
+  </style>
+<body>
+  <div class="box" style="background-color: lightblue">1
+
+    <div class="box" style="background-color: lightgreen">2
+      <div class="box" style="background-color: white">3</div>
+    </div>
+
+    <div class="box" style="background-color: orange">4
+      <div class="box" style="background-color: pink">5
+        <div class="box" style="background-color: grey">6</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.body.addEventListener('mouseover', function(e) {
+      if (e.target.matches('.box')) {
+        e.target.classList.add('active')
+      }
+    })
+    document.body.addEventListener('mouseout', function(e) {
+      if (e.target.matches('.box')) {
+        e.target.classList.remove('active')
+      }
+    })
+  </script>
+</body>
+</html>

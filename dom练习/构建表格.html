@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+        border-collapse: collapse;
+      }
+    td, th {
+      border: 1px solid black;
+      padding: 3px 8px;
+    }
+    th {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mountains</h1>
+  <div id="mountains"></div>
+
+  <script>
+    const MOUNTAINS = [
+        {name: "Kilimanjaro", height: 5895, place: "Tanzania",gender: 'male',score: '100'},
+        {name: "Everest", height: 8848, place: "Nepal"},
+        {name: "Mount Fuji", height: 3776, place: "Japan"},
+        {name: "Vaalserberg", height: 323, place: "Netherlands",weight: "70"},
+        {name: "Denali", height: 6168, place: "United States"},
+        {name: "Popocatepetl", place: "Mexico", height: 5465},
+        {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+      ];
+
+    // Your code here
+    function buildTable(data) {
+      // 创建一个table结点
+      var table = document.createElement('table')
+
+      // 将data里的对象的属性名存储到set里，并将set转为数组
+      var set = new Set()
+
+      for (var object of data) {
+        for (var key in object) {
+          set.add(key)
+        }
+      }
+
+      var fields = Array.from(set)
+
+      // 创建首行结点，并将数组里的每个元素做为首行内容，添加到首行结点上
+      var headRow = document.createElement('tr')
+      for (var i = 0; i < fields.length; i++) {
+        var field = fields[i]
+        var headCell = document.createElement('th')
+        headCell.textContent = field
+        headRow.appendChild(headCell)
+      }
+      table.appendChild(headRow)
+
+      // 将data的每个object做为一行，添加到table结点上
+      data.forEach(function (object) {
+        var row = document.createElement('tr')
+        fields.forEach(function (field) {
+          var cell = document.createElement('td')
+          cell.textContent = object[field]
+          row.appendChild(cell)
+        })
+        table.appendChild(row)
+      })
+
+      return table
+    }
+
+    document.body.appendChild(buildTable(MOUNTAINS))
+
+
+
+    // 创建一个table结点
+    // 创建一个set,将数组里的对象的属性名添加到set里，并将set转为数组
+    // 创建首行结点，并将数组里的每个元素作为首行结点的子结点，将首行结点添加到table结点
+    // 遍历data，为每个对象创建一行结点，遍历属性数组，为每个属性创建一个细胞结点，细胞结点内容为对象属性值，将每个细胞结点添加到行结点，再把行结点添加到table结点
+
+  </script>
+</body>
+</html>

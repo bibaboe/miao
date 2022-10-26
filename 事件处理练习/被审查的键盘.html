@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 300px;
+    }
+    input {
+      width: 300px;
+      height: 50px;
+      border-radius: 9999px;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <input type="text">
+  <p>hello sdl kdjf d sldkfj ljk fsdlfkj dslkdjf sdlkjflkjsdf</p>
+  <script>
+    var input = document.querySelector('input')
+    var p = document.querySelector('p')
+
+    // 防止copy
+    p.addEventListener('copy', function (e) {
+      e.preventDefault()
+      // alert('版权所有，禁止复制！！！')
+      e.clipboardData.setData('text/plain',window.getSelection().toString() + '版权所有') // 替换复制内容
+    })
+
+
+    // 阻止输入
+    input.addEventListener('keypress', function (e) {
+      if (e.key == 'W' || e.key == 'Q' || e.key == 'X') {
+        e.preventDefault()
+      }
+    })
+
+
+    // 阻止粘贴
+    input.addEventListener('paste', function (e) {
+      var text = e.clipboardData.getData('text/plain')// 获取粘贴文本
+      if (text.match(/[WQX]/g)) {
+        e.preventDefault()
+      }
+    })
+    // 替换粘贴内容
+    input.addEventListener('paste', function (e) {
+      e.preventDefault()
+
+      var text = e.clipboardData.getData('text/plain') // 获取粘贴文本
+      text = text.replace(/[WQX]/g,'*') // 修改要粘贴的文本
+
+      var posAfterPaste = input.selectionStart + text.length // 记录粘贴后光标的位置
+      input.value = input.value.slice(0, input.selectionStart) + text + input.value.slice(input.selectionEnd)
+      input.selectionStart = input.selectionEnd = posAfterPaste
+    })
+
+
+    //阻止drop
+    input.addEventListener('drop', e => {
+      e.preventDefault()
+      alert('禁止拖拽，请使用粘贴')
+    })
+    // 替换drop内容
+    input.addEventListener('drop', e => {
+      e.preventDefault()
+
+      var text = e.dataTransfer.getData('text/plain')// 获取要drop的文本
+      text = text.replace(/[QWX]/g, '*') // 修改要drop的文本
+
+      var posAfterPaste = input.selectionStart + text.length // 记录drop文本后光标的位置
+      input.value = input.value.slice(0, input.selectionStart) + text + input.value.slice(input.selectionEnd)// 拼接文本并赋值给input
+      input.selectionStart = input.selectionEnd = posAfterPaste // 还原光标位置
+    })
+
+
+    // 替换在控制台给input.value的赋值
+    var valuePropDesc = Object.getOwnPropertyDescriptor(input.__proto__,'value')
+
+    Object.defineProperty(input, 'value', {
+      get: function () {
+        return valuePropDesc.get.call(input) // 相当于原来的直接读取input.value
+      },
+      set: function (text) {
+        text = text.replace(/[WQX]/g, '*')
+        valuePropDesc.set.call(input, text) // 相当于原来的input.value = text
+      }
+    })
+    //sendDateToServer('WWWWQQQQXXX') 直接发送文本到服务器
+  </script>
+</body>
+</html>

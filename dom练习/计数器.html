@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="sub">-</button>
+  <h2 class="counter">0</h2>
+  <button class="add">+</button>
+
+  <script>
+    var subEl = document.querySelector('.sub')
+    var addEl = document.querySelector('.add')
+    var h2El = document.querySelector('.counter')
+
+    var counter = 0
+    subEl.onclick = function() {
+      h2El.textContent = --counter
+    }
+    addEl.onclick = function() {
+      h2El.textContent = ++counter
+    }
+  </script>
+</body>
+</html>

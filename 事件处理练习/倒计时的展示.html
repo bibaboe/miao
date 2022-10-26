@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .countdown {
+      color: red;
+      font-size: 30px;
+    }
+    .countdown .time {
+      background-color: red;
+      color: white;
+      display: inline-block;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown">倒计时：
+    <span class="time hour">12</span>
+    <span class="split">:</span>
+    <span class="time minute">05</span>
+    <span class="split">:</span>
+    <span class="time second">39</span>
+  </div>
+
+  <script src="./format.js"></script>
+  <script>
+    // 获取元素
+    var hourEl = document.querySelector('.hour')
+    var minuteEl = document.querySelector('.minute')
+    var secondEl = document.querySelector('.second')
+
+    // 设置结束时间
+    var endDate = new Date()
+    endDate.setHours(24)
+    endDate.setMinutes(0)
+    endDate.setSeconds(0)
+    endDate.setMilliseconds(0)
+
+    // 每隔一秒运行一次
+    setInterval(function() {
+      // 获取当前时间，计算时间差
+      var nowDate = new Date()
+      var intervalTime = Math.floor((endDate.getTime() - nowDate.getTime()) / 1000)
+
+      // 把时间差转成小时、分针、秒
+      var hour = Math.floor(intervalTime / 3600)
+      var minute = Math.floor(intervalTime / 60) % 60
+      var second = Math.floor(intervalTime % 60)
+
+      // 设置到元素上
+      hourEl.textContent = formatPadLeft(hour)
+      minuteEl.textContent = formatPadLeft(minute)
+      secondEl.textContent = formatPadLeft(second)
+    },1000)
+
+
+    // 转换例子
+    // 125: x百x十x个
+    // var num = 125
+    // Math.floor(num / 100)
+    // Math.floor(num / 10) % 10
+    // Math.floor(num % 10)
+  </script>
+
+</body>
+</html>

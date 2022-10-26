@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  Note:<select name="" id="list"></select>
+  <button>addNote</button><br>
+  <textarea id="currentnote" style="width: 50%; height: 20em; font-size: 2em"></textarea>
+
+  <script>
+    // delete localStorage.notes
+
+    var selectEl = document.querySelector('#list')
+    var btnEl = document.querySelector('button')
+    var textareaEl = document.querySelector('#currentnote')
+
+    // 刷新时恢复上次的数据
+    var notes = JSON.parse(localStorage.getItem('notes')) || {"start list": "","list": }
+
+    for (var noteName in notes) {
+      addToList(noteName)
+    }
+    textareaEl.value = notes[selectEl.value]
+
+    // 三个监听事件
+    selectEl.addEventListener('change', function() {
+      textareaEl.value = notes[selectEl.value]
+    })
+    btnEl.addEventListener('click', function() {
+      addNote()
+    })
+    textareaEl.addEventListener('input', function() {
+      notes[selectEl.value] = textareaEl.value
+      saveToStorage()
+    })
+
+    // 三个辅助函数
+    function addToList(noteName) {
+      var optionEl = document.createElement('option')
+      optionEl.textContent = noteName
+      selectEl.appendChild(optionEl)
+    }
+    function addNote() {
+      var newNoteName = prompt("请输入新的笔记名：")
+      if (!newNoteName) return
+      if (!notes.hasOwnProperty(newNoteName)) {
+        notes[newNoteName] = ""
+        addToList(newNoteName)
+        saveToStorage()
+      }
+      selectEl.value = newNoteName
+      textareaEl.value = notes[newNoteName]
+    }
+    function saveToStorage() {
+      localStorage.setItem("notes", JSON.stringify(notes))
+    }
+  </script>
+</body>
+</html>

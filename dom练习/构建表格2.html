@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .number, .boolean {
+      color: blue;
+    }
+    .string {
+      color: red;
+    }
+    .undefined, .null {
+      color: grey;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <div></div>
+
+  <script>
+    var div1 = document.querySelector('div')
+    var div2 = document.querySelector('div + div')
+
+    //拼接字符串写法
+    function buildTable1(array) {
+      // 创建html作为字符串拼接，先拼上table的开始标签
+      var html = '<table border=1>\n'
+
+      // 调用Object.keys获取数组里的对象的属性名组成的数组并用flatMap进行数组降维
+      // 将数组经过set去重，再转回数组传给 tableHeaders
+      var tableHeaders = [...new Set(array.flatMap(Object.keys))]
+
+      // 拼上tr的开始标签和第一个th：index
+      html += '<tr><th>index</th>\n'
+
+      // for of 循环将每个表头做为th的内容拼接到html上
+        for (var header of tableHeaders) {
+          html += `<th>${header}</th>\n`
+        }
+
+      // 拼上tr的结束标签
+        html += '</tr>\n'
+
+      // 遍历数组，把每个对象作为一行tr,第一个td为i,后续td为每个表头，判断对象是否有对应的属性，如果有就把对象表头对应的属性值做为td的内容，用typeName记录值的类型,如果是null则记为null
+      // 如果值为字符串，就给值加上''
+      // 每拼完一个对象，就拼上tr结束标签
+        for (var i = 0; i < array.length; i++) {
+          var obj = array[i]
+          html += `<tr>\n<td>${i}</td>\n`
+
+          for (var header of tableHeaders) {
+            if (obj.hasOwnProperty(header)) {
+              var val = obj[header]
+              var typeName = val === null ? 'null' : typeof val
+
+              if (typeName == 'string') {
+                html += `<td class="${typeName}">'${val}'</td>\n`
+              } else {
+                html += `<td class="${typeName}">${val}</td>\n`
+              }
+            } else {
+              html += '<td></td>\n'
+            }
+          }
+
+          html += '</tr>'
+        }
+
+      // 当所有对象都拼完，就拼上table结束标签并返回html
+        html += '</table>'
+        return html
+    }
+
+    // 创建dom结点写法
+    function buildTable2(array) {
+
+    }
+
+
+
+
+
+
+    var html = buildTable1([{a:'wefewf',b:null,c:undefined}, {x:true,b:2,c:3,a:''}])
+    console.time('1')
+    div1.innerHTML = html
+    console.timeEnd('1')
+  </script>
+</body>
+</html>

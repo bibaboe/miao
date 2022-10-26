@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: lightblue;
+      display: flex;
+      justify-content: center;
+      margin-top: 300px;
+    }
+    button {
+      width: 300px;
+      height: 50px;
+      font-size: 1.5em;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body>
+  <button>click me</button>
+
+  <!-- <script>
+    var button = document.querySelector('button')
+
+    // button.addEventListener('click', e => {
+    //   console.log('单击')
+    // })
+    button.addEventListener('dblclick', e => {
+      console.log('双击')
+    })
+    var clickTimes = 0 // 记录连续点击次数
+    var a
+    button.addEventListener('click', e => {
+      if (clickTimes == 2) {
+        clickTimes++ // 连续点击次数加1
+        console.log(clickTimes) // 查看连续点击次数
+        console.log('三击') // 连续点击3次输出3击
+        clearTimeout(a) // 清除定时器
+        a = setTimeout(function () { // 500毫秒后将点击次数重置为0
+          clickTimes = 0
+        },450)
+      } else {
+        clickTimes++
+        console.log(clickTimes)
+        clearTimeout(a)
+        a = setTimeout(function () {
+          clickTimes = 0
+        },450)
+      }
+    })
+
+
+  </script> -->
+
+  <script>
+    var lastClickTime = 10000
+    var clickTimes = 1
+    var btnEl = document.querySelector('button')
+
+    btnEl.addEventListener('click', function(e) {
+      var thisClickTime = new Date()
+
+      if (thisClickTime - lastClickTime < 500) {
+        clickTimes++
+      } else {
+        clickTimes = 1
+      }
+
+      console.log(clickTimes)
+
+      if (clickTimes == 2) {
+        console.log('双击')
+      }
+      if (clickTimes == 3) {
+        console.log('三击')
+      }
+
+      lastClickTime = thisClickTime
+    })
+  </script>
+</body>
+</html>

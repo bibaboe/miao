@@ -102,7 +102,7 @@
   } // 画一条45度的斜线
 
   y = 0
-  for (x = 1; x <= 200; x = x + 1) {
+  for (x = 1; x <= 200; x = x + 0.58) {
     y = Math.sqrt(3) * x
     console.log(dot(x , y, 'gray'))
   } // 画一条30度斜线
@@ -161,7 +161,7 @@
     console.log(dot(x, y, 'black'))
   } // 画一个半径为200px的空心圆，居中
 
-  for (r = 0 ; r <= 100; r = r + 0.1) {
+/*   for (r = 0 ; r <= 100; r = r + 0.1) {
     for (x = 400 - r; x <= 400 + r; x = x + 1) {
       y = Math.sqrt(r * r - Math.pow(x - 400, 2)) + 200
       console.log(dot(x, y, 'green'))
@@ -176,7 +176,7 @@
       x = - Math.sqrt(r * r - Math.pow(y - 200, 2)) + 400
       console.log(dot(x, y, 'green'))
     }
-  } // 画一个半径为100px的实心圆
+  } // 画一个半径为100px的实心圆 */
 
   for (x = 150; x <= 430; x = x + 1) {
     y = 100 + 20 * Math.sin(x / 20)
@@ -231,14 +231,10 @@
     G = -1
     for (y = 72; y <= 200; y = y + 0.5){
       G = G + 1
-      flagX = x
-      flagY = y
-      x = 0.5 * x - 0.87 * y
-      y = 0.87 * x + 0.5 * y
+      xx = 0.5 * x - 0.87 * y
+      yy = 0.87 * x + 0.5 * y
       color = 'rgb(' + R + ',' + G + ',255)'
-      console.log(dot(x, y, color))
-      x = flagX
-      y = flagY
+      console.log(dot(xx, yy, color))
     }
   } // rgb色彩空间每个点的坐标乘以矩阵(0.5,-0.87,0.87,0.5)
 </script>
