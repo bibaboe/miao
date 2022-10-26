@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-image:url(https://png.pngtree.com/background/20211215/original/pngtree-nice-notebook-torn-paper-background-picture-image_1460030.jpg);
+      background-size: 100%;
+    }
+    .draggable {
+      position: fixed;
+      user-select: none;
+    }
+    .draggable .resizer {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      right: 0;
+      bottom: 0;
+      cursor: nwse-resize;
+      clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+    }
+    .draggable .window-title {
+      margin: 0;
+      background-color: rgba(0,0,0,0.3);
+      xcursor: move;
+    }
+    .window-title {
+      display: flex;
+      justify-content: space-between;
+      height: 24px;
+    }
+    .window-title span:hover {
+      color: #999;
+    }
+    .draggable:has(textarea) {
+      width: auto;
+      height: auto;
+    }
+    .draggable textarea {
+      box-sizing: border-box;
+      width: 100%;
+      height: calc(100% - 24px);
+      background-color: transparent;
+      display: block;
+      outline: none;
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="clear">清除缓存</button>
+  <script>
+
+    // 每次打开恢复数据
+    var notes = JSON.parse(localStorage.getItem('catNotes')) ?? [{
+        id: 1,
+        content: 'test content',
+        color: 'lightblue',
+        outerWidth: '150px',
+        height: '120px',
+        x: '100px',
+        y: '100px',
+        z: 1,
+      },{
+        id: 2,
+        content: 'test content222',
+        color: 'lightpink',
+        width: '150px',
+        height: '120px',
+        x: '200px',
+        y: '200px',
+        z: 2,
+    }]
+    // -----
+    for (var note of notes) {
+      var noteEl = elt(`
+        <div data-id="${note.id}" class="draggable" style="z-index:${note.z};width:${note.width};height:${note.height};left:${note.x};top:${note.y};background-color: ${note.color}">
+          <h4 class="window-title">
+            <span class="add-note">+</span>
+            <span class="remove-note">&times;</span>
+          </h4>
+          <textarea>${note.content}</textarea>
+          <span class="resizer"></span>
+        </div>
+      `)
+      document.body.appendChild(noteEl)
+    }
+
+    var startX
+    var startY
+    var startLeft
+    var startTop
+    var movingEl
+    var maxZIndex = Math.max(...notes.map(it => it.z))
+
+    var resizingEl
+    var startWidth
+    var startHeight
+    clear.addEventListener('click', () => {
+      console.log(1)
+      localStorage.removeItem('catNotes')
+    })
+
+    // 辅助函数，根据htmlString生成dom结点
+    function elt(htmlString) {
+      var div = document.createElement('div')
+      div.innerHTML = htmlString
+      return div.firstElementChild
+    }
+
+    document.addEventListener('mousedown', function(e) {
+      if (e.target.matches('draggable, .draggable *')) { // 调整zIndex
+        e.target.closest('.draggable').style.zIndex = ++maxZIndex
+      }
+
+      if (e.target.matches('.draggable .window-title')) { // 利用title拖拽div
+        startX = e.clientX
+        startY = e.clientY
+
+        movingEl = e.target.closest('.draggable')
+        startLeft = parseInt(movingEl.style.left)
+        startTop = parseInt(movingEl.style.top)
+
+        window.addEventListener('mousemove', onMouseMove)
+      }
+
+      if (e.target.matches('.draggable .resizer')) { //利用span调整div的大小
+        startX = e.clientX
+        startY = e.clientY
+
+        resizingEl = e.target.closest('.draggable')
+        startWidth = resizingEl.offsetWidth
+        startHeight = resizingEl.offsetHeight
+        document.documentElement.style.cursor = 'nwse-resize'
+
+        window.addEventListener('mousemove', onMouseMoveResize)
+      }
+    })
+
+    //调整窗口大小
+    function onMouseMoveResize(e) {
+      if (e.which != 1) {
+        window.removeEventListener('mousemove', onMouseMoveResize)
+        document.documentElement.style.cursor = 'default'
+
+        var outermost = e.target.closest('div.draggable')
+        var id = outermost.dataset.id
+        var note = notes.find(it => it.id == id)
+        note.width = outermost.style.width
+        note.height = outermost.style.height
+        save()
+      } else {
+        var moveX = e.clientX - startX
+        var moveY = e.clientY - startY
+
+        var newWidth = startWidth + moveX
+        var newHeight = startHeight + moveY
+
+        if (newWidth < 100) newWidth = 100
+        if (newHeight < 100) newHeight = 100
+
+        resizingEl.style.width = newWidth + 'px'
+        resizingEl.style.height = newHeight + 'px'
+      }
+    }
+
+    //移动窗口
+    function onMouseMove(e) {
+      if (e.which != 1) {
+        window.removeEventListener('mousemove', onMouseMove)
+
+        var outermost = e.target.closest('div.draggable')
+        var id = outermost.dataset.id
+        var note = notes.find(it => it.id == id)
+        note.x = outermost.style.left
+        note.y = outermost.style.top
+        note.z = outermost.style.zIndex
+        save()
+      } else {
+        var moveX = e.clientX - startX
+        var moveY = e.clientY - startY
+
+        var newLeft = startLeft + moveX
+        var newTop = startTop + moveY
+
+        if (newLeft < 100) {
+          newLeft = 0
+        } else if (newLeft > innerWidth - movingEl.offsetWidth - 100) {
+          newLeft = innerWidth - movingEl.offsetWidth
+        }
+
+        if (newTop < 100) {
+          newTop = 0
+        } else if (newTop > innerHeight - movingEl.offsetHeight - 100) {
+          newTop = innerHeight - movingEl.offsetHeight
+        }
+
+        movingEl.style.left = newLeft + 'px'
+        movingEl.style.top = newTop + 'px'
+      }
+    }
+
+    // 每点击加号增加一个窗口,点击x删除窗口
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('.add-note')) {
+        var note = {
+          id: notes.at(-1).id + 1,
+          content: '',
+          color: ['#fcfaae','#cbc0fe','#a3ed9b','#ecb2ec','#ececec','#c0e1f5'].at(Math.random() * 6 | 0),
+          width: '150px',
+          height: '120px',
+          x: Math.random() * (innerWidth - 150) + 'px',
+          y: Math.random() * (innerHeight - 150) + 'px',
+          z: maxZIndex++,
+        }
+        var noteEl = elt(`
+          <div data-id="${note.id}" class="draggable" style="z-index:${note.z};width:${note.width};height:${note.height};left:${note.x};top:${note.y};background-color: ${note.color}">
+            <h4 class="window-title">
+              <span class="add-note">+</span>
+              <span class="remove-note">&times;</span>
+            </h4>
+            <textarea></textarea>
+          <span class="resizer"></span>
+          </div>
+        `)
+        document.body.appendChild(noteEl)
+        notes.push(note)
+        save()
+      }
+      if (e.target.matches('.remove-note')) {
+        var outermost = e.target.closest('div.draggable')
+        var id = outermost.dataset.id
+        var idx = notes.findIndex(it => it.id == id)
+        if (idx >= 0) {
+          notes.splice(idx, 1)
+          save()
+        }
+        outermost.remove()
+      }
+    })
+
+    // 哪个窗口输入内容，就把内容保存到notes里对应的note.content
+    document.addEventListener('input', function(e) {
+      if (e.target.matches('textarea')) {
+        var outermost = e.target.closest('div.draggable')
+        var id = outermost.dataset.id
+        var note = notes.find(it => it.id == id)
+        note.content = e.target.value
+        save()
+      }
+    })
+
+    // 辅助函数，每发生一次变化，就保存一次数据
+    function save() {
+      localStorage.catNotes = JSON.stringify(notes)
+    }
+  </script>
+</body>
+</html>
